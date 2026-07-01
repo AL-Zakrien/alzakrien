@@ -1,0 +1,1474 @@
+
+> athkari@1.0.0 dev
+> vite --config vite.config.ts --host 0.0.0.0 --port 5080 --host 0.0.0.0 --port 5080
+
+
+  [32m[1mVITE[22m v7.3.2[39m  [2mready in [0m[1m988[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5080[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.1.17:[1m5080[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m3:51:21 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m3:51:22 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:24:7: ERROR: Unexpected end of file
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:24:7
+[33m  
+  [33mUnexpected end of file[33m
+  22 |  
+  23 |  export const athkarCategories: AthkarCategory[] = [
+  24 |         
+     |         ^
+  [39m
+[2m3:51:22 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:24:7: ERROR: Unexpected end of file
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:24:7
+[33m  
+  [33mUnexpected end of file[33m
+  22 |  
+  23 |  export const athkarCategories: AthkarCategory[] = [
+  24 |         
+     |         ^
+  [39m
+[2m3:51:22 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:24:7: ERROR: Unexpected end of file
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:24:7
+[33m  
+  [33mUnexpected end of file[33m
+  22 |  
+  23 |  export const athkarCategories: AthkarCategory[] = [
+  24 |         
+     |         ^
+  [39m
+[2m3:51:22 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:24:7: ERROR: Unexpected end of file[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:24:7
+[33m  
+  [33mUnexpected end of file[33m
+  22 |  
+  23 |  export const athkarCategories: AthkarCategory[] = [
+  24 |         
+     |         ^
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m3:51:22 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:24:7: ERROR: Unexpected end of file
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:24:7
+[33m  
+  [33mUnexpected end of file[33m
+  22 |  
+  23 |  export const athkarCategories: AthkarCategory[] = [
+  24 |         
+     |         ^
+  [39m
+[2m4:09:18 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m4:09:18 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:24:0: ERROR: Unexpected end of file
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:24:0
+[33m  
+  [33mUnexpected end of file[33m
+  22 |  
+  23 |  export const athkarCategories: AthkarCategory[] = [
+  24 |  
+     |  ^
+  [39m
+[2m4:09:18 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:24:0: ERROR: Unexpected end of file
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:24:0
+[33m  
+  [33mUnexpected end of file[33m
+  22 |  
+  23 |  export const athkarCategories: AthkarCategory[] = [
+  24 |  
+     |  ^
+  [39m
+[2m4:09:19 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:24:0: ERROR: Unexpected end of file
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:24:0
+[33m  
+  [33mUnexpected end of file[33m
+  22 |  
+  23 |  export const athkarCategories: AthkarCategory[] = [
+  24 |  
+     |  ^
+  [39m
+[2m4:09:19 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:24:0: ERROR: Unexpected end of file
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:24:0
+[33m  
+  [33mUnexpected end of file[33m
+  22 |  
+  23 |  export const athkarCategories: AthkarCategory[] = [
+  24 |  
+     |  ^
+  [39m
+[2m4:09:19 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:24:0: ERROR: Unexpected end of file[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:24:0
+[33m  
+  [33mUnexpected end of file[33m
+  22 |  
+  23 |  export const athkarCategories: AthkarCategory[] = [
+  24 |  
+     |  ^
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m4:22:45 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m4:22:46 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /src/data/athkar.ts (resolved id: C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts) in C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/pages/Home.tsx. Does the file exist?
+[2m4:22:46 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /src/data/athkar.ts (resolved id: C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts) in C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/pages/Home.tsx. Does the file exist?
+[2m4:22:46 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /src/data/athkar.ts (resolved id: C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts) in C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/pages/Home.tsx. Does the file exist?
+[2m4:22:46 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /src/data/athkar.ts (resolved id: C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts) in C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/pages/Home.tsx. Does the file exist?
+[2m4:23:01 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m4:23:02 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m4:23:02 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m4:23:02 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m4:23:02 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m4:23:55 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m4:23:55 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:96:5: ERROR: Expected "}" but found end of file
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:96:5
+[33m  
+  [33mExpected "}" but found end of file[33m
+  94 |          source: "سنن أبي داود"
+  95 |        }
+  96 |      ]
+     |       ^
+  [39m
+[2m4:23:55 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:96:5: ERROR: Expected "}" but found end of file
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:96:5
+[33m  
+  [33mExpected "}" but found end of file[33m
+  94 |          source: "سنن أبي داود"
+  95 |        }
+  96 |      ]
+     |       ^
+  [39m
+[2m4:23:55 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:96:5: ERROR: Expected "}" but found end of file
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:96:5
+[33m  
+  [33mExpected "}" but found end of file[33m
+  94 |          source: "سنن أبي داود"
+  95 |        }
+  96 |      ]
+     |       ^
+  [39m
+[2m4:23:55 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:96:5: ERROR: Expected "}" but found end of file
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:96:5
+[33m  
+  [33mExpected "}" but found end of file[33m
+  94 |          source: "سنن أبي داود"
+  95 |        }
+  96 |      ]
+     |       ^
+  [39m
+[2m4:23:55 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:96:5: ERROR: Expected "}" but found end of file[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:96:5
+[33m  
+  [33mExpected "}" but found end of file[33m
+  94 |          source: "سنن أبي داود"
+  95 |        }
+  96 |      ]
+     |       ^
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m4:25:21 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m4:25:22 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evin",
+  97 |      title: "أذكار الصباح",
+  [39m
+[2m4:25:22 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evin",
+  97 |      title: "أذكار الصباح",
+  [39m
+[2m4:25:22 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evin",
+  97 |      title: "أذكار الصباح",
+  [39m
+[2m4:25:22 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evin",
+  97 |      title: "أذكار الصباح",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m4:25:22 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evin",
+  97 |      title: "أذكار الصباح",
+  [39m
+[2m4:26:13 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m4:26:14 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:26:14 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:26:14 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:26:14 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:26:14 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m4:27:59 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m4:28:00 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:28:00 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:28:00 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:28:00 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m4:28:00 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:29:11 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m4:29:11 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:29:11 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:29:11 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:29:11 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:29:11 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m4:34:35 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m4:34:36 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:34:36 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:34:36 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:34:36 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:34:36 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m4:40:55 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m4:40:55 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:40:55 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:40:55 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:40:55 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m4:40:55 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:41:31 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m4:41:31 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:41:31 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:41:31 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:41:31 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m4:41:31 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:42:39 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m4:42:39 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:42:39 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:42:40 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m4:42:40 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m4:42:40 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:23:13 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m5:26:11 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m5:26:12 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:26:12 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:26:12 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:26:12 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:26:12 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m5:30:07 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m5:30:08 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:30:08 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:30:08 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:30:08 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:30:11 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m5:31:27 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m5:31:28 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:31:28 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:31:28 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:31:28 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:31:29 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m5:32:01 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m5:32:01 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m5:32:01 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:32:01 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:32:01 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:32:01 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:32:02 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m5:41:05 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m5:41:05 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:41:05 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:41:05 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:41:05 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+[2m5:41:07 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:95:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:95:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  93 |            "تعوُّذٌ شامل يربط الحفظ بذكر اسم الله، ويُقال ثلاثاً صباحاً طلباً للسلامة من كل أذى.",
+  94 |          source: "سنن أبي داود"
+  95 |        {
+     |        ^
+  96 |        id: "evening",
+  97 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m5:43:36 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m5:43:37 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:303:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:303:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  301 |      explanation: "دعاء يطلب فيه العبد النور والهدى في كل فعل يقوم به خلال ليلته.",
+  302 |      source: "أبو داود"
+  303 |        {{
+      |        ^
+  304 |          id: "sleep",
+  305 |          title: "أذكار النوم",
+  [39m
+[2m5:43:37 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:303:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:303:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  301 |      explanation: "دعاء يطلب فيه العبد النور والهدى في كل فعل يقوم به خلال ليلته.",
+  302 |      source: "أبو داود"
+  303 |        {{
+      |        ^
+  304 |          id: "sleep",
+  305 |          title: "أذكار النوم",
+  [39m
+[2m5:43:37 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:303:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:303:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  301 |      explanation: "دعاء يطلب فيه العبد النور والهدى في كل فعل يقوم به خلال ليلته.",
+  302 |      source: "أبو داود"
+  303 |        {{
+      |        ^
+  304 |          id: "sleep",
+  305 |          title: "أذكار النوم",
+  [39m
+[2m5:43:37 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:303:6: ERROR: Expected "}" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:303:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  301 |      explanation: "دعاء يطلب فيه العبد النور والهدى في كل فعل يقوم به خلال ليلته.",
+  302 |      source: "أبو داود"
+  303 |        {{
+      |        ^
+  304 |          id: "sleep",
+  305 |          title: "أذكار النوم",
+  [39m
+[2m5:43:39 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:303:6: ERROR: Expected "}" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:303:6
+[33m  
+  [33mExpected "}" but found "{"[33m
+  301 |      explanation: "دعاء يطلب فيه العبد النور والهدى في كل فعل يقوم به خلال ليلته.",
+  302 |      source: "أبو داود"
+  303 |        {{
+      |        ^
+  304 |          id: "sleep",
+  305 |          title: "أذكار النوم",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m5:46:32 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m5:48:12 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m5:50:35 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m5:57:48 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m5:59:49 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx[22m
+[2m6:10:00 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:10:02 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:220:3: ERROR: Expected "]" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:220:3
+[33m  
+  [33mExpected "]" but found "{"[33m
+  218 |        }
+  219 |      ]
+  220 |    }{
+      |     ^
+  221 |      id: "evening",
+  222 |      title: "أذكار المساء",
+  [39m
+[2m6:10:02 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:220:3: ERROR: Expected "]" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:220:3
+[33m  
+  [33mExpected "]" but found "{"[33m
+  218 |        }
+  219 |      ]
+  220 |    }{
+      |     ^
+  221 |      id: "evening",
+  222 |      title: "أذكار المساء",
+  [39m
+[2m6:10:02 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:220:3: ERROR: Expected "]" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:220:3
+[33m  
+  [33mExpected "]" but found "{"[33m
+  218 |        }
+  219 |      ]
+  220 |    }{
+      |     ^
+  221 |      id: "evening",
+  222 |      title: "أذكار المساء",
+  [39m
+[2m6:10:02 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:220:3: ERROR: Expected "]" but found "{"
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:220:3
+[33m  
+  [33mExpected "]" but found "{"[33m
+  218 |        }
+  219 |      ]
+  220 |    }{
+      |     ^
+  221 |      id: "evening",
+  222 |      title: "أذكار المساء",
+  [39m
+[2m6:10:02 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Transform failed with 1 error:
+C:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts:220:3: ERROR: Expected "]" but found "{"[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/nouma/Downloads/athkari0/athkari wep/athkari/artifacts/athkari/src/data/athkar.ts[39m:220:3
+[33m  
+  [33mExpected "]" but found "{"[33m
+  218 |        }
+  219 |      ]
+  220 |    }{
+      |     ^
+  221 |      id: "evening",
+  222 |      title: "أذكار المساء",
+  [39m
+      at failureErrorWithLog (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1748:15)
+      at C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:1017:50
+      at responseCallbacks.<computed> (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:884:9)
+      at handleIncomingPacket (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:939:12)
+      at Socket.readFromStdout (C:\Users\nouma\Downloads\athkari0\athkari wep\athkari\artifacts\athkari\node_modules\esbuild\lib\main.js:862:7)
+      at Socket.emit (node:events:508:28)
+      at addChunk (node:internal/streams/readable:563:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+      at Readable.push (node:internal/streams/readable:394:5)
+      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m6:13:47 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:13:48 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:13:48 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:13:48 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:13:48 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m6:17:27 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:17:27 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:17:27 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:17:28 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:17:28 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:17:28 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:17:28 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m6:18:27 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:18:27 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:18:27 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:18:27 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:18:27 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m6:18:41 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:18:42 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:18:42 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:18:42 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:18:42 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m6:18:44 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:18:44 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:18:44 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:18:44 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:18:44 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m6:18:55 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:18:55 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:18:55 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:18:55 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:18:55 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m6:18:57 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:18:58 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:18:58 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:18:58 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:18:58 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m6:19:00 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:19:00 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:19:00 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:19:00 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:19:00 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m6:19:02 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:19:03 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:19:03 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:19:03 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:19:03 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m6:19:15 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:19:16 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:19:16 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:19:16 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:19:16 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m6:19:18 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:19:19 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:19:19 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:19:19 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:19:19 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m6:23:35 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:23:36 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:23:36 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:23:36 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:23:36 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m6:24:23 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/Home.tsx, /src/pages/MoreAthkar.tsx, /src/pages/CategoryPage.tsx, /src/context/FavoritesContext.tsx[22m
+[2m6:24:23 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:24:23 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:24:23 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/context/FavoritesContext.tsx[22m Could not Fast Refresh ("useFavorites" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:24:23 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Favorites.tsx, /src/components/DhikrCard.tsx[22m
+[2m6:27:36 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/MoreAthkar.tsx[22m
+[2m6:27:37 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:27:37 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:27:40 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/MoreAthkar.tsx[22m
+[2m6:27:40 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:27:40 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:27:51 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/MoreAthkar.tsx[22m
+[2m6:27:52 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:27:52 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:31:35 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/MoreAthkar.tsx[22m
+[2m6:31:35 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:31:35 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:31:37 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/pages/MoreAthkar.tsx[22m
+[2m6:31:38 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/MoreAthkar.tsx[22m Could not Fast Refresh ("HISN_ALMUSLIM_REST_ITEMS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m6:31:38 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/Home.tsx, /src/pages/HisnMorePage.tsx[22m
+[2m6:33:35 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/components/DhikrCard.tsx[22m
+[2m6:39:07 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[2m6:39:09 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[2m6:40:14 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ new dependencies optimized: [33mframer-motion[32m[39m
+[2m6:40:14 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ optimized dependencies changed. reloading[39m

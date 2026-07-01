@@ -1,0 +1,43 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # السماح لملفات Sitemap و Robots بالمرور
+  RewriteRule ^(sitemap\.xml|robots\.txt)$ - [L]
+  
+  # عدم إعادة التوجيه للملفات الفعلية والمجلدات الفعلية
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+  # إعادة التوجيه لجميع الطلبات الأخرى إلى index.html
+  RewriteRule ^ index.html [QSA,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # السماح بالوصول من أي مصدر
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Methods "GET, HEAD, OPTIONS, POST"
+  Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+  Header set Access-Control-Max-Age "86400"
+  
+  # السماح بالوصول للملفات الثابتة
+  <FilesMatch "\.(jpg|jpeg|png|gif|ico|css|js|svg|woff|woff2|ttf|eot)$">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+  
+  # تعريف نوع المحتوى للـ XML و Text
+  <FilesMatch "\.xml$">
+    Header set Content-Type "application/xml; charset=UTF-8"
+  </FilesMatch>
+  
+  <FilesMatch "\.txt$">
+    Header set Content-Type "text/plain; charset=UTF-8"
+  </FilesMatch>
+</IfModule>
+
+# منع الوصول للملفات الحساسة
+<FilesMatch "^(\.env|\.git|package\.json|package-lock\.json)">
+  Order allow,deny
+  Deny from all
+</FilesMatch>

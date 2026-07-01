@@ -1,0 +1,36 @@
+{
+  "name": "الذاكرين والذاكرات - أذكار يومية وأدعية إسلامية",
+  "short_name": "الذاكرين",
+  "description": "تطبيق ديني شامل يوفر أذكار يومية وأدعية إسلامية شاملة - أذكار الصباح والمساء والصلاة والنوم وفي جميع أوقات اليوم",
+  "categories": ["lifestyle", "religion"],
+  "start_url": "/ar",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#15502d",
+  "prefer_related_applications": false,
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/opengraph.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg"
+    }
+  ]
+}

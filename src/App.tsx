@@ -1,0 +1,105 @@
+import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
+import { useEffect, useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as SonnerToaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { IslamicHeader } from "@/components/IslamicHeader";
+import { Home } from "@/pages/Home";
+import { CategoryPage } from "@/pages/CategoryPage";
+import { Tasbih } from "@/pages/Tasbih";
+import { Adhan } from "@/pages/Adhan";
+import { Notifications } from "@/pages/Notifications";
+import { Favorites } from "@/pages/Favorites";
+import { MoreAthkar } from "@/pages/MoreAthkar";
+import { HisnMorePage } from "@/pages/HisnMorePage"
+import { FavoritesProvider } from "@/context/FavoritesContext";
+import { TashkeelProvider } from "@/context/TashkeelContext";
+import { ActiveAdhan } from "@/components/ActiveAdhan";
+import { SplashScreen } from "@/components/SplashScreen";
+import { AuroraTheme } from "@/components/AuroraTheme";
+import "./App.css";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+    },
+  },
+});
+
+function Router() {
+  return (
+    <Switch>
+      <Route path="/" component={Home} />
+      <Route path="/adhan" component={Adhan} />
+      <Route path="/notifications" component={Notifications} />
+      <Route path="/category/:id" component={CategoryPage} />
+      <Route path="/tasbih" component={Tasbih} />
+      <Route path="/favorites" component={Favorites} />
+      <Route path="/more" component={MoreAthkar} />
+      <Route path="/more/hisn/:chapter" component={HisnMorePage} />
+    </Switch>
+  );
+}
+
+function ScrollToTopOnRouteChange() {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [location]);
+
+  return null;
+}
+
+function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    // فرض اللغة العربية والاتجاه من اليمين لليسار برمجياً
+    document.documentElement.lang = "ar";
+    document.documentElement.dir = "rtl";
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+    
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <AuroraTheme>
+      <div className="app-shell">
+        <div className="app-shell__aurora app-shell__aurora--one" aria-hidden="true" />
+        <div className="app-shell__aurora app-shell__aurora--two" aria-hidden="true" />
+        <div className="app-shell__aurora app-shell__aurora--three" aria-hidden="true" />
+
+        <QueryClientProvider client={queryClient}>
+          <FavoritesProvider>
+            <TashkeelProvider>
+              <TooltipProvider>
+                {showSplash && <SplashScreen />}
+                <div className="app-shell__canvas glass-panel">
+                  <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+                    <IslamicHeader />
+                    <ScrollToTopOnRouteChange />
+                    <Router />
+                    <ActiveAdhan />
+                    <Toaster />
+                    <SonnerToaster />
+                  </WouterRouter>
+                </div>
+              </TooltipProvider>
+            </TashkeelProvider>
+          </FavoritesProvider>
+        </QueryClientProvider>
+      </div>
+    </AuroraTheme>
+  );
+}
+
+export default App;

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- الصفحة الرئيسية -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alzkrien.netlify.app/en"/>
+  </url>
+
+  <!-- صفحة المزيد من الأذكار -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/more</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/more"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alzkrien.netlify.app/en/more"/>
+  </url>
+
+  <!-- صفحة التسبيح -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/tasbih</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/tasbih"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alzkrien.netlify.app/en/tasbih"/>
+  </url>
+
+  <!-- صفحة المفضلة -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/favorites</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/favorites"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alzkrien.netlify.app/en/favorites"/>
+  </url>
+
+  <!-- صفحة الإشعارات -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/notifications</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/notifications"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alzkrien.netlify.app/en/notifications"/>
+  </url>
+
+  <!-- صفحة الأذان -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/adhan</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/adhan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alzkrien.netlify.app/en/adhan"/>
+  </url>
+
+  <!-- فئات الأذكار -->
+
+  <!-- فئة أذكار الصباح -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/morning</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/morning"/>
+  </url>
+
+  <!-- فئة أذكار المساء -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/evening</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/evening"/>
+  </url>
+
+  <!-- فئة أذكار النوم -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/sleep</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/sleep"/>
+  </url>
+
+  <!-- فئة أذكار الصلاة -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/prayer</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/prayer"/>
+  </url>
+
+  <!-- فئة أذكار الوضوء -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/wudu</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/wudu"/>
+  </url>
+
+  <!-- فئة أذكار المسجد -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/mosque</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/mosque"/>
+  </url>
+
+  <!-- فئة الأذان والإقامة -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/adhan</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/adhan"/>
+  </url>
+
+  <!-- فئة تكبيرة الإحرام -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/istiftah</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/istiftah"/>
+  </url>
+
+  <!-- فئة أذكار الركوع -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/ruku</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/ruku"/>
+  </url>
+
+  <!-- فئة أذكار الرفع من الركوع -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/rising</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/rising"/>
+  </url>
+
+  <!-- فئة أذكار السجود -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/sujood</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/sujood"/>
+  </url>
+
+  <!-- فئة أذكار الجلوس بين السجدتين -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/between-sujood</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/between-sujood"/>
+  </url>
+
+  <!-- فئة سجود التلاوة -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/sujood-tilawa</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/sujood-tilawa"/>
+  </url>
+
+  <!-- فئة أذكار التشهد -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/tashahhud</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/tashahhud"/>
+  </url>
+
+  <!-- فئة أذكار قبل السلام -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/before-salam</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/before-salam"/>
+  </url>
+
+  <!-- فئة دعاء الاستخارة -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/istikhara</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/istikhara"/>
+  </url>
+
+  <!-- فئة أذكار اللبس والخلع -->
+  <url>
+    <loc>https://alzkrien.netlify.app/ar/category/clothing</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://alzkrien.netlify.app/ar/category/clothing"/>
+  </url>
+
+</urlset>
+

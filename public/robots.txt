@@ -1,0 +1,27 @@
+# جميع البوتات مسموح لها بالكامل
+User-agent: *
+Allow: /
+Disallow: /admin
+Allow: /ar/
+Allow: /en/
+
+# Google Bot - معالجة أسرع
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+# Bing Bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Sitemap - الخريطة السياسية الرئيسية
+Sitemap: https://alzkrien.netlify.app/sitemap.xml
+
+# Crawl Delay - تأخير الزحف
+Crawl-delay: 1
+Request-rate: 10/1s
+
+# Cache settings
+Cache-Control: public, max-age=604800
+
