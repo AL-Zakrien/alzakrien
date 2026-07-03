@@ -17,7 +17,8 @@ import { FavoritesProvider } from "@/context/FavoritesContext";
 import { TashkeelProvider } from "@/context/TashkeelContext";
 import { ActiveAdhan } from "@/components/ActiveAdhan";
 import { SplashScreen } from "@/components/SplashScreen";
-import { AuroraTheme } from "@/components/AuroraTheme";
+import { DynamicBackground } from "@/components/DynamicBackground";
+import { PrayerPeriodProvider } from "@/context/PrayerPeriodContext";
 import "./App.css";
 
 const queryClient = new QueryClient({
@@ -58,7 +59,7 @@ function App() {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    // فرض اللغة العربية والاتجاه من اليمين لليسار برمجياً
+    // Force Arabic language and RTL direction programmatically
     document.documentElement.lang = "ar";
     document.documentElement.dir = "rtl";
     document.documentElement.classList.add("dark");
@@ -72,18 +73,14 @@ function App() {
   }, []);
 
   return (
-    <AuroraTheme>
-      <div className="app-shell">
-        <div className="app-shell__aurora app-shell__aurora--one" aria-hidden="true" />
-        <div className="app-shell__aurora app-shell__aurora--two" aria-hidden="true" />
-        <div className="app-shell__aurora app-shell__aurora--three" aria-hidden="true" />
-
+    <PrayerPeriodProvider>
+      <DynamicBackground>
         <QueryClientProvider client={queryClient}>
           <FavoritesProvider>
             <TashkeelProvider>
               <TooltipProvider>
                 {showSplash && <SplashScreen />}
-                <div className="app-shell__canvas glass-panel">
+                <div className="relative z-10 p-4">
                   <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
                     <IslamicHeader />
                     <ScrollToTopOnRouteChange />
@@ -97,8 +94,8 @@ function App() {
             </TashkeelProvider>
           </FavoritesProvider>
         </QueryClientProvider>
-      </div>
-    </AuroraTheme>
+      </DynamicBackground>
+    </PrayerPeriodProvider>
   );
 }
 
