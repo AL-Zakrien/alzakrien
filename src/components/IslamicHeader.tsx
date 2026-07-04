@@ -14,9 +14,22 @@ export function IslamicHeader() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    if (!contactOpen) return;
+    const handler = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest("[data-logo-btn]")) {
+        setContactOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [contactOpen]);
 
   const navLinks = [
     { href: "/", label: "الرئيسية", icon: <Home className="h-4 w-4" /> },
@@ -26,26 +39,137 @@ export function IslamicHeader() {
   ];
 
   return (
-    <header className="sticky top-6 z-50 flex justify-center hidden md:flex w-full pointer-events-none">
-      <div className={`pointer-events-auto transition-all duration-500 border rounded-full flex items-center justify-center p-2 gap-4 w-fit px-4 ${
-        isScrolled 
-          ? "bg-black/75 backdrop-blur-2xl border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.4)]" 
-          : "bg-white/15 backdrop-blur-xl border-white/20 shadow-[0_4px_24px_rgba(0,0,0,0.15)]"
-      }`}>
+    /* ── Outer positioner: sticky strip at top, full-width, items centered ── */
+    <header
+      className="sticky top-5 z-50 hidden md:flex justify-center w-full pointer-events-none"
+      aria-label="التنقل الرئيسي"
+    >
+      {/*
+        ── Floating pill container ──
+        Width = fit-content so it hugs its content (no stretching).
+        border-radius: 9999px = perfect pill regardless of height.
+        Height controlled by py-2 on the inner content.
+      */}
+      <div
+        className="pointer-events-auto flex items-center gap-3 px-3 py-2 transition-all duration-400"
+        style={{
+          borderRadius: "9999px",
+          background: isScrolled
+            ? "rgba(5,5,15,0.88)"
+            : "rgba(8,8,20,0.72)",
+          backdropFilter: "blur(28px) saturate(180%)",
+          WebkitBackdropFilter: "blur(28px) saturate(180%)",
+          border: "1px solid rgba(255,255,255,0.12)",
+          boxShadow: isScrolled
+            ? "0 8px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06)"
+            : "0 4px 24px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.05)",
+          transition: "background 400ms ease, box-shadow 400ms ease",
+        }}
+      >
 
-        <nav className="flex items-center gap-2 pr-2">
+        {/* ── Logo + site name ── */}
+        <div className="relative" data-logo-btn>
+          <button
+            type="button"
+            onClick={() => setContactOpen((v) => !v)}
+            className="flex items-center gap-2.5 cursor-pointer rounded-full pl-1 pr-3 py-1 transition-all duration-200 hover:bg-white/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60"
+            aria-expanded={contactOpen}
+            aria-haspopup="true"
+            aria-label="معلومات التواصل"
+          >
+            <div className="text-right hidden sm:block">
+              <div className="font-athkar text-base font-bold text-white leading-tight">{siteTitleMain}</div>
+              <div className="text-[9px] font-bold text-white/50 tracking-widest">{siteTitleSub}</div>
+            </div>
+            <div className="relative">
+              <img
+                src={logo}
+                alt="شعار الذاكرين والذاكرات"
+                className="h-9 w-9 rounded-full object-cover"
+                style={{ border: "1.5px solid rgba(255,255,255,0.18)" }}
+              />
+              {/* Online indicator dot */}
+              <span
+                aria-hidden="true"
+                className="absolute -bottom-0.5 -left-0.5 w-3 h-3 bg-green-500 rounded-full"
+                style={{ border: "2px solid rgba(5,5,15,0.9)" }}
+              />
+            </div>
+          </button>
+
+          {/* ── Contact popover ── */}
+          {contactOpen && (
+            <div
+              role="dialog"
+              aria-label="تواصل معنا"
+              className="absolute right-0 mt-3 w-64 rounded-3xl p-5 shadow-2xl fade-in-up z-[60]"
+              style={{
+                background: "rgba(6,6,18,0.92)",
+                backdropFilter: "blur(24px) saturate(180%)",
+                WebkitBackdropFilter: "blur(24px) saturate(180%)",
+                border: "1px solid rgba(255,255,255,0.10)",
+              }}
+            >
+              <div className="flex flex-col gap-4 text-right">
+                <div>
+                  <p className="text-[10px] font-bold text-white/45 uppercase tracking-wider mb-1.5">
+                    تواصل معنا
+                  </p>
+                  <a
+                    href="mailto:alzhkrin@gmail.com"
+                    className="text-sm font-bold text-amber-300 hover:text-amber-200 transition-colors"
+                  >
+                    alzhkrin@gmail.com
+                  </a>
+                </div>
+                <div className="h-px" style={{ background: "rgba(255,255,255,0.08)" }} />
+                <p className="text-[11px] text-white/65 leading-relaxed">
+                  نسأل الله أن يجعلنا وإياكم من الذاكرين الشاكرين.
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* ── Separator ── */}
+        <span aria-hidden="true" className="w-px h-6" style={{ background: "rgba(255,255,255,0.12)" }} />
+
+        {/* ── Nav links ── */}
+        <nav
+          className="flex items-center gap-1"
+          aria-label="روابط التنقل"
+        >
           {navLinks.map((link) => {
             const isActive = location === link.href;
             return (
               <Link key={link.href} href={link.href}>
                 <span
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? "bg-amber-500 text-black shadow-md"
-                      : "text-white/70 hover:bg-white/15 hover:text-white"
-                  }`}
+                  className="flex items-center gap-2 px-4 py-2 text-sm font-bold transition-all duration-250 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70"
+                  style={{
+                    borderRadius: "9999px",
+                    background: isActive
+                      ? "rgba(245,158,11,1)"
+                      : "transparent",
+                    color: isActive ? "#0a0a14" : "rgba(255,255,255,0.82)",
+                    boxShadow: isActive
+                      ? "0 2px 16px rgba(245,158,11,0.45)"
+                      : "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.08)";
+                      (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.95)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      (e.currentTarget as HTMLElement).style.background = "transparent";
+                      (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.82)";
+                    }
+                  }}
+                  aria-current={isActive ? "page" : undefined}
                 >
-                  {link.icon}
+                  <span aria-hidden="true">{link.icon}</span>
                   <span>{link.label}</span>
                 </span>
               </Link>
@@ -53,43 +177,6 @@ export function IslamicHeader() {
           })}
         </nav>
 
-        <div className="relative border-r border-white/20 pr-4">
-          <button
-            type="button"
-            className="flex items-center gap-3 cursor-pointer rounded-full pl-1 pr-3 py-1 hover:bg-white/10 transition-all"
-            onClick={() => setContactOpen((v) => !v)}
-          >
-            <div className="text-right hidden sm:block">
-              <div className="font-serif text-lg font-bold text-white leading-tight">{siteTitleMain}</div>
-              <div className="text-[9px] font-bold text-white/60 tracking-widest">{siteTitleSub}</div>
-            </div>
-            <div className="relative">
-              <img
-                src={logo}
-                alt="Logo"
-                className="h-10 w-10 rounded-full object-cover border border-white/20 shadow-sm"
-              />
-              <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-green-500 border-2 border-black/50 rounded-full shadow-sm" />
-            </div>
-          </button>
-
-          {contactOpen && (
-            <div className="absolute left-0 mt-4 w-64 rounded-3xl bg-black/60 backdrop-blur-2xl border border-white/10 p-5 shadow-2xl fade-in-up z-[60]">
-              <div className="flex flex-col gap-4 text-right">
-                <div>
-                  <p className="text-[10px] font-bold text-white/50 uppercase tracking-wider mb-2">تواصل معنا</p>
-                  <a href="mailto:alzhkrin@gmail.com" className="text-sm font-bold text-amber-300 hover:text-amber-200 transition-colors">
-                    alzhkrin@gmail.com
-                  </a>
-                </div>
-                <div className="h-px bg-white/10" />
-                <p className="text-[11px] text-white/70 leading-relaxed">
-                  نسأل الله أن يجعلنا وإياكم من الذاكرين الشاكرين.
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
       </div>
     </header>
   );

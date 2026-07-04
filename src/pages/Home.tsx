@@ -2,13 +2,14 @@ import { Link, useLocation } from "wouter";
 import type { ReactNode } from "react";
 import { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { PrayerTimersHome } from "@/components/PrayerTimersHome";
+import { NextPrayerWidget } from "@/components/NextPrayerWidget";
 import { athkarCategories } from "@/data/athkar";
-import { ArrowLeft, Search, Moon, Sun, Droplets, Bell, Building2, Hand, Home as HomeIcon, Sunrise } from "lucide-react";
+import { ArrowLeft, Search } from "lucide-react";
 import { getCachedHisnAthkar, fetchAllHisnAthkar } from "@/data/hisnSearchData";
 import { HISN_ALMUSLIM_REST_ITEMS } from "@/pages/MoreAthkar";
 import { GlassCard } from "@/components/glass/GlassCard";
 import { AthkarTabs } from "@/components/AthkarTabs";
+import { AuthenticityBand } from "@/components/AuthenticityBand";
 
 export function Home() {
   const mainCategories = athkarCategories.slice(0, 8);
@@ -140,43 +141,90 @@ export function Home() {
 
   return (
     <div className="min-h-screen relative">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 relative z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
 
-        <div className="text-center mb-16 mt-8 fade-in-up">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+        {/* ──────────────────────────────────────────────────
+            HERO — Bismillah + Ayah
+            No card wrapper — blends directly into the aurora.
+            Amiri (display) for Bismillah, Cairo for ayah.
+        ────────────────────────────────────────────────── */}
+        <section
+          className="text-center mb-14 mt-10 sm:mt-14"
+          aria-label="البسملة والآية الكريمة"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 8 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="font-athkar arabic-text text-5xl sm:text-6xl text-white font-bold mb-6 drop-shadow-lg tracking-wide">
+            {/* Bismillah — Amiri display font */}
+            <h1
+              className="font-athkar arabic-text text-white font-bold mb-5 hero-bismillah"
+              style={{
+                fontSize: "clamp(2rem, 6vw, 3.75rem)",
+                lineHeight: "1.6",
+                letterSpacing: "0.01em",
+              }}
+            >
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </h1>
-            <p className="font-ui text-white/90 arabic-text text-xl sm:text-2xl leading-relaxed max-w-2xl mx-auto drop-shadow-md font-medium">
+
+            {/* Subtle ornamental divider */}
+            <div
+              aria-hidden="true"
+              className="flex items-center justify-center gap-4 mb-5"
+            >
+              <span className="h-px w-16 bg-gradient-to-r from-transparent to-amber-400/30" />
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400/50" />
+              <span className="h-px w-16 bg-gradient-to-l from-transparent to-amber-400/30" />
+            </div>
+
+            {/* Ayah — Cairo font */}
+            <p
+              className="font-ui text-white/90 arabic-text leading-relaxed max-w-2xl mx-auto hero-ayah"
+              style={{
+                fontSize: "clamp(1rem, 2.5vw, 1.375rem)",
+                fontWeight: 500,
+              }}
+            >
               ﴿وَالذَّاكِرِينَ اللَّهَ كَثِيرًا وَالذَّاكِرَاتِ أَعَدَّ اللَّهُ لَهُم مَّغْفِرَةً وَأَجْرًا عَظِيمًا﴾
             </p>
           </motion.div>
-        </div>
-
-        <section className="mb-10 fade-in-up stagger-2" aria-label="أوقات الصلاة">
-          <PrayerTimersHome />
         </section>
 
+        {/* ──────────────────────────────────────────────────
+            AUTHENTICITY BAND — Trust signal
+        ────────────────────────────────────────────────── */}
+        <AuthenticityBand />
+
+        {/* ──────────────────────────────────────────────────
+            NEXT PRAYER WIDGET — compact, single-prayer summary
+            Full 5-prayer table is exclusive to /adhan page.
+        ────────────────────────────────────────────────── */}
+        <NextPrayerWidget />
+
+        {/* ──────────────────────────────────────────────────
+            SEARCH BAR
+        ────────────────────────────────────────────────── */}
         <div className="mb-8 fade-in-up">
-           <GlassCard className="p-1">
-              <div className="relative group">
-                <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-amber-300 transition-colors z-10" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="ابحث عن ذكر، دعاء، أو سورة..."
-                  className="relative w-full h-14 bg-transparent backdrop-blur-xl pr-12 pl-4 text-right text-base text-slate-100 placeholder:text-slate-400 outline-none focus:ring-0 border-0"
-                  dir="rtl"
-                />
-              </div>
+          <GlassCard className="p-1">
+            <div className="relative group">
+              <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-amber-300 transition-colors z-10" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="ابحث عن ذكر، دعاء، أو سورة..."
+                className="relative w-full h-14 bg-transparent backdrop-blur-xl pr-12 pl-4 text-right text-base text-slate-100 placeholder:text-slate-400 outline-none focus:ring-0 border-0"
+                dir="rtl"
+              />
+            </div>
           </GlassCard>
         </div>
 
+        {/* ──────────────────────────────────────────────────
+            SEARCH RESULTS
+        ────────────────────────────────────────────────── */}
         {searchQuery.trim() && (
           <GlassCard className="mb-8 p-4 shadow-2xl fade-in-up z-50 relative">
             {loadingHisn ? (
@@ -203,25 +251,31 @@ export function Home() {
           </GlassCard>
         )}
 
+        {/* ──────────────────────────────────────────────────
+            ATHKAR TABS
+        ────────────────────────────────────────────────── */}
         <section className="mb-10 fade-in-up stagger-4" aria-label="الأذكار">
           <AthkarTabs categories={mainCategories} />
         </section>
-        
-        <GlassCard className="p-4">
+
+        {/* ──────────────────────────────────────────────────
+            QUICK LINKS
+        ────────────────────────────────────────────────── */}
+        <GlassCard className="p-4 mb-10">
           <div className="space-y-3">
             <Link href="/more">
-              <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/20 transition-all cursor-pointer flex items-center justify-between">
+              <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/12 transition-all cursor-pointer flex items-center justify-between">
                 <ArrowLeft className="relative h-5 w-5 text-amber-300/70 group-hover:-translate-x-1 transition-transform" />
                 <div className="relative text-right">
                   <h3 className="font-bold text-lg text-slate-100">جميع الأذكار</h3>
-                  <p className="text-sm text-slate-300">تصفح موسوعة حصن المسلم كاملة</p>
+                  <p className="text-sm text-slate-300/80">تصفح موسوعة حصن المسلم كاملة</p>
                 </div>
               </div>
             </Link>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Link href="/tasbih">
-                <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/20 transition-all cursor-pointer">
+                <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/12 transition-all cursor-pointer">
                   <div className="relative flex items-center justify-between">
                     <ArrowLeft className="h-5 w-5 text-amber-300/70 group-hover:-translate-x-1 transition-transform" />
                     <div className="text-right">
@@ -233,7 +287,7 @@ export function Home() {
               </Link>
 
               <Link href="/adhan">
-                <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/20 transition-all cursor-pointer">
+                <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/12 transition-all cursor-pointer">
                   <div className="relative flex items-center justify-between">
                     <ArrowLeft className="h-5 w-5 text-sky-300/70 group-hover:-translate-x-1 transition-transform" />
                     <div className="text-right">
@@ -247,10 +301,17 @@ export function Home() {
           </div>
         </GlassCard>
 
-        <div className="text-center py-10 opacity-60 fade-in-up stagger-6">
-          <div className="w-24 h-px bg-amber-500/20 mx-auto mb-6" />
-          <p className="arabic-text text-base italic text-amber-300/70">اللَّهُمَّ اجْعَلْنَا مِنَ الذَّاكِرِينَ لك كَثِيرًا</p>
+        {/* ──────────────────────────────────────────────────
+            FOOTER DU'A
+        ────────────────────────────────────────────────── */}
+        <div className="text-center pt-6 pb-12 fade-in-up stagger-6">
+          <div className="ornamental-divider w-32 mx-auto mb-4" />
+          <p className="arabic-text text-base text-amber-300/65 leading-relaxed">
+            اللَّهُمَّ اجْعَلْنَا مِنَ الذَّاكِرِينَ لك كَثِيرًا
+          </p>
+          <div className="ornamental-divider w-32 mx-auto mt-4" />
         </div>
+
       </div>
     </div>
   );

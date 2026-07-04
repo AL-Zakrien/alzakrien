@@ -81,7 +81,7 @@ function App() {
             <TashkeelProvider>
               <TooltipProvider>
                 {showSplash && <SplashScreen />}
-                <div className="relative z-10 p-4 pb-28 md:pb-8">
+                <div className="relative z-10 p-4 pb-32 md:pb-8">
                   <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
                     <IslamicHeader />
                     <ScrollToTopOnRouteChange />
