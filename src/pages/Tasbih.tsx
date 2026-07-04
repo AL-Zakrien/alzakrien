@@ -354,7 +354,7 @@ export function Tasbih() {
 
         {/* Current dhikr label — above counter */}
         <div className="text-center mb-4 fade-in-up stagger-3" data-testid="text-current-dhikr">
-          <p className="arabic-text text-2xl font-bold text-foreground" style={{ fontFamily: "'Amiri Quran', 'Amiri', serif" }}>{displayedDhikr}</p>
+          <p className="font-athkar arabic-text text-2xl font-bold text-foreground">{displayedDhikr}</p>
         </div>
 
         {/* Main counter area */}

@@ -4,27 +4,11 @@ import { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { PrayerTimersHome } from "@/components/PrayerTimersHome";
 import { athkarCategories } from "@/data/athkar";
-import { ArrowLeft, Search, ExternalLink, BookOpen, Compass, Sparkles, Heart, Moon, Sun, Droplets, Bell, Building2, Hand, Home as HomeIcon, Sunrise } from "lucide-react";
+import { ArrowLeft, Search, Moon, Sun, Droplets, Bell, Building2, Hand, Home as HomeIcon, Sunrise } from "lucide-react";
 import { getCachedHisnAthkar, fetchAllHisnAthkar } from "@/data/hisnSearchData";
 import { HISN_ALMUSLIM_REST_ITEMS } from "@/pages/MoreAthkar";
 import { GlassCard } from "@/components/glass/GlassCard";
 import { AthkarTabs } from "@/components/AthkarTabs";
-
-const SOURCE_TILES = [
-  { id: "quran", label: "القرآن الكريم", sub: "أساس الأذكار والعبادات", icon: BookOpen, span: "lg:col-span-2", accent: "amber" },
-  { id: "bukhari", label: "صحيح البخاري", sub: "أصحّ كتب الحديث النبوي", icon: Sparkles, span: "", accent: "emerald" },
-  { id: "qibla", label: "اتجاه القبلة", sub: "تحديد دقيق للموقع", icon: Compass, span: "", accent: "sky" },
-  { id: "hisn", label: "حصن المسلم", sub: "مصدر الأذكار — سعيد القحطاني", icon: Heart, span: "lg:col-span-2", accent: "rose" },
-  { id: "dorar", label: "الدرر السنية", sub: "موسوعة شرح الأحاديث", icon: ExternalLink, span: "", accent: "indigo", href: "https://dorar.net/hadith" },
-];
-
-const ACCENT_MAP: Record<string, { text: string; ring: string; glow: string; bg: string }> = {
-  amber:   { text: "text-amber-300",   ring: "group-hover:border-amber-500/30",   glow: "group-hover:shadow-amber-500/10",   bg: "from-amber-500/10" },
-  emerald: { text: "text-emerald-300", ring: "group-hover:border-emerald-500/30", glow: "group-hover:shadow-emerald-500/10", bg: "from-emerald-500/10" },
-  sky:     { text: "text-sky-300",     ring: "group-hover:border-sky-500/30",     glow: "group-hover:shadow-sky-500/10",     bg: "from-sky-500/10" },
-  rose:    { text: "text-rose-300",    ring: "group-hover:border-rose-500/30",    glow: "group-hover:shadow-rose-500/10",     bg: "from-rose-500/10" },
-  indigo:  { text: "text-indigo-300", ring: "group-hover:border-indigo-500/30",  glow: "group-hover:shadow-indigo-500/10",  bg: "from-indigo-500/10" },
-};
 
 export function Home() {
   const mainCategories = athkarCategories.slice(0, 8);
@@ -158,63 +142,20 @@ export function Home() {
     <div className="min-h-screen relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 relative z-10">
 
-        <div className="text-center mb-10 fade-in-up">
-          <GlassCard className="p-8">
-            <h1 className="font-athkar arabic-text text-4xl sm:text-5xl text-white font-bold mb-4">
+        <div className="text-center mb-16 mt-8 fade-in-up">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h1 className="font-athkar arabic-text text-5xl sm:text-6xl text-white font-bold mb-6 drop-shadow-lg tracking-wide">
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </h1>
-            <p className="font-athkar text-gray-300 arabic-text text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="font-ui text-white/90 arabic-text text-xl sm:text-2xl leading-relaxed max-w-2xl mx-auto drop-shadow-md font-medium">
               ﴿وَالذَّاكِرِينَ اللَّهَ كَثِيرًا وَالذَّاكِرَاتِ أَعَدَّ اللَّهُ لَهُم مَّغْفِرَةً وَأَجْرًا عَظِيمًا﴾
             </p>
-          </GlassCard>
+          </motion.div>
         </div>
-
-        <section className="mb-10 fade-in-up stagger-1" aria-label="المصادر والعلوم الشرعية">
-          <GlassCard className="p-4 sm:p-5">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-px flex-1 bg-gradient-to-l from-amber-500/30 to-transparent" />
-              <h2 className="text-xs font-bold text-amber-300/80 uppercase tracking-[0.2em] whitespace-nowrap">
-                المصادر والعلوم الشرعية
-              </h2>
-              <div className="h-px flex-1 bg-gradient-to-r from-amber-500/30 to-transparent" />
-            </div>
-
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-              {SOURCE_TILES.map((tile) => {
-                const Icon = tile.icon;
-                const accent = ACCENT_MAP[tile.accent] ?? ACCENT_MAP.amber;
-                const content = (
-                  <div
-                    className={`group relative overflow-hidden rounded-xl border border-white/10 ${tile.span} bg-white/5 p-4 transition-all duration-300 hover:bg-white/20 hover:shadow-xl hover:-translate-y-0.5`}
-                  >
-                    <div className="relative flex items-start gap-3">
-                      <div className={`flex-shrink-0 mt-0.5 p-2 rounded-lg border border-white/10 bg-white/10 ${accent.text}`}>
-                        <Icon className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.5} />
-                      </div>
-                      <div className="text-right min-w-0">
-                        <p className={`text-sm sm:text-base font-bold text-slate-100 mb-0.5`}>{tile.label}</p>
-                        <p className="text-[11px] sm:text-xs text-slate-300 leading-relaxed">{tile.sub}</p>
-                      </div>
-                    </div>
-                  </div>
-                );
-
-                if (tile.href) {
-                  return (
-                    <a key={tile.id} href={tile.href} target="_blank" rel="noopener noreferrer" className={tile.span}>
-                      {content}
-                    </a>
-                  );
-                }
-                return (
-                  <div key={tile.id} className={tile.span}>
-                    {content}
-                  </div>
-                );
-              })}
-            </div>
-          </GlassCard>
-        </section>
 
         <section className="mb-10 fade-in-up stagger-2" aria-label="أوقات الصلاة">
           <PrayerTimersHome />

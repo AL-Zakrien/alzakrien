@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { IslamicHeader } from "@/components/IslamicHeader";
+import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { Home } from "@/pages/Home";
 import { CategoryPage } from "@/pages/CategoryPage";
 import { Tasbih } from "@/pages/Tasbih";
@@ -80,11 +81,12 @@ function App() {
             <TashkeelProvider>
               <TooltipProvider>
                 {showSplash && <SplashScreen />}
-                <div className="relative z-10 p-4">
+                <div className="relative z-10 p-4 pb-28 md:pb-8">
                   <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
                     <IslamicHeader />
                     <ScrollToTopOnRouteChange />
                     <Router />
+                    <MobileBottomNav />
                     <ActiveAdhan />
                     <Toaster />
                     <SonnerToaster />

@@ -383,7 +383,7 @@ export const DhikrCard = memo(({ dhikr, index, initialOpen = false, fontSize }: 
   const dhikrTextBlock = (
     <div className="dhikr-text-frame relative my-3 transform-gpu">
       <p
-        className="arabic-text text-xl text-foreground leading-[2.4] text-center whitespace-pre-line px-2 drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]"
+        className="font-athkar arabic-text text-xl text-foreground leading-[2.4] text-center whitespace-pre-line px-2 drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]"
         style={fontSize ? { fontSize: `${fontSize}px` } : { fontSize: '1.25rem' }}
         data-testid={`text-dhikr-${dhikr.id}`}
       >

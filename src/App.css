@@ -7,68 +7,12 @@ html, body, #root {
   @apply min-h-screen h-full;
 }
 
-.dynamic-background {
-  @apply fixed inset-0 -z-10 transition-colors duration-[2000ms] ease-in-out;
-  --gradient-start: #020617; /* Default to night */
-  --gradient-end: #0f172a;
-  background-image: linear-gradient(to-b, var(--gradient-start), var(--gradient-end));
-}
-
-/* Prayer Period Styles */
-.dynamic-background[data-period="fajr"] {
-  --gradient-start: #0c0a2a;
-  --gradient-end: #7c3aed;
-}
-
-.dynamic-background[data-period="sunrise"] {
-  --gradient-start: #fbbf24;
-  --gradient-end: #f97316;
-}
-
-.dynamic-background[data-period="zuhr"] {
-  --gradient-start: #38bdf8;
-  --gradient-end: #0ea5e9;
-}
-
-.dynamic-background[data-period="asr"] {
-  --gradient-start: #0ea5e9;
-  --gradient-end: #f97316;
-}
-
-.dynamic-background[data-period="maghrib"] {
-  --gradient-start: #7c3aed;
-  --gradient-end: #db2777;
-}
-
-.dynamic-background[data-period="isha"] {
-  --gradient-start: #020617;
-  --gradient-end: #0f172a;
-}
-
-/* Add some subtle stars for night/dawn */
-.dynamic-background[data-period="isha"]::after,
-.dynamic-background[data-period="fajr"]::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9Im5vbmUiLz48Y2lyY2xlIGNxPSIxMCUiIGN5PSIyMCUiIHI9IjFweCIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuNyIvPjxjaXJjbGUgY3g9IjI1JSIgY3k9IjQwJSIgcj0iMXB4IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC41Ii8+PGNpcmNsZSBjeD0iNTAlIiBjeT0iMTAlIiByPSIxcnciIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjgiLz48Y2lyY2xlIGN4PSI3MCUiIGN5PSI2MCUiIHI9IjJweCIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuNiIvPjxjaXJjbGUgY3g9IjkzJSIgY3k9IjMwJSIgcj0iMXB4IiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC45Ii8+PGNpcmNsZSBjeD0iODUlIiBjeT0iODAlIiByPSIxcHgiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjQiLz48L3N2Zz4=');
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
+/* Base styles for the app shell to sit above the background */
 .app-shell {
     position: relative;
     z-index: 1;
 }
 
 .app-shell__canvas {
-    /* This will be the main scrollable area */
     padding: 1rem;
 }

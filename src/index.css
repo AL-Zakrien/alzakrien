@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./styles/fonts.css";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
@@ -56,16 +57,24 @@
   --color-sidebar-accent-border: var(--sidebar-accent-border);
   --color-sidebar-ring: hsl(var(--sidebar-ring));
 
-  --font-sans: var(--app-font-sans);
-  --font-serif: var(--app-font-serif);
+  --font-ui: "Cairo", "Segoe UI", sans-serif;
+  --font-athkar: "Amiri", Georgia, serif;
+
+  --font-sans: var(--font-ui);
+  --font-serif: var(--font-athkar);
   --font-mono: var(--app-font-mono);
-  --font-arabic-modern: var(--app-font-arabic-modern);
-  --font-arabic-quran: var(--app-font-arabic-quran);
+  --font-arabic-modern: var(--font-ui);
+  --font-arabic-quran: var(--font-athkar);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --aurora-bg: #000;
+  --aurora-1: #000;
+  --aurora-2: #000;
+  --aurora-3: #000;
 }
 
 /* LIGHT MODE - CLEAN WHITE DESIGN */
@@ -117,11 +126,7 @@
   --input: 160 15% 90%;
   --ring: 160 50% 30%;
 
-  --app-font-sans: 'Cairo', 'Segoe UI', sans-serif;
-  --app-font-serif: 'Amiri', Georgia, serif;
   --app-font-mono: Menlo, monospace;
-  --app-font-arabic-modern: 'Cairo', 'Noto Sans Arabic', sans-serif;
-  --app-font-arabic-quran: 'Amiri Quran', 'Amiri', serif;
   --radius: 1rem;
 
   /* ظلال أنعم للوضع النهاري */
@@ -172,7 +177,7 @@
 @layer base {
   * { @apply border-border; }
   body {
-    @apply font-sans antialiased text-foreground;
+    @apply font-ui antialiased text-foreground;
     direction: rtl;
   }
 
@@ -218,10 +223,13 @@
 
 /* ───── Arabic text styling ───── */
 .arabic-text {
-  font-family: var(--font-arabic-quran) !important;
-  font-weight: 400 !important;
-  line-height: 2.2 !important;
-  text-rendering: optimizeLegibility !important;
+  line-height: 2.2;
+  text-rendering: optimizeLegibility;
+}
+
+.font-athkar,
+.font-athkar * {
+  font-family: var(--font-athkar);
 }
 
 .fade-in-up {

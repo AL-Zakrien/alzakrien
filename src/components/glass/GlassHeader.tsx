@@ -58,7 +58,7 @@ export function GlassHeader() {
               <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white/80 bg-emerald-400 shadow-sm" />
             </div>
             <div className="text-right hidden sm:block">
-              <div className="font-arabic-modern text-lg font-bold leading-tight text-foreground drop-shadow-sm">
+              <div className="font-ui text-lg font-bold leading-tight text-foreground drop-shadow-sm">
                 {siteTitleMain}
               </div>
               <div className="text-[10px] font-semibold tracking-widest text-foreground/70">
