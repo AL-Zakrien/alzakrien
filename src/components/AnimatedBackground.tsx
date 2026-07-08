@@ -6,7 +6,7 @@ interface AnimatedBackgroundProps {
 }
 
 const GRADIENTS: Record<string, string> = {
-  fajr:    'linear-gradient(135deg, #0c0a1e 0%, #1e1b4b 30%, #0f172a 60%, #020617 100%)',
+  fajr:    'linear-gradient(135deg, #4A5D6E 0%, #F1A7A6 100%)',
   sunrise: 'linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #1e3a8a 60%, #020617 100%)',
   zuhr:    'linear-gradient(135deg, #0f172a 0%, #1e3a8a 30%, #0c4a6e 60%, #020617 100%)',
   asr:     'linear-gradient(135deg, #0f172a 0%, #3b82f6 30%, #1e3a8a 60%, #020617 100%)',
