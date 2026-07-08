@@ -16,6 +16,8 @@ import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
+import type { PrayerPeriod } from "@/lib/prayerPeriod";
 import {
   readCachedTimings,
   readPrayerSettings,
@@ -24,6 +26,19 @@ import {
   type PrayerTimings,
 } from "@/lib/prayerPeriod";
 
+// Prayer-period icons (multi-tone flat SVGs from src/assets/).
+// Pattern matches the existing project convention used for logo.jpg.
+import fajrIcon from "@/assets/icons8-moon-and-stars.svg";
+import shuruqIcon from "@/assets/icons8-sunrise-50.svg";
+import duhrIcon from "@/assets/icons8-sun-50.svg";
+import asrIcon from "@/assets/icons8-partly-cloudy-day-50.svg";
+import maghribIcon from "@/assets/icons8-sunset-50.svg";
+import ishaIcon from "@/assets/moon.svg";
+// Fallback: sun.svg is not yet present in src/assets (awaiting project owner).
+// Until it lands, the existing Duhr sun icon is the closest semantic match.
+// Swap this import to '@/assets/sun.svg' once that file is added.
+import fallbackIcon from "@/assets/icons8-sun-50.svg";
+
 // ─────────────────────────────────────────────────
 //  Prayer meta — Arabic names & aurora accent colors
 // ─────────────────────────────────────────────────
@@ -31,7 +46,6 @@ interface PrayerMeta {
   arabicName: string;
   accent: string;
   track: string;
-  icon: string;
 }
 
 const PRAYER_META: Record<string, PrayerMeta> = {
@@ -39,32 +53,58 @@ const PRAYER_META: Record<string, PrayerMeta> = {
     arabicName: "الفجر",
     accent: "rgba(99,102,241,0.90)",
     track: "rgba(99,102,241,0.20)",
-    icon: "🌙",
+  },
+  Shuruq: {
+    arabicName: "الشروق",
+    // Warm sunrise gold — matches the sunrise palette in DynamicBackground.
+    accent: "rgba(234,179,8,0.90)",
+    track: "rgba(234,179,8,0.20)",
   },
   Dhuhr: {
     arabicName: "الظهر",
     accent: "rgba(56,189,248,0.90)",
     track: "rgba(56,189,248,0.20)",
-    icon: "☀️",
   },
   Asr: {
     arabicName: "العصر",
     accent: "rgba(251,191,36,0.90)",
     track: "rgba(251,191,36,0.20)",
-    icon: "🌤",
   },
   Maghrib: {
     arabicName: "المغرب",
     accent: "rgba(249,115,22,0.90)",
     track: "rgba(249,115,22,0.20)",
-    icon: "🌅",
   },
   Isha: {
     arabicName: "العشاء",
     accent: "rgba(168,85,247,0.90)",
     track: "rgba(168,85,247,0.20)",
-    icon: "🌌",
   },
+};
+
+// Period → icon URL. Covers all 6 prayer periods (Shuruq included
+// for completeness, even though the next-prayer cycle only surfaces
+// 5 of them via PRAYER_NAMES).
+const PRAYER_ICON_MAP: Record<string, string> = {
+  Fajr: fajrIcon,
+  Shuruq: shuruqIcon,
+  Dhuhr: duhrIcon,
+  Asr: asrIcon,
+  Maghrib: maghribIcon,
+  Isha: ishaIcon,
+};
+const PRAYER_ICON_FALLBACK = fallbackIcon;
+
+// Maps an aurora-system prayer period (lowercase) to this widget's
+// internal key (Capitalised). Used to look up accent/track/icon/name
+// when the dev preview is overriding the current period.
+const AURORA_TO_WIDGET_KEY: Record<PrayerPeriod, string> = {
+  fajr: "Fajr",
+  sunrise: "Shuruq",
+  zuhr: "Dhuhr",
+  asr: "Asr",
+  maghrib: "Maghrib",
+  isha: "Isha",
 };
 
 const PRAYER_NAMES = ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"] as const;
@@ -116,6 +156,7 @@ function formatCountdown(diffTotalMinutes: number, diffSeconds: number): string 
 // ─────────────────────────────────────────────────
 export function NextPrayerWidget() {
   const reducedMotion = useReducedMotion();
+  const { devOverride } = usePrayerPeriod();
   const [timings, setTimings] = useState<PrayerTimings | null>(() => readCachedTimings());
   const [loadError, setLoadError] = useState(false);
   const [now, setNow] = useState(() => new Date());
@@ -180,9 +221,24 @@ export function NextPrayerWidget() {
   const remainingFraction = 1 - progressFraction;
   const dashOffset = circumference * (1 - remainingFraction);
 
-  const accent = nextPrayer?.meta.accent ?? "rgba(99,102,241,0.90)";
-  const track = nextPrayer?.meta.track ?? "rgba(99,102,241,0.20)";
-  const icon = nextPrayer?.meta.icon ?? "🕌";
+  // Dev preview hook: when the dev-only override is set, swap the
+  // displayed icon/accent/track/name to the override's period.
+  // The countdown and progress ring still reflect the real next prayer.
+  const overrideKey = devOverride ? AURORA_TO_WIDGET_KEY[devOverride] : null;
+  const overrideMeta = overrideKey ? PRAYER_META[overrideKey] : null;
+
+  const displayKey = overrideKey ?? nextPrayer?.key;
+  const displayName = overrideMeta?.arabicName ?? nextPrayer?.meta.arabicName ?? "—";
+  const displayAccent = overrideMeta?.accent ?? nextPrayer?.meta.accent ?? "rgba(99,102,241,0.90)";
+  const displayTrack = overrideMeta?.track ?? nextPrayer?.meta.track ?? "rgba(99,102,241,0.20)";
+  const displayIcon = displayKey
+    ? (PRAYER_ICON_MAP[displayKey] ?? PRAYER_ICON_FALLBACK)
+    : PRAYER_ICON_FALLBACK;
+
+  // Back-compat aliases — keeps the rest of the JSX untouched.
+  const accent = displayAccent;
+  const track = displayTrack;
+  const icon = displayIcon;
 
   const isLoading = !timings && !loadError;
 
@@ -234,7 +290,9 @@ export function NextPrayerWidget() {
             role="img"
             aria-label={
               nextPrayer
-                ? `متبقي على ${nextPrayer.meta.arabicName}: ${countdown}`
+                ? (devOverride
+                    ? `معاينة: ${displayName} — متبقي على ${nextPrayer.meta.arabicName}: ${countdown}`
+                    : `متبقي على ${nextPrayer.meta.arabicName}: ${countdown}`)
                 : "جاري التحميل"
             }
           >
@@ -290,16 +348,17 @@ export function NextPrayerWidget() {
                 />
               ) : (
                 <AnimatePresence mode="wait">
-                  <motion.span
-                    key={nextPrayer?.key ?? "loading"}
+                  <motion.img
+                    key={displayKey ?? "loading"}
+                    src={icon}
+                    alt=""
                     initial={{ opacity: 0, scale: 0.7 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.7 }}
                     transition={reducedMotion ? { duration: 0 } : { duration: 0.35 }}
-                    style={{ fontSize: "1.5rem", lineHeight: 1 }}
-                  >
-                    {icon}
-                  </motion.span>
+                    className="h-10 w-10"
+                    draggable={false}
+                  />
                 </AnimatePresence>
               )}
             </div>
@@ -316,7 +375,7 @@ export function NextPrayerWidget() {
 
             <AnimatePresence mode="wait">
               <motion.p
-                key={nextPrayer?.key ?? "loading-name"}
+                key={displayKey ?? "loading-name"}
                 initial={{ opacity: 0, y: 5 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
@@ -329,7 +388,7 @@ export function NextPrayerWidget() {
                     aria-hidden="true"
                   />
                 ) : (
-                  nextPrayer?.meta.arabicName ?? "—"
+                  displayName
                 )}
               </motion.p>
             </AnimatePresence>

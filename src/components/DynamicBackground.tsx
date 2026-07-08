@@ -20,9 +20,12 @@ interface AuroraPalette {
 }
 
 const AURORA_PALETTES: Record<PrayerPeriod, AuroraPalette> = {
-  // Fajr — Pre-dawn: deep indigo/violet fading to pale blue
+  // Fajr — Pre-dawn fog into first light: muted blue-gray → soft dawn pink.
+  // Uses a linear-gradient string instead of a solid color so the page
+  // background reads as a clear dawn transition (and stays visually
+  // distinct from Isha's cool dark navy/purple).
   fajr: {
-    bg: '#06050f',
+    bg: 'linear-gradient(135deg, #4A5D6E 0%, #F1A7A6 100%)',
     c1: '#2d2568',  // deep indigo
     c2: '#3b2d9e',  // medium indigo
     c3: '#6d5bca',  // soft violet-blue
@@ -114,18 +117,18 @@ function AuroraBlob({ color, className, animClass, duration, animate, style }: B
 // Main DynamicBackground component
 // ─────────────────────────────────────────────────────────────────
 export function DynamicBackground({ children }: DynamicBackgroundProps) {
-  const { period } = usePrayerPeriod();
+  const { effectivePeriod } = usePrayerPeriod();
   const reducedMotion = useReducedMotion();
   const animate = !reducedMotion;
 
-  const palette = AURORA_PALETTES[period] || AURORA_PALETTES.isha;
+  const palette = AURORA_PALETTES[effectivePeriod] || AURORA_PALETTES.isha;
 
   // Ref tracks previous palette for crossfade overlay
   const bgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    updateCSSVars(period);
-  }, [period]);
+    updateCSSVars(effectivePeriod);
+  }, [effectivePeriod]);
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden">
@@ -136,8 +139,11 @@ export function DynamicBackground({ children }: DynamicBackgroundProps) {
         aria-hidden="true"
         className="fixed inset-0 -z-20 pointer-events-none"
         style={{
-          backgroundColor: palette.bg,
-          transition: 'background-color 3s ease-in-out',
+          // `background` (not backgroundColor) so the Fajr linear-gradient
+          // string renders correctly. Hex values for the other periods are
+          // still valid CSS background values.
+          background: palette.bg,
+          transition: 'background-color 3s ease-in-out, background 3s ease-in-out',
         }}
       >
         {/* ── Aurora blob 1 — large, top-left ── */}
