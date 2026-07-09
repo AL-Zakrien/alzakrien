@@ -26,9 +26,9 @@ const AURORA_PALETTES: Record<PrayerPeriod, AuroraPalette> = {
   // distinct from Isha's cool dark navy/purple).
   fajr: {
     bg: 'linear-gradient(135deg, #4A5D6E 0%, #F1A7A6 100%)',
-    c1: '#2d2568',  // deep indigo
-    c2: '#3b2d9e',  // medium indigo
-    c3: '#6d5bca',  // soft violet-blue
+    c1: '#4A5D6E',  // muted blue-gray (matches bg start)
+    c2: '#8A8FA3',  // soft dusty periwinkle-gray (transition tone)
+    c3: '#F1A7A6',  // dawn rose (matches bg end)
     overlayOpacity: 0.32,
   },
   // Sunrise — Early warmth: light orange to gold
