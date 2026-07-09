@@ -708,6 +708,7 @@ export function PrayerTimes() {
       try {
         const timingsToSave = {
           fajr: t.Fajr,
+          sunrise: t.Sunrise,
           dhuhr: t.Dhuhr,
           asr: t.Asr,
           maghrib: t.Maghrib,
@@ -1060,7 +1061,7 @@ export function PrayerTimes() {
           <div className="text-center arabic-text">
             <div className="flex items-center justify-center gap-2 mb-2">
               <MapPin className="h-4 w-4 text-amber-600 dark:text-orange-400" />
-              <span className="text-base font-bold text-transparent bg-gradient-to-r from-amber-700 to-yellow-600 dark:from-orange-300 dark:to-amber-200 bg-clip-text font-arabic-modern" style={{ fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif" }}>{settings.cityLabel}</span>
+              <span className="text-base font-bold text-transparent bg-gradient-to-r from-amber-700 to-yellow-600 dark:from-orange-300 dark:to-amber-200 bg-clip-text font-ui">{settings.cityLabel}</span>
             </div>
             <p className="text-xs text-amber-700/70 dark:text-orange-200/70 font-light">{hijriLine}</p>
             <p className="text-xs text-amber-600/60 dark:text-orange-200/50 font-light">{formatDate()}</p>
@@ -1086,9 +1087,8 @@ export function PrayerTimes() {
                   <select
                     value={selectedCityId}
                     onChange={(e) => onPresetCitySelected(e.target.value)}
-                    className="w-full bg-amber-50 dark:bg-slate-900/50 text-amber-900 dark:text-white text-sm rounded-lg px-3 py-2.5 border border-amber-200 dark:border-orange-500/30 outline-none focus:border-amber-400/60 dark:focus:border-orange-400/60 focus:ring-1 focus:ring-amber-400/30 text-right font-arabic-modern"
+                    className="w-full bg-amber-50 dark:bg-slate-900/50 text-amber-900 dark:text-white text-sm rounded-lg px-3 py-2.5 border border-amber-200 dark:border-orange-500/30 outline-none focus:border-amber-400/60 dark:focus:border-orange-400/60 focus:ring-1 focus:ring-amber-400/30 text-right font-ui"
                     dir="rtl"
-                    style={{ fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif" }}
                   >
                     {CITY_OPTIONS.map((city) => (
                       <option key={city.id} value={city.id}>
@@ -1126,9 +1126,8 @@ export function PrayerTimes() {
                       <select
                         value={customCountryInput}
                         onChange={(e) => setCustomCountryInput(e.target.value)}
-                        className="w-full bg-amber-50 dark:bg-slate-900/50 text-amber-900 dark:text-white text-sm rounded-lg px-3 py-2.5 border border-amber-200 dark:border-orange-500/30 outline-none focus:border-amber-400/60 focus:ring-1 focus:ring-amber-400/30 text-right font-arabic-modern"
+                        className="w-full bg-amber-50 dark:bg-slate-900/50 text-amber-900 dark:text-white text-sm rounded-lg px-3 py-2.5 border border-amber-200 dark:border-orange-500/30 outline-none focus:border-amber-400/60 focus:ring-1 focus:ring-amber-400/30 text-right font-ui"
                         dir="rtl"
-                        style={{ fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif" }}
                       >
                         <option value="">— اختر دولة —</option>
                         {COUNTRY_OPTIONS.map((country) => (

@@ -623,6 +623,7 @@ export function PrayerTimersHome() {
       try {
         const timingsToSave = {
           fajr: t.Fajr,
+          sunrise: t.Sunrise,
           dhuhr: t.Dhuhr,
           asr: t.Asr,
           maghrib: t.Maghrib,
@@ -955,7 +956,7 @@ export function PrayerTimersHome() {
           <div className="text-center arabic-text">
             <div className="flex items-center justify-center gap-1.5 mb-1">
               <MapPin className="h-3.5 w-3.5 text-amber-300/70" />
-              <span className="text-sm font-bold text-slate-100 font-arabic-modern" style={{ fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif" }}>{settings.cityLabel}</span>
+              <span className="text-sm font-bold text-slate-100 font-ui">{settings.cityLabel}</span>
             </div>
             <p className="text-[11px] text-slate-400 font-light">{hijriLine}</p>
             <p className="text-[11px] text-slate-500 font-light">{formatDate()}</p>
@@ -980,9 +981,8 @@ export function PrayerTimersHome() {
                   <select
                     value={selectedCityId}
                     onChange={(e) => onPresetCitySelected(e.target.value)}
-                    className="w-full bg-slate-900/60 text-slate-100 text-sm rounded-lg px-3 py-2 border border-white/10 outline-none focus:border-amber-500/40 focus:ring-1 focus:ring-amber-500/20 text-right font-arabic-modern"
+                    className="w-full bg-slate-900/60 text-slate-100 text-sm rounded-lg px-3 py-2 border border-white/10 outline-none focus:border-amber-500/40 focus:ring-1 focus:ring-amber-500/20 text-right font-ui"
                     dir="rtl"
-                    style={{ fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif" }}
                   >
                     {CITY_OPTIONS.map((city) => (
                       <option key={city.id} value={city.id}>
@@ -1019,9 +1019,8 @@ export function PrayerTimersHome() {
                       <select
                         value={customCountryInput}
                         onChange={(e) => setCustomCountryInput(e.target.value)}
-                        className="w-full bg-slate-900/60 text-slate-100 text-sm rounded-lg px-3 py-2 border border-white/10 outline-none focus:border-amber-500/40 focus:ring-1 focus:ring-amber-500/20 text-right font-arabic-modern"
+                        className="w-full bg-slate-900/60 text-slate-100 text-sm rounded-lg px-3 py-2 border border-white/10 outline-none focus:border-amber-500/40 focus:ring-1 focus:ring-amber-500/20 text-right font-ui"
                         dir="rtl"
-                        style={{ fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif" }}
                       >
                         <option value="">— اختر دولة —</option>
                         {COUNTRY_OPTIONS.map((country) => (

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./styles/fonts.css";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
@@ -56,81 +57,85 @@
   --color-sidebar-accent-border: var(--sidebar-accent-border);
   --color-sidebar-ring: hsl(var(--sidebar-ring));
 
-  --font-sans: var(--app-font-sans);
-  --font-serif: var(--app-font-serif);
+  --font-ui: "Cairo", "Segoe UI", sans-serif;
+  --font-athkar: "Amiri", Georgia, serif;
+
+  --font-sans: var(--font-ui);
+  --font-serif: var(--font-athkar);
   --font-mono: var(--app-font-mono);
-  --font-arabic-modern: var(--app-font-arabic-modern);
-  --font-arabic-quran: var(--app-font-arabic-quran);
+  --font-arabic-modern: var(--font-ui);
+  --font-arabic-quran: var(--font-athkar);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Aurora CSS custom properties — updated by DynamicBackground per prayer period */
+  --aurora-bg: #020617;
+  --aurora-color-1: #312e81;
+  --aurora-color-2: #4338ca;
+  --aurora-color-3: #6366f1;
 }
 
-/* LIGHT MODE - CLEAN WHITE DESIGN */
+/* ─────────────────────────────────────────────────
+   DESIGN TOKENS — Dark mode only (app is always dark)
+   ───────────────────────────────────────────────── */
 :root {
-  --button-outline: rgba(0,0,0,.08);
-  --badge-outline: rgba(0,0,0,.04);
-  --opaque-button-border-intensity: -8;
-  --elevate-1: rgba(0,0,0,.02);
-  --elevate-2: rgba(0,0,0,.06);
+  --button-outline: rgba(255,255,255,.10);
+  --badge-outline: rgba(255,255,255,.05);
+  --opaque-button-border-intensity: 9;
+  --elevate-1: rgba(255,255,255,.04);
+  --elevate-2: rgba(255,255,255,.09);
 
-  /* خلفية بيضاء نقية */
-  --background: 0 0% 100%;
-  --foreground: 160 30% 15%;
-  --border: 160 15% 92%;
+  --background: 224 15% 5%;
+  --foreground: 42 35% 92%;
+  --border: 220 8% 22%;
+  --card: 220 10% 9%;
+  --card-foreground: 42 35% 90%;
+  --card-border: 220 8% 24%;
 
-  /* البطاقات */
-  --card: 0 0% 100%;
-  --card-foreground: 160 30% 15%;
-  --card-border: 160 15% 94%;
+  --sidebar: 220 10% 6%;
+  --sidebar-foreground: 42 35% 90%;
+  --sidebar-border: 220 8% 18%;
+  --sidebar-primary: 43 72% 54%;
+  --sidebar-primary-foreground: 220 10% 8%;
+  --sidebar-accent: 220 8% 14%;
+  --sidebar-accent-foreground: 42 30% 88%;
+  --sidebar-ring: 43 72% 54%;
 
-  --sidebar: 160 30% 15%;
-  --sidebar-foreground: 0 0% 98%;
-  --sidebar-border: 160 25% 22%;
-  --sidebar-primary: 45 90% 55%;
-  --sidebar-primary-foreground: 160 30% 10%;
-  --sidebar-accent: 160 20% 22%;
-  --sidebar-accent-foreground: 0 0% 98%;
-  --sidebar-ring: 45 90% 55%;
+  --popover: 220 10% 9%;
+  --popover-foreground: 42 35% 90%;
+  --popover-border: 220 8% 22%;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 160 30% 15%;
-  --popover-border: 160 15% 94%;
+  --primary: 43 72% 54%;
+  --primary-foreground: 220 10% 8%;
 
-  --primary: 160 50% 30%;
-  --primary-foreground: 0 0% 100%;
+  --secondary: 220 8% 16%;
+  --secondary-foreground: 42 30% 88%;
 
-  --secondary: 160 20% 97%;
-  --secondary-foreground: 160 30% 20%;
+  --muted: 220 8% 14%;
+  --muted-foreground: 42 10% 66%;
 
-  --muted: 160 10% 96%;
-  --muted-foreground: 160 10% 45%;
+  --accent: 152 28% 52%;
+  --accent-foreground: 220 10% 8%;
 
-  --accent: 45 90% 50%;
-  --accent-foreground: 160 30% 10%;
-
-  --destructive: 0 84% 60%;
+  --destructive: 0 62% 45%;
   --destructive-foreground: 0 0% 100%;
 
-  --input: 160 15% 90%;
-  --ring: 160 50% 30%;
+  --input: 220 8% 20%;
+  --ring: 43 72% 54%;
 
-  --app-font-sans: 'Cairo', 'Segoe UI', sans-serif;
-  --app-font-serif: 'Amiri', Georgia, serif;
   --app-font-mono: Menlo, monospace;
-  --app-font-arabic-modern: 'Cairo', 'Noto Sans Arabic', sans-serif;
-  --app-font-arabic-quran: 'Amiri Quran', 'Amiri', serif;
   --radius: 1rem;
 
-  /* ظلال أنعم للوضع النهاري */
-  --shadow-sm: 0px 2px 8px rgba(0,0,0,0.04);
-  --shadow: 0px 4px 16px rgba(0,0,0,0.06);
-  --shadow-md: 0px 8px 24px rgba(0,0,0,0.08);
-  --shadow-lg: 0px 12px 32px rgba(0,0,0,0.1);
+  --shadow-sm: 0px 2px 12px rgba(0,0,0,0.25);
+  --shadow: 0px 4px 20px rgba(0,0,0,0.35);
+  --shadow-md: 0px 8px 32px rgba(0,0,0,0.45);
+  --shadow-lg: 0px 16px 48px rgba(0,0,0,0.55);
 }
 
+/* Keep dark class tokens identical for consistency */
 .dark {
   --button-outline: rgba(255,255,255,.10);
   --badge-outline: rgba(255,255,255,.05);
@@ -138,10 +143,10 @@
   --elevate-1: rgba(255,255,255,.04);
   --elevate-2: rgba(255,255,255,.09);
 
-  --background: 220 10% 7%;
-  --foreground: 42 35% 90%;
-  --border: 220 8% 20%;
-  --card: 220 9% 11%;
+  --background: 224 15% 5%;
+  --foreground: 42 35% 92%;
+  --border: 220 8% 22%;
+  --card: 220 10% 9%;
   --card-foreground: 42 35% 90%;
   --card-border: 220 8% 24%;
   --sidebar: 220 10% 6%;
@@ -152,7 +157,7 @@
   --sidebar-accent: 220 8% 14%;
   --sidebar-accent-foreground: 42 30% 88%;
   --sidebar-ring: 43 72% 54%;
-  --popover: 220 9% 11%;
+  --popover: 220 10% 9%;
   --popover-foreground: 42 35% 90%;
   --popover-border: 220 8% 22%;
   --primary: 43 72% 54%;
@@ -169,129 +174,213 @@
   --ring: 43 72% 54%;
 }
 
+/* ─────────────────────────────────────────────────
+   BASE STYLES
+   ───────────────────────────────────────────────── */
 @layer base {
   * { @apply border-border; }
   body {
-    @apply font-sans antialiased text-foreground;
+    @apply font-ui antialiased text-foreground;
     direction: rtl;
+    background-color: #020617;
   }
 
-  /* Light mode - Pure white background (default) */
-  html:not(.dark) body {
-    background-color: #ffffff !important;
-    background-image: none !important;
-  }
-
-  /* Dark mode - Keep the pattern */
-  html.dark body {
-    background-color: hsl(var(--background));
-    background-image:
-      radial-gradient(circle at 2px 2px, hsl(var(--primary) / 0.03) 1px, transparent 0);
-    background-size: 32px 32px;
-    background-attachment: scroll;
+  html body {
+    background-color: #020617 !important;
   }
 }
 
-/* ───── Ornamental border ───── */
+/* ─────────────────────────────────────────────────
+   AURORA ANIMATION KEYFRAMES
+   ───────────────────────────────────────────────── */
+
+/* Blob 1 — large, slow, top-left drift */
+@keyframes aurora-blob-1 {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  33%  { transform: translate(6%, -8%) scale(1.15); }
+  66%  { transform: translate(-5%, 6%) scale(0.92); }
+  100% { transform: translate(0%, 0%) scale(1); }
+}
+
+/* Blob 2 — medium, opposite drift */
+@keyframes aurora-blob-2 {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  33%  { transform: translate(-10%, 8%) scale(1.2); }
+  66%  { transform: translate(7%, -5%) scale(0.9); }
+  100% { transform: translate(0%, 0%) scale(1); }
+}
+
+/* Blob 3 — smaller, bottom drift */
+@keyframes aurora-blob-3 {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  25%  { transform: translate(8%, 10%) scale(1.1); }
+  50%  { transform: translate(-6%, -8%) scale(0.95); }
+  75%  { transform: translate(4%, 6%) scale(1.08); }
+  100% { transform: translate(0%, 0%) scale(1); }
+}
+
+/* Star twinkling — existing */
+@keyframes sky-star-twinkle {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(0.6); }
+}
+
+.sky-star-twinkle {
+  animation: sky-star-twinkle var(--star-dur, 2s) var(--star-delay, 0s) ease-in-out infinite;
+}
+
+/* Sun rays rotation */
+@keyframes sky-sun-rays-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.sky-sun-rays-wrap {
+  animation: sky-sun-rays-spin 16s linear infinite;
+}
+
+/* Cloud drift */
+@keyframes sky-cloud-drift {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(-18px); }
+}
+
+@keyframes sky-cloud-drift-reverse {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(14px); }
+}
+
+.sky-cloud-drift      { animation: sky-cloud-drift 14s ease-in-out infinite; }
+.sky-cloud-drift-slow { animation: sky-cloud-drift 20s ease-in-out infinite; }
+.sky-cloud-drift-reverse { animation: sky-cloud-drift-reverse 18s ease-in-out infinite; }
+
+/* ─────────────────────────────────────────────────
+   FADE IN ANIMATIONS
+   ───────────────────────────────────────────────── */
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.5s cubic-bezier(.16, 1, .3, 1) forwards;
+}
+
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.10s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.20s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.35s; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─────────────────────────────────────────────────
+   GLASS SURFACES
+   ───────────────────────────────────────────────── */
+.glass-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.07);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 1.5rem;
+}
+
+/* ─────────────────────────────────────────────────
+   ARABIC TEXT
+   ───────────────────────────────────────────────── */
+.arabic-text {
+  line-height: 2.2;
+  text-rendering: optimizeLegibility;
+}
+
+.font-athkar,
+.font-athkar * {
+  font-family: var(--font-athkar);
+}
+
+/* ─────────────────────────────────────────────────
+   ORNAMENTAL ELEMENTS
+   ───────────────────────────────────────────────── */
 .ornamental-border {
   background-image: repeating-linear-gradient(
     90deg,
-    hsl(var(--primary) / 0.2) 0px, hsl(var(--primary) / 0.2) 2px,
+    rgba(245,158,11,0.25) 0px, rgba(245,158,11,0.25) 2px,
     transparent 2px, transparent 12px,
-    hsl(var(--accent) / 0.3) 12px, hsl(var(--accent) / 0.3) 14px,
+    rgba(251,191,36,0.35) 12px, rgba(251,191,36,0.35) 14px,
     transparent 14px, transparent 24px
   );
   height: 2px;
 }
 
-/* ───── Premium surfaces ───── */
-.hero-shell {
-  border: 1px solid hsl(var(--border));
-  background: white;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.3s ease;
-}
-.dark .hero-shell {
-  background: linear-gradient(135deg, hsl(var(--card) / 0.88), hsl(var(--secondary) / 0.58));
-  border-color: hsl(var(--border) / 0.5);
+.ornamental-divider {
+  height: 1px;
+  background: linear-gradient(to left, transparent, rgba(245,158,11,0.3), transparent);
 }
 
-/* ───── Arabic text styling ───── */
-.arabic-text {
-  font-family: var(--font-arabic-quran) !important;
-  font-weight: 400 !important;
-  line-height: 2.2 !important;
-  text-rendering: optimizeLegibility !important;
-}
-
-.fade-in-up {
-  opacity: 0;
-  animation: fadeInUp 0.4s cubic-bezier(.16, 1, .3, 1) forwards;
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ───── Category card ───── */
+/* ─────────────────────────────────────────────────
+   CARD STYLES
+   ───────────────────────────────────────────────── */
 .category-card {
-  @apply bg-white border border-border shadow-sm transition-all duration-300;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
   border-radius: 1.25rem;
-}
-.dark .category-card {
-  @apply bg-card/95 border-card-border;
+  transition: all 0.3s ease;
 }
 .category-card:hover {
-  @apply shadow-md -translate-y-1 border-primary/20;
+  background: rgba(255,255,255,0.10);
+  transform: translateY(-2px);
+  border-color: rgba(245,158,11,0.2);
 }
 
-/* ───── Dhikr card Islamic style ───── */
 .dhikr-card-islamic {
-  @apply bg-white border border-border shadow-sm transition-all duration-300;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
   border-radius: 1.25rem;
-}
-.dark .dhikr-card-islamic {
-  @apply bg-card border-card-border shadow-none;
+  transition: all 0.3s ease;
+  position: relative;
 }
 .dhikr-card-islamic::before {
   content: '';
   position: absolute;
   top: 0;
   right: 0;
-  width: 4px;
+  width: 3px;
   height: 100%;
-  background: linear-gradient(180deg, hsl(var(--accent) / 0.3), hsl(var(--accent)), hsl(var(--accent) / 0.3));
+  background: linear-gradient(180deg, rgba(245,158,11,0.2), rgba(245,158,11,0.8), rgba(245,158,11,0.2));
+  border-radius: 0 1.25rem 1.25rem 0;
   z-index: 1;
 }
 
 .dhikr-number-badge {
-  @apply bg-muted/50 text-primary font-bold flex items-center justify-center;
+  background: rgba(245,158,11,0.12);
+  color: #fbbf24;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 0.75rem;
 }
 
-.ornamental-divider {
-  height: 1px;
-  background: linear-gradient(to left, transparent, hsl(var(--border)), transparent);
-}
-
-/* ───── Custom Background Patterns ───── */
-.islamic-pattern {
-  background-color: hsl(var(--background));
-  background-image:
-    radial-gradient(hsl(var(--primary) / 0.02) 1.5px, transparent 0);
-  background-size: 24px 24px;
-}
-
+/* ─────────────────────────────────────────────────
+   GRADIENT TEXT
+   ───────────────────────────────────────────────── */
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(135deg, #fbbf24, #f59e0b);
 }
 
-/* ───── Progress bar ───── */
+/* ─────────────────────────────────────────────────
+   PROGRESS BAR SHIMMER
+   ───────────────────────────────────────────────── */
 .progress-shimmer {
-  @apply bg-accent;
+  background-color: #f59e0b;
   background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
@@ -302,27 +391,73 @@
   100% { background-position: 200% 0; }
 }
 
-/* ───── Additional Polish ───── */
+/* ─────────────────────────────────────────────────
+   INPUTS
+   ───────────────────────────────────────────────── */
 input[type="text"] {
-  @apply bg-white border-border focus:border-primary/40 focus:ring-primary/5 transition-all;
+  background: transparent;
+  border: none;
+  color: #f1f5f9;
+  transition: all 0.2s ease;
 }
-.dark input[type="text"] {
-  @apply bg-card/50 border-card-border;
-}
-
-/* ───── Glass surfaces ───── */
-.glass-panel {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid hsl(var(--border) / 0.35);
-  background: hsl(var(--card) / 0.6);
-  box-shadow: 0 24px 80px hsl(var(--background) / 0.2);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+input[type="text"]::placeholder {
+  color: rgba(148,163,184,0.6);
 }
 
-.dark .glass-panel {
-  border-color: hsl(var(--border) / 0.28);
-  background: hsl(var(--card) / 0.42);
-  box-shadow: 0 24px 80px hsl(0 0% 0% / 0.36);
+/* ─────────────────────────────────────────────────
+   AUTHENTICITY BAND
+   ───────────────────────────────────────────────── */
+.authenticity-band {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border-radius: 1.5rem;
+}
+
+/* ─────────────────────────────────────────────────
+   HERO SECTION
+   ───────────────────────────────────────────────── */
+.hero-bismillah {
+  text-shadow:
+    0 2px 20px rgba(0,0,0,0.6),
+    0 4px 40px rgba(0,0,0,0.4);
+}
+
+.hero-ayah {
+  text-shadow:
+    0 1px 12px rgba(0,0,0,0.5),
+    0 2px 24px rgba(0,0,0,0.3);
+}
+
+/* ─────────────────────────────────────────────────
+   REDUCED MOTION OVERRIDES
+   ───────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob {
+    animation: none !important;
+  }
+  .fade-in-up {
+    animation: none !important;
+    opacity: 1;
+  }
+  .sky-star-twinkle,
+  .sky-sun-rays-wrap,
+  .sky-cloud-drift,
+  .sky-cloud-drift-slow,
+  .sky-cloud-drift-reverse {
+    animation: none !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────
+   NAV PILL ACTIVE INDICATOR DOT
+   ───────────────────────────────────────────────── */
+@keyframes navPop {
+  0%   { transform: scale(0.7); opacity: 0; }
+  60%  { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.nav-active-pop {
+  animation: navPop 0.25s ease-out forwards;
 }
