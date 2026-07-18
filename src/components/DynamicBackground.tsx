@@ -20,16 +20,15 @@ interface AuroraPalette {
 }
 
 const AURORA_PALETTES: Record<PrayerPeriod, AuroraPalette> = {
-  // Fajr — Pre-dawn fog into first light: muted blue-gray → soft dawn pink.
-  // Uses a linear-gradient string instead of a solid color so the page
-  // background reads as a clear dawn transition (and stays visually
-  // distinct from Isha's cool dark navy/purple).
+  // Fajr — Pre-dawn calm: near-black base, cool blue-gray-to-rose blobs.
+  // Matches the dark-base structural pattern of all other periods;
+  // dawn feeling comes from c1/c2/c3 blob movement, not the bg.
   fajr: {
-    bg: 'linear-gradient(135deg, #4A5D6E 0%, #F1A7A6 100%)',
-    c1: '#2d2568',  // deep indigo
-    c2: '#3b2d9e',  // medium indigo
-    c3: '#6d5bca',  // soft violet-blue
-    overlayOpacity: 0.32,
+    bg: '#05070a',       // near-black, cool undertone
+    c1: '#4A5D6E',       // muted blue-gray (last hush of night)
+    c2: '#7d6a78',       // dusty transitional mauve-gray
+    c3: '#c98c8b',       // muted dawn rose (first light)
+    overlayOpacity: 0.38,
   },
   // Sunrise — Early warmth: light orange to gold
   sunrise: {
@@ -39,21 +38,21 @@ const AURORA_PALETTES: Record<PrayerPeriod, AuroraPalette> = {
     c3: '#d97706',  // warm gold
     overlayOpacity: 0.42,
   },
-  // Zuhr — Clarity: turquoise/light cyan
+  // Zuhr — Medium warmth: amber/burnt gold
   zuhr: {
+    bg: '#0f0a02',
+    c1: '#6b4226',  // deep warm brown
+    c2: '#8b5e34',  // bronze
+    c3: '#b8860b',  // dark goldenrod
+    overlayOpacity: 0.42,
+  },
+  // Asr — Clarity: turquoise/light cyan
+  asr: {
     bg: '#020e12',
     c1: '#0c4a6e',  // deep ocean
     c2: '#0369a1',  // sky blue
     c3: '#0891b2',  // cyan
     overlayOpacity: 0.45,
-  },
-  // Asr — Medium warmth: amber/burnt gold
-  asr: {
-    bg: '#0f0a02',
-    c1: '#7c2d12',  // deep burnt orange
-    c2: '#9a3412',  // amber-orange
-    c3: '#c2410c',  // warm amber
-    overlayOpacity: 0.42,
   },
   // Maghrib — Strongest: burnt coral/pink into violet
   maghrib: {

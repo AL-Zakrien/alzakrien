@@ -156,7 +156,6 @@ function formatCountdown(diffTotalMinutes: number, diffSeconds: number): string 
 // ─────────────────────────────────────────────────
 export function NextPrayerWidget() {
   const reducedMotion = useReducedMotion();
-  const { devOverride } = usePrayerPeriod();
   const [timings, setTimings] = useState<PrayerTimings | null>(() => readCachedTimings());
   const [loadError, setLoadError] = useState(false);
   const [now, setNow] = useState(() => new Date());
@@ -221,24 +220,13 @@ export function NextPrayerWidget() {
   const remainingFraction = 1 - progressFraction;
   const dashOffset = circumference * (1 - remainingFraction);
 
-  // Dev preview hook: when the dev-only override is set, swap the
-  // displayed icon/accent/track/name to the override's period.
-  // The countdown and progress ring still reflect the real next prayer.
-  const overrideKey = devOverride ? AURORA_TO_WIDGET_KEY[devOverride] : null;
-  const overrideMeta = overrideKey ? PRAYER_META[overrideKey] : null;
-
-  const displayKey = overrideKey ?? nextPrayer?.key;
-  const displayName = overrideMeta?.arabicName ?? nextPrayer?.meta.arabicName ?? "—";
-  const displayAccent = overrideMeta?.accent ?? nextPrayer?.meta.accent ?? "rgba(99,102,241,0.90)";
-  const displayTrack = overrideMeta?.track ?? nextPrayer?.meta.track ?? "rgba(99,102,241,0.20)";
-  const displayIcon = displayKey
-    ? (PRAYER_ICON_MAP[displayKey] ?? PRAYER_ICON_FALLBACK)
+  const accent = nextPrayer?.meta.accent ?? "rgba(99,102,241,0.90)";
+  const track  = nextPrayer?.meta.track  ?? "rgba(99,102,241,0.20)";
+  const icon   = nextPrayer?.key
+    ? (PRAYER_ICON_MAP[nextPrayer.key] ?? PRAYER_ICON_FALLBACK)
     : PRAYER_ICON_FALLBACK;
-
-  // Back-compat aliases — keeps the rest of the JSX untouched.
-  const accent = displayAccent;
-  const track = displayTrack;
-  const icon = displayIcon;
+  const displayKey  = nextPrayer?.key;
+  const displayName = nextPrayer?.meta.arabicName ?? "—";
 
   const isLoading = !timings && !loadError;
 
@@ -290,9 +278,7 @@ export function NextPrayerWidget() {
             role="img"
             aria-label={
               nextPrayer
-                ? (devOverride
-                    ? `معاينة: ${displayName} — متبقي على ${nextPrayer.meta.arabicName}: ${countdown}`
-                    : `متبقي على ${nextPrayer.meta.arabicName}: ${countdown}`)
+                ? `متبقي على ${nextPrayer.meta.arabicName}: ${countdown}`
                 : "جاري التحميل"
             }
           >

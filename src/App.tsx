@@ -19,7 +19,6 @@ import { TashkeelProvider } from "@/context/TashkeelContext";
 import { ActiveAdhan } from "@/components/ActiveAdhan";
 import { SplashScreen } from "@/components/SplashScreen";
 import { DynamicBackground } from "@/components/DynamicBackground";
-import { DevPeriodPreview } from "@/components/DevPeriodPreview";
 import { PrayerPeriodProvider } from "@/context/PrayerPeriodContext";
 import "./App.css";
 
@@ -93,10 +92,6 @@ function App() {
                     <SonnerToaster />
                   </WouterRouter>
                 </div>
-                {/* Dev-only floating control. Tree-shaken in production
-                    because DevPeriodPreview returns null when
-                    import.meta.env.DEV is false. */}
-                <DevPeriodPreview />
               </TooltipProvider>
             </TashkeelProvider>
           </FavoritesProvider>
