@@ -57,8 +57,8 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
             position: "absolute",
             inset: 0,
             borderRadius: 16,
-            // ~30% opacity hex suffix: "4D" ≈ 0.30, "40" ≈ 0.25
-            background: `radial-gradient(ellipse 90% 85% at 95% 110%, ${glowColor}4D 0%, transparent 68%)`,
+            // Stronger glow (60% opacity hex: '99') but contained to < 50% of the card area
+            background: `radial-gradient(ellipse 75% 75% at 95% 105%, ${glowColor}99 0%, transparent 45%)`,
             pointerEvents: "none",
             // Smooth crossfade when period changes
             transition: "background 0.8s ease",
