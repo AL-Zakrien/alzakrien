@@ -2,15 +2,18 @@ import { Link, useParams } from "wouter";
 import { ArrowRight, ArrowLeft, RefreshCw, CheckCircle, BookOpen, Type } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DhikrCard } from "@/components/DhikrCard";
-import { getCategoryById } from "@/data/athkar";
+import { getCategoryById, categorySlugs, slugToCategoryId } from "@/data/athkar";
 import { useTashkeel } from "@/context/TashkeelContext";
 import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { spring_smooth } from "@/lib/motion";
 
 export function CategoryPage() {
-  const { id } = useParams<{ id: string }>();
-  const category = getCategoryById(id);
+  const params = useParams<{ id?: string; category?: string }>();
+  const idOrSlug = params.category || params.id || "";
+  const decoded = decodeURIComponent(idOrSlug);
+  const categoryId = slugToCategoryId[decoded] || decoded;
+  const category = getCategoryById(categoryId);
   const [key, setKey] = useState(0);
   const [targetDhikrId, setTargetDhikrId] = useState<string | null>(null);
   const { showTashkeel, toggleTashkeel } = useTashkeel();
@@ -130,9 +133,10 @@ export function CategoryPage() {
             href={["morning", "evening", "wudu", "sleep", "prayer"].includes(category.id) ? "/" : "/more"}
             onClick={() => {
               if (["morning", "evening", "wudu", "sleep", "prayer"].includes(category.id)) {
+                const slug = categorySlugs[category.id] || category.id;
                 sessionStorage.setItem('homeScrollPosition', JSON.stringify({
                   y: window.scrollY,
-                  from: "/category/" + category.id
+                  from: "/home/" + slug
                 }));
               }
             }}

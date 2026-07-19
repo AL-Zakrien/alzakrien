@@ -38,6 +38,7 @@ function Router() {
       <Route path="/adhan" component={Adhan} />
       <Route path="/notifications" component={Notifications} />
       <Route path="/category/:id" component={CategoryPage} />
+      <Route path="/home/:category" component={CategoryPage} />
       <Route path="/tasbih" component={Tasbih} />
       <Route path="/favorites" component={Favorites} />
       <Route path="/more" component={MoreAthkar} />

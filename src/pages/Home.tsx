@@ -4,7 +4,7 @@ import { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { spring_smooth } from "@/lib/motion";
 import { NextPrayerWidget } from "@/components/NextPrayerWidget";
-import { athkarCategories } from "@/data/athkar";
+import { athkarCategories, categorySlugs } from "@/data/athkar";
 import { ArrowLeft, Search } from "lucide-react";
 import { getCachedHisnAthkar, fetchAllHisnAthkar } from "@/data/hisnSearchData";
 import { HISN_ALMUSLIM_REST_ITEMS } from "@/pages/MoreAthkar";
@@ -244,17 +244,20 @@ export function Home() {
               </div>
             ) : searchResults.length > 0 ? (
               <div className="grid gap-2">
-                {searchResults.map((item) => (
-                  <Link
-                    key={`${item.categoryId}-${item.id}`}
-                    href={item.isHisn ? `/more/hisn/${item.chapter}#dhikr-${item.id}` : `/category/${item.categoryId}#dhikr-${item.id}`}
-                  >
-                    <div className="group rounded-xl p-3 text-right hover:bg-white/10 transition-colors cursor-pointer">
-                      <p className="text-sm font-bold text-slate-100 mb-1">{highlightSearchMatch(item.textPreview, searchQuery)}</p>
-                      <p className="text-xs text-amber-300/70 font-medium">{item.categoryTitle}</p>
-                    </div>
-                  </Link>
-                ))}
+                {searchResults.map((item) => {
+                  const slug = categorySlugs[item.categoryId] || item.categoryId;
+                  return (
+                    <Link
+                      key={`${item.categoryId}-${item.id}`}
+                      href={item.isHisn ? `/more/hisn/${item.chapter}#dhikr-${item.id}` : `/home/${slug}#dhikr-${item.id}`}
+                    >
+                      <div className="group rounded-xl p-3 text-right hover:bg-white/10 transition-colors cursor-pointer">
+                        <p className="text-sm font-bold text-slate-100 mb-1">{highlightSearchMatch(item.textPreview, searchQuery)}</p>
+                        <p className="text-xs text-amber-300/70 font-medium">{item.categoryTitle}</p>
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
             ) : (
               <p className="text-sm text-slate-400 text-center py-4">لم نجد نتائج بحث متطابقة..</p>

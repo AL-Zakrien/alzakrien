@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import type { AthkarCategory } from "@/data/athkar";
+import { categorySlugs } from "@/data/athkar";
 import type { LucideIcon } from "lucide-react";
 import { BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
@@ -28,8 +29,9 @@ const cardRest = {
 
 export function CategoryCard({ category, index, Icon: IconProp }: CategoryCardProps) {
   const Icon = IconProp ?? BookOpen;
+  const slug = categorySlugs[category.id] || category.id;
   return (
-    <Link href={`/category/${category.id}`}>
+    <Link href={`/home/${slug}`}>
       <motion.div
         className="group relative block overflow-hidden border border-white/5 bg-gradient-to-r from-white/[0.02] to-transparent backdrop-blur-xl p-4 sm:p-5 fade-in-up cursor-pointer"
         data-testid={`card-category-${category.id}`}
