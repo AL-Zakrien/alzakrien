@@ -20,6 +20,7 @@ import { ActiveAdhan } from "@/components/ActiveAdhan";
 import { SplashScreen } from "@/components/SplashScreen";
 import { DynamicBackground } from "@/components/DynamicBackground";
 import { PrayerPeriodProvider } from "@/context/PrayerPeriodContext";
+import { DevPeriodPreview } from "@/components/DevPeriodPreview";
 import "./App.css";
 
 const queryClient = new QueryClient({
@@ -89,6 +90,7 @@ function App() {
                     <Router />
                     <MobileBottomNav />
                     <ActiveAdhan />
+                    <DevPeriodPreview />
                     <Toaster />
                     <SonnerToaster />
                   </WouterRouter>

@@ -19,11 +19,14 @@ import {
 interface PrayerPeriodContextValue {
   /** Live, real-time period computed from the current time. */
   period: PrayerPeriod;
-  /** Effective period — always equals the live period. */
+  /** Effective period — uses devOverride when set, otherwise live period. */
   effectivePeriod: PrayerPeriod;
   timings: PrayerTimings | null;
   isLoading: boolean;
   refresh: () => Promise<void>;
+  /** Dev-only override for testing aurora palettes. */
+  devOverride: PrayerPeriod | null;
+  setDevOverride: (p: PrayerPeriod | null) => void;
 }
 
 const PrayerPeriodContext = createContext<PrayerPeriodContextValue | null>(null);
@@ -37,6 +40,7 @@ export function PrayerPeriodProvider({ children }: { children: ReactNode }) {
   const [period, setPeriod] = useState<PrayerPeriod>(() => getInitialPrayerPeriod());
   const [timings, setTimings] = useState<PrayerTimings | null>(() => readCachedTimings());
   const [isLoading, setIsLoading] = useState(() => readCachedTimings() === null);
+  const [devOverride, setDevOverride] = useState<PrayerPeriod | null>(null);
 
   const refresh = useCallback(async () => {
     try {
@@ -83,11 +87,11 @@ export function PrayerPeriodProvider({ children }: { children: ReactNode }) {
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
-  const effectivePeriod = period;
+  const effectivePeriod = devOverride ?? period;
 
   const value = useMemo(
-    () => ({ period, effectivePeriod, timings, isLoading, refresh }),
-    [period, effectivePeriod, timings, isLoading, refresh],
+    () => ({ period, effectivePeriod, timings, isLoading, refresh, devOverride, setDevOverride }),
+    [period, effectivePeriod, timings, isLoading, refresh, devOverride],
   );
 
   return <PrayerPeriodContext.Provider value={value}>{children}</PrayerPeriodContext.Provider>;
