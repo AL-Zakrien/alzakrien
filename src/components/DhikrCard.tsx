@@ -377,7 +377,7 @@ export const DhikrCard = memo(({ dhikr, index, initialOpen = false, fontSize }: 
         onClick={() => setCount((c) => (c > 0 ? 0 : 1))}
         className={`px-6 py-2 rounded-xl text-xs font-bold transition-all duration-300 border transform-gpu ${
           count > 0
-            ? "bg-primary text-primary-foreground border-primary shadow-lg scale-105"
+            ? "bg-primary text-primary-foreground border-primary shadow-md scale-105"
             : "bg-transparent text-muted-foreground border-border hover:border-primary/40 hover:text-primary active:scale-95"
         }`}
         data-testid={`button-done-${dhikr.id}`}

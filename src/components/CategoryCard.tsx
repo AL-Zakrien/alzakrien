@@ -18,13 +18,13 @@ interface CategoryCardProps {
 const cardHover = {
   y: -3,
   scale: 1.005,
-  boxShadow: "0 8px 32px rgba(0,0,0,0.35), 0 0 0 1px rgba(245,158,11,0.18)",
+  boxShadow: "0 8px 24px rgba(0,0,0,0.15), 0 0 0 1px rgba(245,158,11,0.18)",
 };
 
 const cardRest = {
   y: 0,
   scale: 1,
-  boxShadow: "0 2px 8px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.05)",
+  boxShadow: "0 2px 8px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.05)",
 };
 
 export function CategoryCard({ category, index, Icon: IconProp }: CategoryCardProps) {
@@ -38,7 +38,7 @@ export function CategoryCard({ category, index, Icon: IconProp }: CategoryCardPr
         style={{
           animationDelay: `${Math.min(index, 6) * 60}ms`,
           borderRadius: 'var(--radius-lg)',
-          boxShadow: "0 2px 8px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.05)",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.05)",
         }}
         initial={cardRest}
         whileHover={cardHover}

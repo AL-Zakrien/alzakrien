@@ -24,11 +24,11 @@ const AURORA_PALETTES: Record<PrayerPeriod, AuroraPalette> = {
   // Matches the dark-base structural pattern of all other periods;
   // dawn feeling comes from c1/c2/c3 blob movement, not the bg.
   fajr: {
-    bg: '#070B19',       // Very dark midnight/navy, almost black
-    c1: '#1E3A8A',       // Deep moody indigo/blue
-    c2: '#4C1D95',       // Deep muted twilight purple
-    c3: '#334155',       // Slate gray-blue to neutralize any neon effect
-    overlayOpacity: 0.5, // Increased slightly to blend the blobs softly and reduce vibrancy
+    bg: '#11131A',       // Dark slate to anchor the colors and ensure text contrast
+    c1: '#515766',
+    c2: '#AB9AAB',
+    c3: '#665166',
+    overlayOpacity: 0.4, // Tweaked to let these muted colors breathe nicely
   },
   // Sunrise — Early warmth: light orange to gold
   sunrise: {

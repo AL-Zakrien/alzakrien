@@ -20,7 +20,7 @@ const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
           border: "1px solid rgba(255,255,255,0.12)",
           backdropFilter: "blur(20px) saturate(160%)",
           WebkitBackdropFilter: "blur(20px) saturate(160%)",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.07)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.07)",
           ...((props.style) || {}),
         }}
         {...props}
