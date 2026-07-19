@@ -11,7 +11,7 @@ interface DynamicBackgroundProps {
 // Aurora palettes — spec §1 color mappings
 // Each palette: bg (base), c1/c2/c3 (blob colors), overlay opacity
 // ─────────────────────────────────────────────────────────────────
-interface AuroraPalette {
+export interface AuroraPalette {
   bg: string;
   c1: string;
   c2: string;
@@ -19,7 +19,7 @@ interface AuroraPalette {
   overlayOpacity: number; // 0–1, extra dark overlay for bright daytime states
 }
 
-const AURORA_PALETTES: Record<PrayerPeriod, AuroraPalette> = {
+export const AURORA_PALETTES: Record<PrayerPeriod, AuroraPalette> = {
   // Fajr — Pre-dawn calm: near-black base, cool blue-gray-to-rose blobs.
   // Matches the dark-base structural pattern of all other periods;
   // dawn feeling comes from c1/c2/c3 blob movement, not the bg.

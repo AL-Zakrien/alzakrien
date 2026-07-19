@@ -3,6 +3,8 @@ import type { AthkarCategory } from "@/data/athkar";
 import { categorySlugs } from "@/data/athkar";
 import { motion } from "framer-motion";
 import { spring_smooth, tap_card } from "@/lib/motion";
+import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
+import { AURORA_PALETTES } from "@/components/DynamicBackground";
 import {
   Sunrise,
   Moon,
@@ -36,7 +38,7 @@ interface CategoryCardProps {
   index: number;
 }
 
-// Card rest state — subtle lift on hover, no colour shift
+// Spring hover lift — no colour shift, that's handled by the glow layer
 const cardHover = {
   y: -4,
   scale: 1.008,
@@ -49,10 +51,16 @@ const cardRest = {
 };
 
 export function CategoryCard({ category, index }: CategoryCardProps) {
+  // ── Live period → palette lookup ──────────────────────────────────────────
+  const { effectivePeriod } = usePrayerPeriod();
+  const palette = AURORA_PALETTES[effectivePeriod] ?? AURORA_PALETTES.isha;
+  // Use c2 (the mid-tone blob color) at ~30% for the glow; c1 for the icon tint.
+  // Both update automatically when the period changes (or via DevPeriodPreview).
+  const glowColor = palette.c2;   // radial gradient anchor color
+  const iconColor = palette.c1;   // icon stroke tint
+
   const Icon = ICON_MAP[category.icon] ?? BookOpen;
   const slug = categorySlugs[category.id] || category.id;
-  // Accent hex — falls back to white if the field is missing (legacy entries)
-  const accent = category.accent ?? "#FFFFFF";
 
   return (
     <Link href={`/home/${slug}`}>
@@ -60,7 +68,7 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
         className="group relative block overflow-hidden cursor-pointer"
         data-testid={`card-category-${category.id}`}
         style={{
-          // Dark neutral card surface — same for ALL cards
+          // Dark neutral surface — identical for ALL cards regardless of category
           background: "#12131c",
           borderRadius: 16,
           border: "1px solid rgba(255,255,255,0.07)",
@@ -71,65 +79,69 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
         whileTap={tap_card}
         transition={spring_smooth}
       >
-        {/* ── Radial glow — anchored bottom-right (RTL: visually bottom-left) ─ */}
+        {/* ── Period-reactive radial glow ── anchored bottom-right (RTL: bottom-left visually) */}
         <div
           aria-hidden="true"
           style={{
             position: "absolute",
             inset: 0,
             borderRadius: 16,
-            // Soft radial gradient using the category accent at ~28% opacity
-            background: `radial-gradient(ellipse 90% 85% at 95% 110%, ${accent}48 0%, transparent 68%)`,
+            // ~30% opacity hex suffix: "4D" ≈ 0.30, "40" ≈ 0.25
+            background: `radial-gradient(ellipse 90% 85% at 95% 110%, ${glowColor}4D 0%, transparent 68%)`,
             pointerEvents: "none",
+            // Smooth crossfade when period changes
+            transition: "background 0.8s ease",
           }}
         />
 
-        {/* ── Card body ─────────────────────────────────────────────────────── */}
+        {/* ── Card body ──────────────────────────────────────────────────────── */}
         <div
-          className="relative flex items-center gap-4 p-4 sm:p-5"
+          className="relative flex items-center gap-3 p-4 sm:p-5"
           dir="rtl"
         >
-          {/* Icon — stroke-only, tinted with the accent color */}
+          {/* Icon — stroke-only, tinted with the period's c1 color */}
           <div
             className="flex-shrink-0 flex items-center justify-center"
             style={{
-              width: 44,
-              height: 44,
-              color: accent,
+              width: 40,
+              height: 40,
+              color: iconColor,
+              transition: "color 0.8s ease",
             }}
           >
-            <Icon strokeWidth={1.4} style={{ width: 26, height: 26 }} />
+            <Icon strokeWidth={1.4} style={{ width: 24, height: 24 }} />
           </div>
 
-          {/* Text block — title + subtitle */}
+          {/* Text — title + subtitle */}
           <div className="flex-1 min-w-0 text-right">
             <h3
               className="font-ui font-semibold text-slate-100 leading-snug truncate"
-              style={{ fontSize: 14 }}
+              style={{ fontSize: 13 }}
             >
               {category.title}
             </h3>
             {category.subtitle && (
               <p
                 className="text-slate-400 leading-snug mt-0.5 truncate"
-                style={{ fontSize: 11 }}
+                style={{ fontSize: 10 }}
               >
                 {category.subtitle}
               </p>
             )}
           </div>
 
-          {/* Count badge */}
+          {/* Count — tinted with the period's c2 glow color */}
           <div
             className="flex-shrink-0 flex flex-col items-center"
-            style={{ minWidth: 36 }}
+            style={{ minWidth: 32 }}
           >
             <span
               className="font-ui font-bold tabular-nums"
               style={{
-                fontSize: 15,
-                color: accent,
-                opacity: 0.85,
+                fontSize: 14,
+                color: glowColor,
+                opacity: 0.9,
+                transition: "color 0.8s ease",
               }}
             >
               {category.athkar.length}
@@ -143,7 +155,7 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
           </div>
         </div>
 
-        {/* ── Subtle top-edge highlight for glass realism ───────────────────── */}
+        {/* ── Top-edge highlight for glass depth ────────────────────────────── */}
         <span
           aria-hidden="true"
           style={{
