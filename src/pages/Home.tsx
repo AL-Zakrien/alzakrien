@@ -9,7 +9,7 @@ import { ArrowLeft, Search } from "lucide-react";
 import { getCachedHisnAthkar, fetchAllHisnAthkar } from "@/data/hisnSearchData";
 import { HISN_ALMUSLIM_REST_ITEMS } from "@/pages/MoreAthkar";
 import { GlassCard } from "@/components/glass/GlassCard";
-import { AthkarTabs } from "@/components/AthkarTabs";
+import { CategoryCard } from "@/components/CategoryCard";
 import { AuthenticityBand } from "@/components/AuthenticityBand";
 
 // Spring-based stagger variants — replaces CSS fade-in-up + stagger-N classes
@@ -266,9 +266,13 @@ export function Home() {
             </motion.div>
           )}
 
-          {/* ATHKAR TABS */}
+          {/* BENTO GRID — Category Cards */}
           <motion.section className="mb-10" aria-label="الأذكار" variants={sectionVariant}>
-            <AthkarTabs categories={mainCategories} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {mainCategories.map((cat, i) => (
+                <CategoryCard key={cat.id} category={cat} index={i} />
+              ))}
+            </div>
           </motion.section>
 
         {/* ──────────────────────────────────────────────────

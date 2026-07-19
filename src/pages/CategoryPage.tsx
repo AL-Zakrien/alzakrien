@@ -35,7 +35,7 @@ export function CategoryPage() {
     } else {
       setTargetDhikrId(null);
     }
-  }, [id]);
+  }, [categoryId]);
 
   useEffect(() => {
     if (!targetDhikrId) return;
