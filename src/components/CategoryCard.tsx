@@ -5,33 +5,7 @@ import { motion } from "framer-motion";
 import { spring_smooth, tap_card } from "@/lib/motion";
 import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
 import { AURORA_PALETTES } from "@/components/DynamicBackground";
-import {
-  Sunrise,
-  Moon,
-  BedDouble,
-  HandMetal,
-  Droplets,
-  Radio,
-  Building2,
-  BookOpenCheck,
-  BookOpen,
-  Home,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 
-// ─── Icon registry — maps the data's icon string to a Lucide component ───────
-const ICON_MAP: Record<string, LucideIcon> = {
-  Sunrise,
-  Moon,
-  BedDouble,
-  HandMetal,
-  Droplets,
-  Radio,
-  Building2,
-  BookOpenCheck,
-  BookOpen,
-  Home,
-};
 
 interface CategoryCardProps {
   category: AthkarCategory;
@@ -57,9 +31,6 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
   // Use c2 (the mid-tone blob color) at ~30% for the glow; c1 for the icon tint.
   // Both update automatically when the period changes (or via DevPeriodPreview).
   const glowColor = palette.c2;   // radial gradient anchor color
-  const iconColor = palette.c1;   // icon stroke tint
-
-  const Icon = ICON_MAP[category.icon] ?? BookOpen;
   const slug = categorySlugs[category.id] || category.id;
 
   return (
@@ -99,19 +70,6 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
           className="relative flex items-center gap-3 p-4 sm:p-5"
           dir="rtl"
         >
-          {/* Icon — stroke-only, tinted with the period's c1 color */}
-          <div
-            className="flex-shrink-0 flex items-center justify-center"
-            style={{
-              width: 40,
-              height: 40,
-              color: iconColor,
-              transition: "color 0.8s ease",
-            }}
-          >
-            <Icon strokeWidth={1.4} style={{ width: 24, height: 24 }} />
-          </div>
-
           {/* Text — title + subtitle */}
           <div className="flex-1 min-w-0 text-right">
             <h3
