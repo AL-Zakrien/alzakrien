@@ -23,9 +23,16 @@ export interface Dhikr {
 export interface AthkarCategory {
   id: string;
   title: string;
+  /** Long description shown on category page */
   description: string;
+  /** Short one-line subtitle shown on the home card (Arabic) */
+  subtitle?: string;
+  /** Lucide icon name — used in CategoryCard */
   icon: string;
+  /** Tailwind color name (legacy, kept for compatibility) */
   color: string;
+  /** Hex accent color for the radial glow and icon tint */
+  accent?: string;
   athkar: Dhikr[];
 }
 
@@ -64,8 +71,10 @@ export const athkarCategories: AthkarCategory[] = [
     "id": "morning",
     "title": "أذكار الصباح",
     "description": "تُقرأ من بعد صلاة الفجر إلى شروق الشمس",
-    "icon": "☀️",
+    "subtitle": "ابدأ يومك بذكر الله والطمأنينة",
+    "icon": "Sunrise",
     "color": "orange",
+    "accent": "#F97316",
     "athkar": [
       {
         "id": "m1",
@@ -193,8 +202,10 @@ export const athkarCategories: AthkarCategory[] = [
     "id": "evening",
     "title": "أذكار المساء",
     "description": "تُقرأ من بعد صلاة العصر إلى مغيب الشمس",
-    "icon": "🌙",
+    "subtitle": "اختتم يومك بالسكينة والراحة",
+    "icon": "Moon",
     "color": "amber",
+    "accent": "#F59E0B",
     "athkar": [
       {
         "id": "e1",
@@ -317,8 +328,10 @@ export const athkarCategories: AthkarCategory[] = [
     "id": "sleep",
     "title": "أذكار النوم",
     "description": "تُقرأ قبل النوم للاطمئنان والراحة",
-    "icon": "🌙",
+    "subtitle": "اطمئن قلبك وأسلم أمرك لله قبل النوم",
+    "icon": "BedDouble",
     "color": "blue",
+    "accent": "#6366F1",
     "athkar": [
       {
         "id": "s1",
@@ -389,10 +402,12 @@ export const athkarCategories: AthkarCategory[] = [
   },
   {
     "id": "after_prayer",
-    "title": "الأذكار بعد السلام من الصلاة",
+    "title": "أذكار بعد الصلاة",
     "description": "تُقال فور الانتهاء من الصلاة المفروضة",
-    "icon": "🕌",
+    "subtitle": "أتمّ صلاتك بالتسبيح والذكر والدعاء",
+    "icon": "HandMetal",
     "color": "green",
+    "accent": "#10B981",
     "athkar": [
       {
         "id": "p1",
@@ -440,8 +455,10 @@ export const athkarCategories: AthkarCategory[] = [
     "id": "wudu",
     "title": "أذكار الطهارة",
     "description": "الأذكار المستحبة عند الوضوء والفراغ منه",
-    "icon": "🧼",
+    "subtitle": "طهِّر بدنك وحاضر قلبك لذكر الله",
+    "icon": "Droplets",
     "color": "cyan",
+    "accent": "#06B6D4",
     "athkar": [
       {
         "id": "t1",
@@ -469,8 +486,10 @@ export const athkarCategories: AthkarCategory[] = [
     "id": "adhan",
     "title": "أذكار الأذان",
     "description": "ما يقال عند سماع الأذان وبعده",
-    "icon": "📢",
+    "subtitle": "أجب النداء واغتنم ساعة الإجابة",
+    "icon": "Radio",
     "color": "blue",
+    "accent": "#3B82F6",
     "athkar": [
       {
         "id": "a1",
@@ -503,8 +522,10 @@ export const athkarCategories: AthkarCategory[] = [
     "id": "masjid",
     "title": "أذكار المسجد",
     "description": "أدعية الدخول والخروج والذهاب للمسجد",
-    "icon": "🕌",
+    "subtitle": "ادخل بيت الله بالأدب والخشوع",
+    "icon": "Building2",
     "color": "emerald",
+    "accent": "#059669",
     "athkar": [
       {
         "id": "mj1",
@@ -527,8 +548,10 @@ export const athkarCategories: AthkarCategory[] = [
     "id": "prayer",
     "title": "أذكار الصلاة",
     "description": "الأذكار والأدعية داخل الصلاة من الاستفتاح إلى التسليم",
-    "icon": "🛐",
+    "subtitle": "قِف بين يدي الله بخشوع وحضور قلب",
+    "icon": "BookOpenCheck",
     "color": "teal",
+    "accent": "#14B8A6",
     "athkar": [
       {
         "id": "pr1_1",
