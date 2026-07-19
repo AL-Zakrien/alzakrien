@@ -805,8 +805,9 @@ export const athkarCategories: AthkarCategory[] = [
     "id": "home-remembrances",
     "title": "أذكار المنزل",
     "description": "أدعية الدخول والخروج من البيت",
-    "icon": "🏠",
+    "icon": "Home",
     "color": "indigo",
+    "accent": "#6366F1",
     "athkar": [
       {
         "id": "h1",
@@ -829,8 +830,9 @@ export const athkarCategories: AthkarCategory[] = [
     "id": "wakeup",
     "title": "أذكار الاستيقاظ من النوم",
     "description": "ما يقال عند الاستيقاظ لبدء يومك بالذكر",
-    "icon": "🌅",
+    "icon": "Sunrise",
     "color": "yellow",
+    "accent": "#EAB308",
     "athkar": [
       {
         "id": "w1",

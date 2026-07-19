@@ -383,7 +383,7 @@ export const DhikrCard = memo(({ dhikr, index, initialOpen = false, fontSize }: 
         data-testid={`button-done-${dhikr.id}`}
         aria-label="تم"
       >
-        {count > 0 ? "مكتمل ✓" : "تحديد كمكتمل"}
+        {count > 0 ? "مكتمل" : "تحديد كمكتمل"}
       </button>
     </div>
   );

@@ -13,6 +13,7 @@ import {
   Building2,
   BookOpenCheck,
   BookOpen,
+  Home,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -27,6 +28,7 @@ const ICON_MAP: Record<string, LucideIcon> = {
   Building2,
   BookOpenCheck,
   BookOpen,
+  Home,
 };
 
 interface CategoryCardProps {

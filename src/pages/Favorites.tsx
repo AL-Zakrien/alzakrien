@@ -19,7 +19,9 @@ export function Favorites() {
 
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="text-5xl mb-3 scale-in">📕</div>
+          <div className="flex justify-center mb-3 scale-in">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(251,191,36,0.7)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          </div>
           <h1
             className="font-serif text-3xl font-bold gradient-text mb-2"
             data-testid="text-favorites-title"

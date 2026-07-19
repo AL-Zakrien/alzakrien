@@ -268,7 +268,7 @@ export function Home() {
 
           {/* BENTO GRID — Category Cards */}
           <motion.section className="mb-10" aria-label="الأذكار" variants={sectionVariant}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3">
               {mainCategories.map((cat, i) => (
                 <CategoryCard key={cat.id} category={cat} index={i} />
               ))}
