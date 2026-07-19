@@ -351,21 +351,25 @@
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.10);
   border-radius: 1.25rem;
-  transition: all 0.3s ease;
-}
-.category-card:hover {
-  background: rgba(255,255,255,0.10);
-  transform: translateY(-2px);
-  border-color: rgba(245,158,11,0.2);
+  transition: box-shadow 0.3s ease;
 }
 
 .dhikr-card-islamic {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.10);
   border-radius: 1.25rem;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease;
   position: relative;
 }
+/* Hover-only shadow glow — pairs with spring scale on CategoryCard.
+   Box-shadow only: no background/color shift that competes with aurora palette. */
+.dhikr-card-hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+.dhikr-card-hover:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.32), 0 0 0 1px rgba(245,158,11,0.15);
+}
+
 .dhikr-card-islamic::before {
   content: '';
   position: absolute;

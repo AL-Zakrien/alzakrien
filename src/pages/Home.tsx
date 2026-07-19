@@ -2,6 +2,7 @@ import { Link, useLocation } from "wouter";
 import type { ReactNode } from "react";
 import { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { spring_smooth } from "@/lib/motion";
 import { NextPrayerWidget } from "@/components/NextPrayerWidget";
 import { athkarCategories } from "@/data/athkar";
 import { ArrowLeft, Search } from "lucide-react";
@@ -10,6 +11,16 @@ import { HISN_ALMUSLIM_REST_ITEMS } from "@/pages/MoreAthkar";
 import { GlassCard } from "@/components/glass/GlassCard";
 import { AthkarTabs } from "@/components/AthkarTabs";
 import { AuthenticityBand } from "@/components/AuthenticityBand";
+
+// Spring-based stagger variants — replaces CSS fade-in-up + stagger-N classes
+const pageVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } },
+};
+const sectionVariant = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: spring_smooth },
+};
 
 export function Home() {
   const mainCategories = athkarCategories.slice(0, 8);
@@ -141,7 +152,10 @@ export function Home() {
 
   return (
     <div className="min-h-screen relative">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+      <div
+        className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10"
+        style={{ transform: 'translateZ(0)' }}
+      >
 
         {/* ──────────────────────────────────────────────────
             HERO — Bismillah + Ayah
@@ -155,7 +169,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 8 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            transition={spring_smooth}
           >
             {/* Bismillah — Amiri display font */}
             <h1
@@ -192,22 +206,20 @@ export function Home() {
           </motion.div>
         </section>
 
-        {/* ──────────────────────────────────────────────────
-            AUTHENTICITY BAND — Trust signal
-        ────────────────────────────────────────────────── */}
         <AuthenticityBand />
 
-        {/* ──────────────────────────────────────────────────
-            NEXT PRAYER WIDGET — compact, single-prayer summary
-            Full 5-prayer table is exclusive to /adhan page.
-        ────────────────────────────────────────────────── */}
-        <NextPrayerWidget />
+        {/* ── STAGGERED SECTIONS: NextPrayer → Search → Tabs → Quick Links → Footer ── */}
+        <motion.div
+          variants={pageVariants}
+          initial="hidden"
+          animate="show"
+        >
+          {/* NEXT PRAYER WIDGET */}
+          <NextPrayerWidget />
 
-        {/* ──────────────────────────────────────────────────
-            SEARCH BAR
-        ────────────────────────────────────────────────── */}
-        <div className="mb-8 fade-in-up">
-          <GlassCard className="p-1">
+          {/* SEARCH BAR */}
+          <motion.div className="mb-8" variants={sectionVariant}>
+            <GlassCard className="p-1">
             <div className="relative group">
               <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-amber-300 transition-colors z-10" />
               <input
@@ -219,14 +231,13 @@ export function Home() {
                 dir="rtl"
               />
             </div>
-          </GlassCard>
-        </div>
+            </GlassCard>
+          </motion.div>
 
-        {/* ──────────────────────────────────────────────────
-            SEARCH RESULTS
-        ────────────────────────────────────────────────── */}
-        {searchQuery.trim() && (
-          <GlassCard className="mb-8 p-4 shadow-2xl fade-in-up z-50 relative">
+          {/* SEARCH RESULTS */}
+          {searchQuery.trim() && (
+            <motion.div variants={sectionVariant}>
+              <GlassCard className="mb-8 p-4 shadow-2xl z-50 relative">
             {loadingHisn ? (
               <div className="flex justify-center py-4">
                 <div className="animate-spin h-6 w-6 border-2 border-amber-400 border-t-transparent rounded-full" />
@@ -248,15 +259,14 @@ export function Home() {
             ) : (
               <p className="text-sm text-slate-400 text-center py-4">لم نجد نتائج بحث متطابقة..</p>
             )}
-          </GlassCard>
-        )}
+              </GlassCard>
+            </motion.div>
+          )}
 
-        {/* ──────────────────────────────────────────────────
-            ATHKAR TABS
-        ────────────────────────────────────────────────── */}
-        <section className="mb-10 fade-in-up stagger-4" aria-label="الأذكار">
-          <AthkarTabs categories={mainCategories} />
-        </section>
+          {/* ATHKAR TABS */}
+          <motion.section className="mb-10" aria-label="الأذكار" variants={sectionVariant}>
+            <AthkarTabs categories={mainCategories} />
+          </motion.section>
 
         {/* ──────────────────────────────────────────────────
             QUICK LINKS
@@ -264,7 +274,7 @@ export function Home() {
         <GlassCard className="p-4 mb-10">
           <div className="space-y-3">
             <Link href="/more">
-              <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/12 transition-all cursor-pointer flex items-center justify-between">
+              <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/12 transition-colors cursor-pointer flex items-center justify-between">
                 <ArrowLeft className="relative h-5 w-5 text-amber-300/70 group-hover:-translate-x-1 transition-transform" />
                 <div className="relative text-right">
                   <h3 className="font-bold text-lg text-slate-100">جميع الأذكار</h3>
@@ -275,7 +285,7 @@ export function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Link href="/tasbih">
-                <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/12 transition-all cursor-pointer">
+                <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/12 transition-colors cursor-pointer">
                   <div className="relative flex items-center justify-between">
                     <ArrowLeft className="h-5 w-5 text-amber-300/70 group-hover:-translate-x-1 transition-transform" />
                     <div className="text-right">
@@ -287,7 +297,7 @@ export function Home() {
               </Link>
 
               <Link href="/adhan">
-                <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/12 transition-all cursor-pointer">
+                <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/12 transition-colors cursor-pointer">
                   <div className="relative flex items-center justify-between">
                     <ArrowLeft className="h-5 w-5 text-sky-300/70 group-hover:-translate-x-1 transition-transform" />
                     <div className="text-right">
@@ -301,17 +311,16 @@ export function Home() {
           </div>
         </GlassCard>
 
-        {/* ──────────────────────────────────────────────────
-            FOOTER DU'A
-        ────────────────────────────────────────────────── */}
-        <div className="text-center pt-6 pb-12 fade-in-up stagger-6">
+          {/* FOOTER DU'A */}
+          <motion.div className="text-center pt-6 pb-12" variants={sectionVariant}>
           <div className="ornamental-divider w-32 mx-auto mb-4" />
           <p className="arabic-text text-base text-amber-300/65 leading-relaxed">
             اللَّهُمَّ اجْعَلْنَا مِنَ الذَّاكِرِينَ لك كَثِيرًا
           </p>
           <div className="ornamental-divider w-32 mx-auto mt-4" />
-        </div>
+          </motion.div>
 
+        </motion.div>
       </div>
     </div>
   );

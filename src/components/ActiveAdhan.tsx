@@ -117,7 +117,13 @@ export function ActiveAdhan() {
   const activeGroupIndex = Math.max(0, ADHAN_GROUPS.findIndex(g => g.includes(activePhraseIndex)));
 
   return (
-    <div className="fixed inset-0 z-[9999] bg-slate-950/95 backdrop-blur-xl flex flex-col items-center p-6 animate-fade-in">
+    <div
+      className="fixed inset-0 z-[9999] bg-slate-950/95 backdrop-blur-lg flex flex-col items-center p-6 animate-fade-in"
+      style={{
+        willChange: 'backdrop-filter',
+        transform: 'translateZ(0)',
+      }}
+    >
       <button 
         onClick={closeAdhan}
         className="absolute top-8 right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-colors z-50"
@@ -146,7 +152,7 @@ export function ActiveAdhan() {
             <div
               key={groupIndex}
               className={`
-                absolute w-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 transition-all duration-300 ease-in-out transform
+                absolute w-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 transition-[opacity,transform] duration-300 ease-in-out
                 ${isCurrentGroup 
                   ? "opacity-100 translate-y-0 scale-100" 
                   : isPastGroup 

@@ -5,6 +5,8 @@ import { DhikrCard } from "@/components/DhikrCard";
 import { getCategoryById } from "@/data/athkar";
 import { useTashkeel } from "@/context/TashkeelContext";
 import { useState, useCallback, useEffect } from "react";
+import { motion } from "framer-motion";
+import { spring_smooth } from "@/lib/motion";
 
 export function CategoryPage() {
   const { id } = useParams<{ id: string }>();
@@ -51,21 +53,31 @@ export function CategoryPage() {
   if (!category) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center fade-in-up">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={spring_smooth}
+        >
           <div className="text-4xl mb-4 text-primary/60">•</div>
           <h2 className="text-xl font-bold mb-2">الصفحة غير موجودة</h2>
           <Link href="/"><span className="text-primary hover:underline cursor-pointer">العودة للرئيسية</span></Link>
-        </div>
+        </motion.div>
       </div>
     );
   }
 
   return (
-    <div className="islamic-pattern min-h-screen">
+    <motion.div
+      className="islamic-pattern min-h-screen"
+      initial={{ opacity: 0, y: 14 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={spring_smooth}
+    >
       <div className="max-w-2xl mx-auto px-4 py-6">
 
         {/* Breadcrumb */}
-        <div className="flex items-center justify-end gap-2 mb-8 slide-in-right">
+        <div className="flex items-center justify-end gap-2 mb-8">
           <Link href="/">
             <span
               className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors text-sm cursor-pointer"
@@ -80,7 +92,7 @@ export function CategoryPage() {
         </div>
 
         {/* Hero Header */}
-        <div className="relative mb-8 fade-in-up stagger-1">
+        <div className="relative mb-8">
           <div className="relative bg-linear-to-bl from-primary/8 via-card to-accent/5 border border-primary/15 rounded-3xl p-8 overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-l from-primary via-accent to-primary opacity-60" />
 
@@ -89,17 +101,17 @@ export function CategoryPage() {
 
             <div className="relative text-center">
               <h1
-                className="font-serif text-3xl font-bold text-foreground mb-2 fade-in-up stagger-2"
+                className="font-serif text-3xl font-bold text-foreground mb-2"
                 data-testid="text-category-title"
               >
                 {category.title}
               </h1>
 
-              <p className="text-muted-foreground text-sm fade-in-up stagger-3 max-w-sm mx-auto">
+              <p className="text-muted-foreground text-sm max-w-sm mx-auto">
                 {category.description}
               </p>
 
-              <div className="flex items-center justify-center gap-4 mt-5 fade-in-up stagger-3">
+              <div className="flex items-center justify-center gap-4 mt-5">
                 <div className="h-px flex-1 max-w-20 bg-linear-to-l from-primary/30 to-transparent" />
                 <div className="flex gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent/50" />
@@ -113,7 +125,7 @@ export function CategoryPage() {
         </div>
 
         {/* Info bar */}
-        <div className="flex items-center justify-between mb-5 fade-in-up stagger-4">
+        <div className="flex items-center justify-between mb-5">
           <Link
             href={["morning", "evening", "wudu", "sleep", "prayer"].includes(category.id) ? "/" : "/more"}
             onClick={() => {
@@ -190,7 +202,7 @@ export function CategoryPage() {
         </div>
 
         {/* Footer */}
-        <div className="text-center mb-4 fade-in-up">
+        <div className="text-center mb-4">
           <div className="flex items-center justify-center gap-3 mb-5">
             <div className="h-px flex-1 max-w-15 bg-linear-to-l from-border to-transparent" />
             <span className="text-xs text-muted-foreground/50">•</span>
@@ -208,6 +220,6 @@ export function CategoryPage() {
           </Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

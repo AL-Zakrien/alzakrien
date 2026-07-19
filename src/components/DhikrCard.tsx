@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { type Dhikr } from "@/data/athkar";
 import { useFavorites } from "@/context/FavoritesContext";
 import { useTashkeel, removeTashkeel } from "@/context/TashkeelContext";
+import { motion } from "framer-motion";
+import { tap_icon, spring_snappy } from "@/lib/motion";
 
 interface DhikrCardProps {
   dhikr: Dhikr;
@@ -205,48 +207,54 @@ export const DhikrCard = memo(({ dhikr, index, initialOpen = false, fontSize }: 
 
   const actionButtons = (
     <div className="flex items-center gap-1">
-      <Button
-        variant="ghost"
-        size="icon"
-        className={`h-8 w-8 text-muted-foreground/60 hover:text-primary hover:bg-primary/8 rounded-lg transition-all transform-gpu ${shareAnimating ? "share-fly" : ""}`}
-        onClick={handleShare}
-        data-testid={`button-share-${dhikr.id}`}
-        aria-label="مشاركة"
-      >
-        {copied
-          ? <Check className="h-3.5 w-3.5 text-primary" />
-          : <Share2 className={`h-3.5 w-3.5 ${shareAnimating ? "share-icon-anim" : ""}`} />}
-      </Button>
-
-      {(dhikr.benefit || dhikr.explanation) && (
+      <motion.div whileTap={tap_icon} transition={spring_snappy} style={{ borderRadius: 'var(--radius-sm)' }}>
         <Button
           variant="ghost"
           size="icon"
-          className="h-8 w-8 text-muted-foreground/60 hover:text-accent hover:bg-accent/8 rounded-lg transform-gpu"
-          onClick={() => setExpanded(!expanded)}
-          data-testid={`button-expand-${dhikr.id}`}
-          aria-label={dhikr.benefit ? "الفضل" : "الشرح"}
+          className={`h-10 w-10 text-muted-foreground/60 hover:text-primary hover:bg-primary/8 rounded-[10px] transition-colors transform-gpu ${shareAnimating ? "share-fly" : ""}`}
+          onClick={handleShare}
+          data-testid={`button-share-${dhikr.id}`}
+          aria-label="مشاركة"
         >
-          {expanded
-            ? <ChevronUp className="h-3.5 w-3.5" />
-            : <ChevronDown className="h-3.5 w-3.5" />}
+          {copied
+            ? <Check className="h-3.5 w-3.5 text-primary" />
+            : <Share2 className={`h-3.5 w-3.5 ${shareAnimating ? "share-icon-anim" : ""}`} />}
         </Button>
+      </motion.div>
+
+      {(dhikr.benefit || dhikr.explanation) && (
+        <motion.div whileTap={tap_icon} transition={spring_snappy} style={{ borderRadius: 'var(--radius-sm)' }}>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-10 w-10 text-muted-foreground/60 hover:text-accent hover:bg-accent/8 rounded-[10px] transition-colors transform-gpu"
+            onClick={() => setExpanded(!expanded)}
+            data-testid={`button-expand-${dhikr.id}`}
+            aria-label={dhikr.benefit ? "الفضل" : "الشرح"}
+          >
+            {expanded
+              ? <ChevronUp className="h-3.5 w-3.5" />
+              : <ChevronDown className="h-3.5 w-3.5" />}
+          </Button>
+        </motion.div>
       )}
 
-      <Button
-        variant="ghost"
-        size="icon"
-        className={`h-8 w-8 rounded-lg transition-all transform-gpu ${
-          favorite
-            ? "text-accent hover:text-accent hover:bg-accent/15"
-            : "text-muted-foreground/60 hover:text-accent hover:bg-accent/8"
-        }`}
-        onClick={() => toggleFavorite(dhikr.id)}
-        data-testid={`button-favorite-${dhikr.id}`}
-        aria-label={favorite ? "إزالة من المحفوظات" : "إضافة إلى المحفوظات"}
-      >
-        <Star className={`h-3.5 w-3.5 ${favorite ? "fill-accent" : ""}`} />
-      </Button>
+      <motion.div whileTap={tap_icon} transition={spring_snappy} style={{ borderRadius: 'var(--radius-sm)' }}>
+        <Button
+          variant="ghost"
+          size="icon"
+          className={`h-10 w-10 rounded-[10px] transition-colors transform-gpu ${
+            favorite
+              ? "text-accent hover:text-accent hover:bg-accent/15"
+              : "text-muted-foreground/60 hover:text-accent hover:bg-accent/8"
+          }`}
+          onClick={() => toggleFavorite(dhikr.id)}
+          data-testid={`button-favorite-${dhikr.id}`}
+          aria-label={favorite ? "إزالة من المحفوظات" : "إضافة إلى المحفوظات"}
+        >
+          <Star className={`h-3.5 w-3.5 ${favorite ? "fill-accent" : ""}`} />
+        </Button>
+      </motion.div>
     </div>
   );
 
@@ -406,7 +414,7 @@ export const DhikrCard = memo(({ dhikr, index, initialOpen = false, fontSize }: 
   return (
     <div
       id={`dhikr-${dhikr.id}`}
-      className={`dhikr-card dhikr-card-islamic fade-in-up transform-gpu will-change-transform ${delayClass} ${isComplete ? "dhikr-card-complete opacity-90 shadow-none scale-[0.99]" : "shadow-md hover:shadow-lg"}`}
+      className={`dhikr-card dhikr-card-islamic fade-in-up transform-gpu will-change-transform ${delayClass} ${isComplete ? "dhikr-card-complete opacity-90 shadow-none scale-[0.99]" : "dhikr-card-hover"}`}
       data-testid={`card-dhikr-${dhikr.id}`}
       style={{ backfaceVisibility: 'hidden' }}
     >
@@ -433,23 +441,25 @@ export const DhikrCard = memo(({ dhikr, index, initialOpen = false, fontSize }: 
               </span>
             </div>
             <div className="flex items-center gap-1.5 flex-shrink-0">
-              <Button
-                variant="ghost"
-                size="icon"
-                className={`h-8 w-8 rounded-lg transition-all transform-gpu ${
-                  favorite
-                    ? "text-accent hover:text-accent hover:bg-accent/15"
-                    : "text-muted-foreground/60 hover:text-accent hover:bg-accent/8"
-                }`}
-                onClick={(event) => {
-                  event.stopPropagation();
-                  toggleFavorite(dhikr.id);
-                }}
-                data-testid={`button-favorite-header-${dhikr.id}`}
-                aria-label={favorite ? "إزالة من المحفوظات" : "إضافة إلى المحفوظات"}
-              >
-                <Star className={`h-3.5 w-3.5 ${favorite ? "fill-accent" : ""}`} />
-              </Button>
+              <motion.div whileTap={tap_icon} transition={spring_snappy} style={{ borderRadius: 'var(--radius-sm)' }}>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={`h-10 w-10 rounded-[10px] transition-colors transform-gpu ${
+                    favorite
+                      ? "text-accent hover:text-accent hover:bg-accent/15"
+                      : "text-muted-foreground/60 hover:text-accent hover:bg-accent/8"
+                  }`}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    toggleFavorite(dhikr.id);
+                  }}
+                  data-testid={`button-favorite-header-${dhikr.id}`}
+                  aria-label={favorite ? "إزالة من المحفوظات" : "إضافة إلى المحفوظات"}
+                >
+                  <Star className={`h-3.5 w-3.5 ${favorite ? "fill-accent" : ""}`} />
+                </Button>
+              </motion.div>
               <ChevronDown className={`h-4 w-4 text-muted-foreground/50 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
             </div>
           </div>

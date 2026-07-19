@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
+import { spring_smooth } from "@/lib/motion";
 
 /**
  * AuthenticityBand — Trust signal section on the home page.
@@ -13,7 +14,7 @@ export function AuthenticityBand() {
     <motion.section
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+      transition={{ ...spring_smooth, delay: 0.15 }}
       aria-label="مصادر المحتوى وأصالته"
       className="mb-10"
     >

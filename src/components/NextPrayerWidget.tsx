@@ -18,6 +18,7 @@ import { ArrowLeft } from "lucide-react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
 import type { PrayerPeriod } from "@/lib/prayerPeriod";
+import { spring_smooth } from "@/lib/motion";
 import {
   readCachedTimings,
   readPrayerSettings,
@@ -341,7 +342,7 @@ export function NextPrayerWidget() {
                     initial={{ opacity: 0, scale: 0.7 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.7 }}
-                    transition={reducedMotion ? { duration: 0 } : { duration: 0.35 }}
+                    transition={reducedMotion ? { duration: 0 } : spring_smooth}
                     className="h-10 w-10"
                     draggable={false}
                   />
@@ -365,7 +366,7 @@ export function NextPrayerWidget() {
                 initial={{ opacity: 0, y: 5 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
-                transition={reducedMotion ? { duration: 0 } : { duration: 0.3 }}
+                transition={reducedMotion ? { duration: 0 } : spring_smooth}
                 className="text-xl sm:text-2xl font-bold leading-tight text-white"
               >
                 {isLoading ? (
