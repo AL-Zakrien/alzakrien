@@ -1,9 +1,0 @@
-[build]
-  command = "cd artifacts/athkari && pnpm install && pnpm run build"
-  publish = "artifacts/athkari/dist/public"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = false
