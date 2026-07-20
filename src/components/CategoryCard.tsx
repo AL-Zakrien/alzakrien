@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { spring_smooth, tap_card } from "@/lib/motion";
 import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
 import { AURORA_PALETTES } from "@/components/DynamicBackground";
-import { Sunrise, MoonStar, Moon, Droplets, Volume2, BookOpen } from "lucide-react";
+import { Sunrise, Sunset, Moon, Droplets, Volume2, BookOpen, Sparkles } from "lucide-react";
 
 interface CategoryCardProps {
   category: AthkarCategory;
@@ -18,7 +18,7 @@ function getCategoryIcon(id: string, props: React.SVGProps<SVGSVGElement>) {
     case "morning":
       return <Sunrise {...props} />;
     case "evening":
-      return <MoonStar {...props} />;
+      return <Sunset {...props} />;
     case "sleep":
       return <Moon {...props} />;
     case "wudu":
@@ -26,21 +26,29 @@ function getCategoryIcon(id: string, props: React.SVGProps<SVGSVGElement>) {
     case "adhan":
       return <Volume2 {...props} />;
     case "masjid":
-      // Minimal dome/arch inline SVG
+      // Minimal Dome / Mosque SVG
       return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 1.5} {...props}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4c-3 0-5 3-5 6v10h10V10c0-3-2-6-5-6z" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v2" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18V12c0-3 3-5 6-5s6 2 6 5v6" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 18h18" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 21h14" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 7V4" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3a1.5 1.5 0 0 1 1.5 1.5" />
         </svg>
       );
-    case "prayer":
     case "after_prayer":
-      // Prayer mat/geometric abstract
+      // Sparkles representing completion/tasbih
+      return <Sparkles {...props} />;
+    case "prayer":
+      // Minimal Sajjadah (Prayer Rug) SVG
       return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 1.5} {...props}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h8" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 11l2 2-2 2-2-2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a1 1 0 0 0 1-1V8l-6-4-6 4v12a1 1 0 0 0 1 1z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8 21v2" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v2" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M16 21v2" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M10 10v4" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M14 10v4" />
         </svg>
       );
     case "home-remembrances":
@@ -102,7 +110,7 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
       >
         {/*
           ── Localized corner glow — strictly behind the icon at top-right ──
-          Uses heavy blur and 25% opacity (40 hex) to stay contained.
+          Uses heavy blur and 30% opacity (4D hex) linked to active AURORA_PALETTES.
         */}
         <div
           aria-hidden="true"
@@ -112,8 +120,8 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
             right: 0,
             width: 96,
             height: 96,
-            background: `radial-gradient(circle at 100% 0%, ${glowColor}40 0%, ${glowColor}00 70%)`,
-            filter: "blur(28px)", // Heavy blur, stays within 96x96 bounds
+            background: `radial-gradient(circle at 100% 0%, ${glowColor}4D 0%, ${glowColor}00 70%)`,
+            filter: "blur(24px)", // Enough blur to blend, but tight enough to stay visible
             pointerEvents: "none",
             transition: "background 0.8s ease",
           }}
