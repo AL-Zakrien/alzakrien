@@ -5,7 +5,17 @@ import { motion } from "framer-motion";
 import { spring_smooth, tap_card } from "@/lib/motion";
 import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
 import { AURORA_PALETTES } from "@/components/DynamicBackground";
-import { Sunrise, Sunset, Moon, Droplets, Volume2, BookOpen, Sparkles } from "lucide-react";
+import { Sunset, BookOpen } from "lucide-react";
+import { 
+  SunIcon, 
+  MoonSymbolIcon, 
+  BedIcon, 
+  BlurIcon, 
+  SoundIcon, 
+  MosqueIcon, 
+  PrayerRugIcon, 
+  TasbihIcon 
+} from "./CategoryIcons";
 
 interface CategoryCardProps {
   category: AthkarCategory;
@@ -16,41 +26,23 @@ interface CategoryCardProps {
 function getCategoryIcon(id: string, props: React.SVGProps<SVGSVGElement>) {
   switch (id) {
     case "morning":
-      return <Sunrise {...props} />;
+      return <SunIcon {...props} />;
     case "evening":
+      // User requested a "Sunset" icon to distinguish from sleep.
+      // Since it wasn't in the downloaded SVGs, we use lucide's Sunset.
       return <Sunset {...props} />;
     case "sleep":
-      return <Moon {...props} />;
+      return <MoonSymbolIcon {...props} />;
     case "wudu":
-      return <Droplets {...props} />;
+      return <BlurIcon {...props} />;
     case "adhan":
-      return <Volume2 {...props} />;
+      return <SoundIcon {...props} />;
     case "masjid":
-      // Minimal Dome / Mosque SVG
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 1.5} {...props}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18V12c0-3 3-5 6-5s6 2 6 5v6" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 18h18" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 21h14" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 7V4" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3a1.5 1.5 0 0 1 1.5 1.5" />
-        </svg>
-      );
-    case "after_prayer":
-      // Sparkles representing completion/tasbih
-      return <Sparkles {...props} />;
+      return <MosqueIcon {...props} />;
     case "prayer":
-      // Minimal Sajjadah (Prayer Rug) SVG
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 1.5} {...props}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a1 1 0 0 0 1-1V8l-6-4-6 4v12a1 1 0 0 0 1 1z" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8 21v2" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v2" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M16 21v2" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10 10v4" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M14 10v4" />
-        </svg>
-      );
+      return <PrayerRugIcon {...props} />;
+    case "after_prayer":
+      return <TasbihIcon {...props} />;
     case "home-remembrances":
       // Minimal house
       return (
