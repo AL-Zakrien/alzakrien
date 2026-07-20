@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { spring_smooth, tap_card } from "@/lib/motion";
 import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
 import { AURORA_PALETTES } from "@/components/DynamicBackground";
+import { BookOpen } from "lucide-react"; // Default icon placeholder
 
 interface CategoryCardProps {
   category: AthkarCategory;
@@ -27,94 +28,71 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
   // ── Live period → palette lookup ──────────────────────────────────────────
   const { effectivePeriod } = usePrayerPeriod();
   const palette = AURORA_PALETTES[effectivePeriod] ?? AURORA_PALETTES.isha;
-  const glowColor  = palette.c1;  // corner glow (darker blob = more ambient)
-  const countColor = palette.c2;  // count number accent
+  const glowColor  = palette.c1; // corner glow
+  const iconColor  = palette.c2; // icon accent
 
   const slug = categorySlugs[category.id] || category.id;
 
   return (
     <Link href={`/home/${slug}`}>
       <motion.div
-        className="group relative overflow-hidden cursor-pointer rounded-2xl border border-white/5 backdrop-blur-lg bg-white/5 h-36 flex flex-col justify-between items-start text-right p-4"
+        className="group relative overflow-hidden cursor-pointer rounded-2xl border border-white/5 border-t-white/10 border-l-white/10 backdrop-blur-xl bg-white/5 h-36 flex flex-col justify-between items-start text-right p-4 sm:p-5"
         data-testid={`card-category-${category.id}`}
         style={{ animationDelay: `${Math.min(index, 6) * 60}ms` }}
         initial={cardRest}
         whileHover={cardHover}
         whileTap={tap_card}
         transition={spring_smooth}
+        dir="rtl"
       >
         {/*
-          ── Localized corner glow — strictly behind the bottom-right corner ──
-          72×72 px absolute box: physically cannot bleed across card center.
-          filter:blur(16px) diffuses the light without touching the card body.
-          Fades to same-hue-zero-alpha (no CSS black-bleed artifact).
+          ── Localized corner glow — strictly behind the icon at top-right ──
+          Uses heavy blur (24px) and 30% opacity (4D) to stay contained.
         */}
         <div
           aria-hidden="true"
           style={{
             position: "absolute",
+            top: 0,
             right: 0,
-            bottom: 0,
-            width: 80,
-            height: 80,
-            background: `radial-gradient(circle at 100% 100%, ${glowColor}55 0%, ${glowColor}00 70%)`,
-            filter: "blur(16px)",
+            width: 96,
+            height: 96,
+            background: `radial-gradient(circle at 100% 0%, ${glowColor}4D 0%, ${glowColor}00 70%)`,
+            filter: "blur(24px)",
             pointerEvents: "none",
             transition: "background 0.8s ease",
           }}
         />
 
-        {/* Top-edge glint — glass depth */}
-        <span
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            inset: "0 0 auto 0",
-            height: 1,
-            background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent)",
-            pointerEvents: "none",
-          }}
-        />
+        {/* ── Top Section: Icon Placeholder ───────────────────────────────── */}
+        <div className="relative z-10">
+          <BookOpen 
+            className="w-6 h-6 opacity-80"
+            style={{ color: iconColor, transition: "color 0.8s ease" }} 
+            strokeWidth={1.5}
+          />
+        </div>
 
-        {/* ── Card content ────────────────────────────────────────────────── */}
-        <div className="relative flex flex-col justify-between w-full h-full" dir="rtl">
-          {/* Top part empty for future icon */}
-          <div className="w-full flex-1" />
-
-          {/* Bottom part: Title and count */}
-          <div className="w-full flex justify-between items-end">
-            <div className="text-right">
-              {/* Title */}
-              <h3 className="font-ui font-bold text-slate-100 leading-tight text-lg">
-                {category.title}
-              </h3>
-
-              {/* Subtitle — one line, muted, smaller */}
-              {category.subtitle && (
-                <p className="text-slate-500 leading-tight text-[10px] mt-1 truncate">
-                  {category.subtitle}
-                </p>
-              )}
-            </div>
-
-            {/* Count badge */}
-            <div className="flex flex-col items-center mb-1">
-              <span
-                className="font-ui font-bold tabular-nums"
-                style={{
-                  fontSize: 18,
-                  color: countColor,
-                  opacity: 0.9,
-                  transition: "color 0.8s ease",
-                }}
-              >
-                {category.athkar.length}
-              </span>
-              <span className="text-slate-500" style={{ fontSize: 8, marginTop: 1 }}>
-                ذكر
-              </span>
-            </div>
+        {/* ── Bottom Section: Pill Badge + Text ───────────────────────────── */}
+        <div className="relative z-10 flex flex-col items-start gap-1 w-full">
+          {/* Premium Pill Badge for Count */}
+          <div className="bg-white/10 rounded-full px-2.5 py-0.5 mb-1 backdrop-blur-md border border-white/5">
+            <span className="text-[10px] font-medium text-slate-200">
+              {category.athkar.length} أذكار
+            </span>
           </div>
+          
+          {/* Title */}
+          <h3 className="font-ui font-bold text-slate-100 leading-tight text-base sm:text-lg w-full truncate">
+            {category.title}
+          </h3>
+
+          {/* Subtitle */}
+          {category.subtitle && (
+            <p className="text-slate-400 leading-tight text-[10px] sm:text-[11px] w-full truncate">
+              {category.subtitle}
+            </p>
+          )}
         </div>
       </motion.div>
     </Link>
