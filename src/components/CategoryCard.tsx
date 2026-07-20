@@ -35,7 +35,7 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
   return (
     <Link href={`/home/${slug}`}>
       <motion.div
-        className="group relative overflow-hidden cursor-pointer rounded-2xl border border-white/5 backdrop-blur-lg bg-white/5 aspect-square flex flex-col items-center justify-center text-center p-3"
+        className="group relative overflow-hidden cursor-pointer rounded-2xl border border-white/5 backdrop-blur-lg bg-white/5 h-36 flex flex-col justify-between items-start text-right p-4"
         data-testid={`card-category-${category.id}`}
         style={{ animationDelay: `${Math.min(index, 6) * 60}ms` }}
         initial={cardRest}
@@ -76,45 +76,44 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
           }}
         />
 
-        {/* ── Card content — vertically centered ──────────────────────────── */}
-        <div className="relative flex flex-col items-center gap-2 w-full px-1">
+        {/* ── Card content ────────────────────────────────────────────────── */}
+        <div className="relative flex flex-col justify-between w-full h-full" dir="rtl">
+          {/* Top part empty for future icon */}
+          <div className="w-full flex-1" />
 
-          {/* Title */}
-          <h3
-            className="font-ui font-bold text-slate-100 leading-tight text-center w-full"
-            style={{ fontSize: 13 }}
-            dir="rtl"
-          >
-            {category.title}
-          </h3>
+          {/* Bottom part: Title and count */}
+          <div className="w-full flex justify-between items-end">
+            <div className="text-right">
+              {/* Title */}
+              <h3 className="font-ui font-bold text-slate-100 leading-tight text-lg">
+                {category.title}
+              </h3>
 
-          {/* Subtitle — one line, muted, smaller */}
-          {category.subtitle && (
-            <p
-              className="text-slate-500 leading-tight text-center w-full truncate"
-              style={{ fontSize: 10 }}
-              dir="rtl"
-            >
-              {category.subtitle}
-            </p>
-          )}
+              {/* Subtitle — one line, muted, smaller */}
+              {category.subtitle && (
+                <p className="text-slate-500 leading-tight text-[10px] mt-1 truncate">
+                  {category.subtitle}
+                </p>
+              )}
+            </div>
 
-          {/* Count badge */}
-          <div className="flex flex-col items-center mt-1">
-            <span
-              className="font-ui font-bold tabular-nums"
-              style={{
-                fontSize: 18,
-                color: countColor,
-                opacity: 0.9,
-                transition: "color 0.8s ease",
-              }}
-            >
-              {category.athkar.length}
-            </span>
-            <span className="text-slate-500" style={{ fontSize: 8, marginTop: 1 }}>
-              ذكر
-            </span>
+            {/* Count badge */}
+            <div className="flex flex-col items-center mb-1">
+              <span
+                className="font-ui font-bold tabular-nums"
+                style={{
+                  fontSize: 18,
+                  color: countColor,
+                  opacity: 0.9,
+                  transition: "color 0.8s ease",
+                }}
+              >
+                {category.athkar.length}
+              </span>
+              <span className="text-slate-500" style={{ fontSize: 8, marginTop: 1 }}>
+                ذكر
+              </span>
+            </div>
           </div>
         </div>
       </motion.div>
