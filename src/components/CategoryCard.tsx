@@ -40,7 +40,7 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
         data-testid={`card-category-${category.id}`}
         style={{
           // Dark neutral surface — identical for ALL cards regardless of category
-          background: "#12131c",
+          background: "#1c1e2b",
           borderRadius: 16,
           border: "1px solid rgba(255,255,255,0.07)",
           animationDelay: `${Math.min(index, 6) * 60}ms`,
