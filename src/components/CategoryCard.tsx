@@ -5,66 +5,33 @@ import { motion } from "framer-motion";
 import { spring_smooth, tap_card } from "@/lib/motion";
 import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
 import { AURORA_PALETTES } from "@/components/DynamicBackground";
-import { Sunset, BookOpen } from "lucide-react";
-import { 
-  SunIcon, 
-  MoonSymbolIcon, 
-  BedIcon, 
-  BlurIcon, 
-  SoundIcon, 
-  MosqueIcon, 
-  PrayerRugIcon, 
-  TasbihIcon 
-} from "./CategoryIcons";
+import { BookOpen } from "lucide-react";
+
+// 1. استدعي الأيقونات بشكل مباشر (Import)
+import SunIcon from '../assets/s/icons8-sun-50.svg';
+import MoonIcon from '../assets/s/icons8-moon-symbol-50.svg';
+import BedIcon from '../assets/s/icons8-bed-50.svg';
+import TasbihIcon from '../assets/s/icons8-tasbih-50.svg';
+import SoundIcon from '../assets/s/icons8-sound-50.svg';
+import BlurIcon from '../assets/s/icons8-blur-50.svg';
+import RugIcon from '../assets/s/icons8-prayer-rug-50.svg';
+import MosqueIcon from '../assets/s/icons8-mosque-50.svg';
+
+// 2. الخريطة الثابتة للأيقونات
+const iconMap: Record<string, string> = {
+  "أذكار الصباح": SunIcon,
+  "أذكار المساء": MoonIcon,
+  "أذكار النوم": BedIcon,
+  "أذكار بعد الصلاة": TasbihIcon,
+  "أذكار الأذان": SoundIcon,
+  "أذكار الطهارة": BlurIcon,
+  "أذكار الصلاة": RugIcon,
+  "أذكار المسجد": MosqueIcon
+};
 
 interface CategoryCardProps {
   category: AthkarCategory;
   index: number;
-}
-
-// ── Icon Mapping (Strictly inanimate symbols) ──────────────────────────────
-function getCategoryIcon(id: string, props: React.SVGProps<SVGSVGElement>) {
-  switch (id) {
-    case "morning":
-      return <SunIcon {...props} />;
-    case "evening":
-      // User requested a "Sunset" icon to distinguish from sleep.
-      // Since it wasn't in the downloaded SVGs, we use lucide's Sunset.
-      return <Sunset {...props} />;
-    case "sleep":
-      return <MoonSymbolIcon {...props} />;
-    case "wudu":
-      return <BlurIcon {...props} />;
-    case "adhan":
-      return <SoundIcon {...props} />;
-    case "masjid":
-      return <MosqueIcon {...props} />;
-    case "prayer":
-      return <PrayerRugIcon {...props} />;
-    case "after_prayer":
-      return <TasbihIcon {...props} />;
-    case "home-remembrances":
-      // Minimal house
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 1.5} {...props}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-          <polyline points="9 22 9 12 15 12 15 22" />
-        </svg>
-      );
-    case "wakeup":
-      // Sun rising over horizon
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 1.5} {...props}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4 16h16" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v2" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M20 12l-1.5-1.5" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4 12l1.5-1.5" />
-        </svg>
-      );
-    default:
-      return <BookOpen {...props} />;
-  }
 }
 
 // ── Framer Motion physics — unchanged ─────────────────────────────────────────
@@ -121,11 +88,29 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
 
         {/* ── Top Section: Dynamic Icon ───────────────────────────────────── */}
         <div className="relative z-10">
-          {getCategoryIcon(category.id, {
-            className: "w-6 h-6 opacity-80",
-            style: { color: iconColor, transition: "color 0.8s ease" },
-            strokeWidth: 1.5,
-          })}
+          {iconMap[category.title] ? (
+            <div 
+              className="w-6 h-6 opacity-80"
+              style={{
+                backgroundColor: iconColor,
+                maskImage: `url(${iconMap[category.title]})`,
+                maskSize: 'contain',
+                maskRepeat: 'no-repeat',
+                maskPosition: 'center',
+                WebkitMaskImage: `url(${iconMap[category.title]})`,
+                WebkitMaskSize: 'contain',
+                WebkitMaskRepeat: 'no-repeat',
+                WebkitMaskPosition: 'center',
+                transition: "background-color 0.8s ease"
+              }}
+            />
+          ) : (
+            <BookOpen 
+              className="w-6 h-6 opacity-80"
+              style={{ color: iconColor, transition: "color 0.8s ease" }} 
+              strokeWidth={1.5}
+            />
+          )}
         </div>
 
         {/* ── Bottom Section: Pill Badge + Text ───────────────────────────── */}
