@@ -1,55 +1,134 @@
 import { Link } from "wouter";
 import type { AthkarCategory } from "@/data/athkar";
-import type { LucideIcon } from "lucide-react";
-import { BookOpen } from "lucide-react";
+import { categorySlugs } from "@/data/athkar";
+import { motion } from "framer-motion";
+import { spring_smooth, tap_card } from "@/lib/motion";
+import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
+import { AURORA_PALETTES } from "@/components/DynamicBackground";
+
 
 interface CategoryCardProps {
   category: AthkarCategory;
   index: number;
-  Icon?: LucideIcon;
 }
 
-export function CategoryCard({ category, index, Icon: IconProp }: CategoryCardProps) {
-  const Icon = IconProp ?? BookOpen;
+// Spring hover lift — no colour shift, that's handled by the glow layer
+const cardHover = {
+  y: -4,
+  scale: 1.008,
+  boxShadow: "0 12px 32px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.10)",
+};
+const cardRest = {
+  y: 0,
+  scale: 1,
+  boxShadow: "0 2px 8px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.06)",
+};
+
+export function CategoryCard({ category, index }: CategoryCardProps) {
+  // ── Live period → palette lookup ──────────────────────────────────────────
+  const { effectivePeriod } = usePrayerPeriod();
+  const palette = AURORA_PALETTES[effectivePeriod] ?? AURORA_PALETTES.isha;
+  // Use c2 (the mid-tone blob color) at ~30% for the glow; c1 for the icon tint.
+  // Both update automatically when the period changes (or via DevPeriodPreview).
+  const glowColor = palette.c2;   // radial gradient anchor color
+  const cardBg    = palette.bg;   // dark period-toned base surface
+  const slug = categorySlugs[category.id] || category.id;
+
   return (
-    <Link href={`/category/${category.id}`}>
-      <span
-        className="group relative block overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-r from-white/[0.02] to-transparent backdrop-blur-xl p-4 sm:p-5 fade-in-up cursor-pointer transition-all duration-300 hover:border-amber-500/20 hover:-translate-y-0.5"
+    <Link href={`/home/${slug}`}>
+      <motion.div
+        className="group relative block overflow-hidden cursor-pointer"
         data-testid={`card-category-${category.id}`}
-        style={{ animationDelay: `${Math.min(index, 6) * 60}ms` }}
+        style={{
+          // Period-toned dark surface — follows the live Aurora theme via palette.bg.
+          // All bg values are very dark (<5% luminance) so white text stays readable.
+          background: cardBg,
+          borderRadius: 16,
+          border: "1px solid rgba(255,255,255,0.07)",
+          animationDelay: `${Math.min(index, 6) * 60}ms`,
+          transition: "background 0.8s ease",
+        }}
+        initial={cardRest}
+        whileHover={cardHover}
+        whileTap={tap_card}
+        transition={spring_smooth}
       >
-        {/* Subtle hover wash */}
-        <div className="absolute inset-0 bg-gradient-to-l from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {/* ── Period-reactive radial glow ── anchored bottom-right (RTL: bottom-left visually) */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            borderRadius: 16,
+            // Stronger glow (60% opacity hex: '99') but contained to < 50% of the card area
+            background: `radial-gradient(ellipse 75% 75% at 95% 105%, ${glowColor}99 0%, transparent 45%)`,
+            pointerEvents: "none",
+            // Smooth crossfade when period changes
+            transition: "background 0.8s ease",
+          }}
+        />
 
-        {/* Top hairline accent on hover */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-right" />
-
-        <div className="relative flex items-center gap-4">
-          {/* Floating hollow-glass circle icon */}
-          <div className="relative flex-shrink-0">
-            <div className="absolute inset-0 rounded-full bg-amber-500/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md flex items-center justify-center transition-all duration-300 group-hover:border-amber-500/20 group-hover:bg-amber-500/5">
-              <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-slate-300 group-hover:text-amber-300 transition-colors duration-300" strokeWidth={1.5} />
-            </div>
-          </div>
-
-          {/* Text content */}
-          <div className="flex-1 text-right min-w-0">
-            <h3 className="font-serif text-base sm:text-lg font-bold text-slate-100 mb-0.5 group-hover:text-amber-100 transition-colors duration-300">
+        {/* ── Card body ──────────────────────────────────────────────────────── */}
+        <div
+          className="relative flex items-center gap-3 p-4 sm:p-5"
+          dir="rtl"
+        >
+          {/* Text — title + subtitle */}
+          <div className="flex-1 min-w-0 text-right">
+            <h3
+              className="font-ui font-bold text-slate-100 leading-snug truncate"
+              style={{ fontSize: 15 }}
+            >
               {category.title}
             </h3>
-            <p className="text-xs text-slate-400 leading-relaxed line-clamp-1">{category.description}</p>
+            {category.subtitle && (
+              <p
+                className="text-slate-400 leading-snug mt-1 truncate"
+                style={{ fontSize: 12 }}
+              >
+                {category.subtitle}
+              </p>
+            )}
           </div>
 
-          {/* Count badge */}
-          <div className="flex flex-col items-center gap-0.5 flex-shrink-0">
-            <span className="text-sm font-bold text-amber-300/80 bg-amber-500/5 border border-amber-500/10 px-2.5 py-1 rounded-lg">
+          {/* Count — tinted with the period's c2 glow color */}
+          <div
+            className="flex-shrink-0 flex flex-col items-center"
+            style={{ minWidth: 32 }}
+          >
+            <span
+              className="font-ui font-bold tabular-nums"
+              style={{
+                fontSize: 14,
+                color: glowColor,
+                opacity: 0.9,
+                transition: "color 0.8s ease",
+              }}
+            >
               {category.athkar.length}
             </span>
-            <span className="text-[10px] text-slate-500">ذكر</span>
+            <span
+              className="text-slate-500"
+              style={{ fontSize: 9, marginTop: 1 }}
+            >
+              ذكر
+            </span>
           </div>
         </div>
-      </span>
+
+        {/* ── Top-edge highlight for glass depth ────────────────────────────── */}
+        <span
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: "0 0 auto 0",
+            height: 1,
+            background:
+              "linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)",
+            pointerEvents: "none",
+          }}
+        />
+      </motion.div>
     </Link>
   );
 }

@@ -19,8 +19,8 @@ import { TashkeelProvider } from "@/context/TashkeelContext";
 import { ActiveAdhan } from "@/components/ActiveAdhan";
 import { SplashScreen } from "@/components/SplashScreen";
 import { DynamicBackground } from "@/components/DynamicBackground";
-import { DevPeriodPreview } from "@/components/DevPeriodPreview";
 import { PrayerPeriodProvider } from "@/context/PrayerPeriodContext";
+import { DevPeriodPreview } from "@/components/DevPeriodPreview";
 import "./App.css";
 
 const queryClient = new QueryClient({
@@ -39,6 +39,7 @@ function Router() {
       <Route path="/adhan" component={Adhan} />
       <Route path="/notifications" component={Notifications} />
       <Route path="/category/:id" component={CategoryPage} />
+      <Route path="/home/:category" component={CategoryPage} />
       <Route path="/tasbih" component={Tasbih} />
       <Route path="/favorites" component={Favorites} />
       <Route path="/more" component={MoreAthkar} />
@@ -89,14 +90,11 @@ function App() {
                     <Router />
                     <MobileBottomNav />
                     <ActiveAdhan />
+                    <DevPeriodPreview />
                     <Toaster />
                     <SonnerToaster />
                   </WouterRouter>
                 </div>
-                {/* Dev-only floating control. Tree-shaken in production
-                    because DevPeriodPreview returns null when
-                    import.meta.env.DEV is false. */}
-                <DevPeriodPreview />
               </TooltipProvider>
             </TashkeelProvider>
           </FavoritesProvider>

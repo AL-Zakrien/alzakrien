@@ -2,6 +2,7 @@ import { useState } from "react";
 import { athkarCategories, type AthkarCategory } from "@/data/athkar";
 import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "./glass/GlassCard";
+import { spring_snappy, spring_smooth } from "@/lib/motion";
 
 interface AthkarTabsProps {
   categories: AthkarCategory[];
@@ -25,7 +26,7 @@ export function AthkarTabs({ categories }: AthkarTabsProps) {
               <motion.div
                 layoutId="pill-background"
                 className="absolute inset-0 bg-white/20 rounded-full"
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                transition={spring_snappy}
               />
             )}
             <span className="relative z-10">{item.title}</span>
@@ -38,7 +39,7 @@ export function AthkarTabs({ categories }: AthkarTabsProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.2 }}
+          transition={spring_smooth}
           className="space-y-4"
         >
           {selectedTab.athkar.slice(0, 5).map((dhikr) => ( // Limiting to 5 for preview on home page

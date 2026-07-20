@@ -1,10 +1,10 @@
 import {
   createContext,
-  useCallback,
   useContext,
   useEffect,
   useMemo,
   useState,
+  useCallback,
   type ReactNode,
 } from "react";
 import {
@@ -19,15 +19,14 @@ import {
 interface PrayerPeriodContextValue {
   /** Live, real-time period computed from the current time. */
   period: PrayerPeriod;
-  /** Effective period — equals the dev override when one is set, otherwise the live period. */
+  /** Effective period — uses devOverride when set, otherwise live period. */
   effectivePeriod: PrayerPeriod;
   timings: PrayerTimings | null;
   isLoading: boolean;
-  /** Dev-only: manually override the displayed period for preview. null = no override (live). */
-  devOverride: PrayerPeriod | null;
-  /** Dev-only setter for `devOverride`. */
-  setDevOverride: (p: PrayerPeriod | null) => void;
   refresh: () => Promise<void>;
+  /** Dev-only override for testing aurora palettes. */
+  devOverride: PrayerPeriod | null;
+  setDevOverride: (p: PrayerPeriod | null) => void;
 }
 
 const PrayerPeriodContext = createContext<PrayerPeriodContextValue | null>(null);
@@ -41,7 +40,6 @@ export function PrayerPeriodProvider({ children }: { children: ReactNode }) {
   const [period, setPeriod] = useState<PrayerPeriod>(() => getInitialPrayerPeriod());
   const [timings, setTimings] = useState<PrayerTimings | null>(() => readCachedTimings());
   const [isLoading, setIsLoading] = useState(() => readCachedTimings() === null);
-  // Dev-only override; never persisted, never read in production (see DevPeriodPreview).
   const [devOverride, setDevOverride] = useState<PrayerPeriod | null>(null);
 
   const refresh = useCallback(async () => {
@@ -92,8 +90,8 @@ export function PrayerPeriodProvider({ children }: { children: ReactNode }) {
   const effectivePeriod = devOverride ?? period;
 
   const value = useMemo(
-    () => ({ period, effectivePeriod, timings, isLoading, devOverride, setDevOverride, refresh }),
-    [period, effectivePeriod, timings, isLoading, devOverride, refresh],
+    () => ({ period, effectivePeriod, timings, isLoading, refresh, devOverride, setDevOverride }),
+    [period, effectivePeriod, timings, isLoading, refresh, devOverride],
   );
 
   return <PrayerPeriodContext.Provider value={value}>{children}</PrayerPeriodContext.Provider>;

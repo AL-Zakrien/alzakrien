@@ -1,5 +1,7 @@
+﻿import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "wouter";
 import { Home, BookOpen, Volume2, Target } from "lucide-react";
+import { spring_snappy, tap_button } from "@/lib/motion";
 
 export function MobileBottomNav() {
   const [location] = useLocation();
@@ -40,7 +42,7 @@ export function MobileBottomNav() {
           backdropFilter: "blur(28px) saturate(180%)",
           WebkitBackdropFilter: "blur(28px) saturate(180%)",
           border: "1px solid rgba(255,255,255,0.12)",
-          boxShadow: "0 8px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04)",
+          boxShadow: "var(--shadow-3)",
         }}
       >
         {navLinks.map((link) => {
@@ -48,34 +50,40 @@ export function MobileBottomNav() {
 
           return (
             <Link key={link.href} href={link.href} aria-current={isActive ? "page" : undefined}>
-              <div
-                className="relative flex flex-col items-center justify-center gap-0.5 transition-all duration-250 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70 rounded-2xl"
-                style={{
-                  minWidth: "52px",
-                  padding: "6px 10px",
-                }}
+              {/* motion.div wraps the tappable item — gives whileTap scale feedback */}
+              <motion.div
+                className="relative flex flex-col items-center justify-center gap-0.5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70 rounded-2xl min-w-[48px] px-2.5 py-2.5"
                 role="link"
                 tabIndex={0}
+                whileTap={tap_button}
+                whileHover={{ scale: 1.06 }}
+                transition={spring_snappy}
               >
-                {/* Active background highlight */}
-                {isActive && (
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-0 rounded-2xl nav-active-pop"
-                    style={{
-                      background: "rgba(245,158,11,0.15)",
-                      border: "1px solid rgba(245,158,11,0.25)",
-                    }}
-                  />
-                )}
+                {/* Active background highlight — layoutId drives spring slide */}
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.span
+                      key="mob-nav-indicator"
+                      layoutId="mob-nav-indicator"
+                      aria-hidden="true"
+                      className="absolute inset-0 rounded-2xl"
+                      style={{
+                        background: "rgba(245,158,11,0.15)",
+                        border: "1px solid rgba(245,158,11,0.25)",
+                      }}
+                      transition={spring_snappy}
+                    />
+                  )}
+                </AnimatePresence>
 
                 {/* Icon */}
                 <span
                   aria-hidden="true"
-                  className="relative z-10 transition-all duration-250"
+                  className="relative z-10"
                   style={{
                     color: isActive ? "#f59e0b" : "rgba(255,255,255,0.78)",
                     transform: isActive ? "scale(1.12)" : "scale(1)",
+                    transition: "color 0.2s ease, transform 0.2s ease",
                   }}
                 >
                   {link.icon}
@@ -83,26 +91,32 @@ export function MobileBottomNav() {
 
                 {/* Label */}
                 <span
-                  className="relative z-10 text-[10px] font-bold leading-none transition-all duration-250"
+                  className="relative z-10 text-[10px] font-bold leading-none"
                   style={{
                     color: isActive ? "#fbbf24" : "rgba(255,255,255,0.65)",
+                    transition: "color 0.2s ease",
                   }}
                 >
                   {link.label}
                 </span>
 
-                {/* Active dot indicator */}
-                {isActive && (
-                  <span
-                    aria-hidden="true"
-                    className="absolute -bottom-1.5 w-1.5 h-1.5 rounded-full nav-active-pop"
-                    style={{
-                      background: "#f59e0b",
-                      boxShadow: "0 0 8px rgba(245,158,11,0.9)",
-                    }}
-                  />
-                )}
-              </div>
+                {/* Active dot indicator — layoutId drives spring slide */}
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.span
+                      key="mob-nav-dot"
+                      layoutId="mob-nav-dot"
+                      aria-hidden="true"
+                      className="absolute -bottom-1.5 w-1.5 h-1.5 rounded-full"
+                      style={{
+                        background: "#f59e0b",
+                        boxShadow: "0 0 8px rgba(245,158,11,0.9)",
+                      }}
+                      transition={spring_snappy}
+                    />
+                  )}
+                </AnimatePresence>
+              </motion.div>
             </Link>
           );
         })}

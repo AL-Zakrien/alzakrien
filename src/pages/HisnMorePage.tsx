@@ -2,17 +2,9 @@ import { Link, useParams } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { HISN_ALMUSLIM_REST_ITEMS } from "@/pages/MoreAthkar";
 import { DhikrCard } from "@/components/DhikrCard";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import type { Dhikr } from "@/data/athkar";
-import { hisnChapterMeta } from "@/data/hisnMeta";
-
-interface HisnApiItem {
-  ID?: number;
-  ARABIC_TEXT?: string;
-  REPEAT?: number | string;
-}
-
-type HisnApiResponse = Record<string, HisnApiItem[]>;
+import hisnJson from "@/data/hisn_almuslim.json";
 
 export function HisnMorePage() {
   const { chapter } = useParams<{ chapter: string }>();
@@ -22,62 +14,43 @@ export function HisnMorePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const apiUrl = useMemo(
-    () => `https://www.hisnmuslim.com/api/ar/${chapterNumber}.json`,
-    [chapterNumber]
-  );
-
   useEffect(() => {
     if (!item) return;
 
-    const controller = new AbortController();
+    try {
+      setLoading(true);
+      setError(null);
 
-    const load = async () => {
-      try {
-        setLoading(true);
-        setError(null);
+      const keys = Object.keys(hisnJson);
+      const chapterName = keys[chapterNumber + 1];
+      if (!chapterName) throw new Error("الفصل غير موجود");
 
-        const response = await fetch(apiUrl, { signal: controller.signal });
-        if (!response.ok) throw new Error("تعذر جلب بيانات الذكر.");
-
-        const rawText = await response.text();
-        const cleaned = rawText.replace(/^\uFEFF/, "").trim();
-        const json = JSON.parse(cleaned) as HisnApiResponse;
-
-        const firstKey = Object.keys(json)[0];
-        const rows = firstKey ? json[firstKey] : [];
-
-        const sortedRows = [...(rows ?? [])].sort(
-          (a, b) => Number(a.ID ?? 0) - Number(b.ID ?? 0)
-        );
-
-        const hasMultipleItems = sortedRows.length > 1;
-        const meta = hisnChapterMeta[chapterNumber];
-        const mapped: Dhikr[] = sortedRows.map((row, index) => ({
-          id: `hisn-${chapterNumber}-${row.ID ?? index}`,
-          title: hasMultipleItems ? `${item.title} - الذكر ${index + 1}` : item.title,
-          text: row.ARABIC_TEXT ?? "",
-          count: 0,
-          repeat: Number(row.REPEAT) || 1,
-          source: "حصن المسلم",
-          benefit: meta?.benefit,
-          explanation: meta?.explanation,
-        }));
-
-        setAdhkar(mapped);
-      } catch (err) {
-        if ((err as Error).name !== "AbortError") {
-          setError("تعذر تحميل نص الذكر الآن. حاول مرة أخرى.");
-          setAdhkar([]);
-        }
-      } finally {
-        setLoading(false);
+      const chapterData = (hisnJson as Record<string, { text: string[] }>)[chapterName];
+      if (!chapterData || !Array.isArray(chapterData.text)) {
+        throw new Error("محتوى الفصل فارغ أو غير موجود");
       }
-    };
 
-    load();
-    return () => controller.abort();
-  }, [apiUrl, chapterNumber, item]);
+      const rows = chapterData.text;
+      const hasMultipleItems = rows.length > 1;
+      const mapped: Dhikr[] = rows.map((text, index) => ({
+        id: `hisn-${chapterNumber}-${index}`,
+        title: hasMultipleItems ? `${item.title} - الذكر ${index + 1}` : item.title,
+        text: text,
+        count: 0,
+        repeat: 1,
+        source: "حصن المسلم",
+        benefit: undefined,
+        explanation: undefined,
+      }));
+
+      setAdhkar(mapped);
+    } catch (err) {
+      setError("حدث خطأ أثناء تحميل محتوى الفصل.");
+      setAdhkar([]);
+    } finally {
+      setLoading(false);
+    }
+  }, [chapterNumber, item]);
 
   if (!item) {
     return (

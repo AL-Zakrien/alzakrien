@@ -3,10 +3,11 @@ import { CategoryCard } from "@/components/CategoryCard";
 import { Link } from "wouter";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import hisnJson from "@/data/hisn_almuslim.json";
 
 export const HISN_ALMUSLIM_REST_ITEMS = [
-  { chapter: 29, title: "الدعاء إذا تقلب ليلًا" },
-  { chapter: 30, title: "دعاء الفزع في النوم ومن بُلِي بالوحشة" },
+  { chapter: 29, title: "الدعاء إذا تقلب ليلاً" },
+  { chapter: 30, title: "دعاء القلق والفزع في النوم ومن بلي بالوحشة" },
   { chapter: 31, title: "ما يفعل من رأى الرؤيا أو الحلم" },
   { chapter: 32, title: "دعاء قنوت الوتر" },
   { chapter: 33, title: "الذكر عقب السلام من الوتر" },
@@ -15,16 +16,16 @@ export const HISN_ALMUSLIM_REST_ITEMS = [
   { chapter: 36, title: "دعاء لقاء العدو وذي السلطان" },
   { chapter: 37, title: "دعاء من خاف ظلم السلطان" },
   { chapter: 38, title: "الدعاء على العدو" },
-  { chapter: 39, title: "ما يقول من خاف قومًا" },
-  { chapter: 40, title: "دعاء من أصابه وسوسة في الإيمان" },
-  { chapter: 41, title: "دعاء قضاء الدين" },
+  { chapter: 39, title: "ما يقول من خاف قوماً" },
+  { chapter: 40, title: "دعاء من أصابه شك في الإيمان" },
+  { chapter: 41, title: "الدعاء قضاء الدين" },
   { chapter: 42, title: "دعاء الوسوسة في الصلاة والقراءة" },
   { chapter: 43, title: "دعاء من استصعب عليه أمر" },
-  { chapter: 44, title: "ما يقول ويفعل من أذنب ذنبًا" },
+  { chapter: 44, title: "ما يقول ويفعل من أذنب ذنباً" },
   { chapter: 45, title: "دعاء طرد الشيطان ووساوسه" },
-  { chapter: 46, title: "الدعاء حينما يقع ما لا يرضاه أو غُلِب على أمره" },
+  { chapter: 46, title: "الدعاء حينما يقع مالا يرضاه أو غلب على أمره" },
   { chapter: 47, title: "تهنئة المولود له وجوابه" },
-  { chapter: 48, title: "ما يعوّذ به الأولاد" },
+  { chapter: 48, title: "ما يعوذ به الأولاد" },
   { chapter: 49, title: "الدعاء للمريض في عيادته" },
   { chapter: 50, title: "فضل عيادة المريض" },
   { chapter: 51, title: "دعاء المريض الذي يئس من حياته" },
@@ -48,141 +49,96 @@ export const HISN_ALMUSLIM_REST_ITEMS = [
   { chapter: 69, title: "الدعاء قبل الطعام" },
   { chapter: 70, title: "الدعاء عند الفراغ من الطعام" },
   { chapter: 71, title: "دعاء الضيف لصاحب الطعام" },
-  { chapter: 72, title: "التعريض بالدعاء لطلب الطعام أو الشراب" },
+  { chapter: 72, title: "الدعاء لمن سقاه أو إذا أراد ذلك" },
   { chapter: 73, title: "الدعاء إذا أفطر عند أهل بيت" },
   { chapter: 74, title: "دعاء الصائم إذا حضر الطعام ولم يفطر" },
   { chapter: 75, title: "ما يقول الصائم إذا سابه أحد" },
   { chapter: 76, title: "الدعاء عند رؤية باكورة الثمر" },
   { chapter: 77, title: "دعاء العطاس" },
-  { chapter: 78, title: "ما يقال للكافر إذا عطس فحمد الله" },
+  { chapter: 78, title: "ما يقالُ للكافر إذا عطس فحمد الله" },
   { chapter: 79, title: "الدعاء للمتزوج" },
-  { chapter: 80, title: "دعاء المتزوج وشراء الدابة" },
+  { chapter: 80, title: "دعاء المتزوج لنفسه ودعاء شراء الدابة" },
   { chapter: 81, title: "الدعاء قبل إتيان الزوجة" },
   { chapter: 82, title: "دعاء الغضب" },
   { chapter: 83, title: "دعاء من رأى مبتلى" },
   { chapter: 84, title: "ما يقال في المجلس" },
-  { chapter: 85, title: "كفارة المجلس" },
-  { chapter: 86, title: "الدعاء لمن صنع إليك معروفًا" },
-  { chapter: 87, title: "ما يعصم الله به من الدجال" },
-  { chapter: 88, title: "الدعاء لمن قال إني أحبك في الله" },
-  { chapter: 89, title: "الدعاء لمن عرض عليك ماله" },
-  { chapter: 90, title: "الدعاء لمن أقرض عند القضاء" },
-  { chapter: 91, title: "دعاء الخوف من الشرك" },
-  { chapter: 92, title: "الدعاء لمن قال بارك الله فيك" },
-  { chapter: 93, title: "دعاء كراهية الطيرة" },
-  { chapter: 94, title: "دعاء الركوب" },
-  { chapter: 95, title: "دعاء السفر" },
-  { chapter: 96, title: "دعاء دخول القرية أو البلدة" },
-  { chapter: 97, title: "دعاء دخول السوق" },
+  { chapter: 85, title: "كفارة المجلس ومايختم به المجالس" },
+  { chapter: 86, title: "الدعاء لمن قال غفر الله لك" },
+  { chapter: 87, title: "الدعاء لمن صنع إليك معروفاً" },
+  { chapter: 88, title: "ما يعصم به من الدجال" },
+  { chapter: 89, title: "الدعاء لمن قال إني أحبك في الله" },
+  { chapter: 90, title: "الدعاء لمن عرض عليك ماله" },
+  { chapter: 91, title: "الدعاء لمن أقرض عند القضاء" },
+  { chapter: 92, title: "دعاء الخوف من الشرك" },
+  { chapter: 93, title: "الدعاء لمن قال بارك الله فيك" },
+  { chapter: 94, title: "دعاء كراهية الطيرة" },
+  { chapter: 95, title: "دعاء ركوب الدابة" },
+  { chapter: 96, title: "دعاء السفر" },
+  { chapter: 97, title: "دعاء دخول القرية أو البلدة" },
   { chapter: 98, title: "الدعاء إذا تعس المركوب" },
   { chapter: 100, title: "دعاء المسافر للمقيم" },
   { chapter: 101, title: "دعاء المقيم للمسافر" },
   { chapter: 102, title: "التكبير والتسبيح في سير السفر" },
   { chapter: 103, title: "دعاء المسافر إذا أسحر" },
-  { chapter: 104, title: "الدعاء إذا نزل منزلًا في سفر أو غيره" },
+  { chapter: 104, title: "الدعاء إذا نزل منزلا في سفر أو غيره" },
   { chapter: 105, title: "ذكر الرجوع من السفر" },
-  { chapter: 106, title: "ما يقول من أتاه أمر يسره أو يكرهه" },
-  { chapter: 107, title: "فضل الصلاة على النبي ﷺ" },
+  { chapter: 106, title: "ما يقول ويفعل من أتاه أمر يسره أو يكرهه" },
+  { chapter: 107, title: "فضل الصلاة على النبي صلى الله عليه وسلم" },
   { chapter: 108, title: "إفشاء السلام" },
   { chapter: 109, title: "كيف يرد السلام على الكافر إذا سلم" },
-  { chapter: 110, title: "الدعاء عند سماع صياح الديك ونهيق الحمار" },
+  { chapter: 110, title: "دعاء صياح الديك ونهيق الحمار" },
   { chapter: 111, title: "دعاء نباح الكلاب بالليل" },
   { chapter: 112, title: "الدعاء لمن سببته" },
   { chapter: 113, title: "ما يقول المسلم إذا مدح المسلم" },
-  { chapter: 114, title: "ما يقول المسلم إذا زُكِّي" },
-  { chapter: 115, title: "كيف يلبي المحرم في الحج أو العمرة؟" },
-  { chapter: 116, title: "التكبير إذا أتى الركن الأسود" },
+  { chapter: 114, title: "ما يقول المسلم إذا زكي" },
+  { chapter: 115, title: "كيف يلبي المحرم في الحج أو العمرة" },
+  { chapter: 116, title: "التكبيرة إذا أتي الركن الأسود" },
   { chapter: 117, title: "الدعاء بين الركن اليماني والحجر الأسود" },
   { chapter: 118, title: "دعاء الوقوف على الصفا والمروة" },
   { chapter: 119, title: "الدعاء يوم عرفة" },
   { chapter: 120, title: "الذكر عند المشعر الحرام" },
-  { chapter: 121, title: "التكبير عند رمي الجمار مع كل حصاة" },
-  { chapter: 122, title: "دعاء عند التعجب والأمر السار" },
+  { chapter: 121, title: "التكبيرة عند رمي الجمار مع كل حصاة" },
+  { chapter: 122, title: "ما يقول عند التعجب والأمر السار" },
   { chapter: 123, title: "ما يفعل من أتاه أمر يسره" },
-  { chapter: 124, title: "ما يقول من أحس وجعًا في جسده" },
-  { chapter: 125, title: "دعاء من خشي أن يصيب شيئًا بعينه" },
+  { chapter: 124, title: "ما يقول من أحس وجعاً في جسده" },
+  { chapter: 125, title: "دعاء من خشي أن يصيب شيئاً بعينه" },
   { chapter: 126, title: "ما يقال عند الفزع" },
   { chapter: 127, title: "ما يقول عند الذبح أو النحر" },
   { chapter: 128, title: "ما يقول لرد كيد مردة الشياطين" },
   { chapter: 129, title: "الاستغفار والتوبة" },
-  { chapter: 130, title: "فضل التسبيح والتحميد والتهليل والتكبير" },
-  { chapter: 131, title: "كيف كان النبي يسبح؟" },
-  { chapter: 132, title: "من أنواع الخير والآداب الجامعة" },
+  { chapter: 130, title: "فضل التسبيح والتحميد ، والتهليل ، والتكبير" },
+  { chapter: 131, title: "كيف كان النبي صلى الله عليه وسلم يسبح ؟" },
 ];
 
 function getItemDescription(title: string) {
   if (title.startsWith("ما ")) return title;
-  const cleanedTitle = title.replace(/^(الدعاء|دعاء|الذكر)\s+/, "").trim();
+  const cleanedTitle = title.replace(/^(دعاء|الذكر عند|الذكر بعد|أذكار)\s+/, "").trim();
   return `ما يقال عند ${cleanedTitle}`;
 }
 
 export function MoreAthkar() {
   const [hisnCounts, setHisnCounts] = useState<Record<number, number>>({});
-  const moreCategories = athkarCategories.slice(12);
+  const moreCategories = athkarCategories.slice(10);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 
   useEffect(() => {
-    const cacheKey = "hisn-chapter-counts-v1";
-    const cachedRaw = window.localStorage.getItem(cacheKey);
-    let cachedCounts: Record<number, number> = {};
+    const keys = Object.keys(hisnJson);
+    const counts: Record<number, number> = {};
 
-    if (cachedRaw) {
-      try {
-        cachedCounts = JSON.parse(cachedRaw) as Record<number, number>;
-        setHisnCounts(cachedCounts);
-      } catch {
-        // ignore
+    HISN_ALMUSLIM_REST_ITEMS.forEach((item) => {
+      const chapterName = keys[item.chapter + 1];
+      if (chapterName && (hisnJson as any)[chapterName]) {
+        const rows = (hisnJson as any)[chapterName].text;
+        counts[item.chapter] = Array.isArray(rows) ? rows.length : 1;
+      } else {
+        counts[item.chapter] = 1;
       }
-    }
+    });
 
-    const missingChapters = HISN_ALMUSLIM_REST_ITEMS
-      .map((item) => item.chapter)
-      .filter((chapter) => !(chapter in cachedCounts));
-
-    if (missingChapters.length === 0) return;
-
-    let cancelled = false;
-
-    const loadCounts = async () => {
-      const countEntries = await Promise.all(
-        missingChapters.map(async (chapter) => {
-          try {
-            const response = await fetch(`https://www.hisnmuslim.com/api/ar/${chapter}.json`);
-            if (!response.ok) return [chapter, 1] as const;
-
-            const rawText = await response.text();
-            const cleaned = rawText.replace(/^\uFEFF/, "").trim();
-            const data = JSON.parse(cleaned) as Record<string, unknown>;
-            const firstKey = Object.keys(data)[0];
-            const list = firstKey ? data[firstKey] : [];
-            const count = Array.isArray(list) ? list.length : 1;
-            return [chapter, Math.max(1, count)] as const;
-          } catch {
-            return [chapter, 1] as const;
-          }
-        })
-      );
-
-      if (cancelled) return;
-
-      setHisnCounts((prev) => {
-        const next = { ...prev };
-        for (const [chapter, count] of countEntries) {
-          next[chapter] = count;
-        }
-        window.localStorage.setItem(cacheKey, JSON.stringify(next));
-        return next;
-      });
-    };
-
-    loadCounts();
-
-    return () => {
-      cancelled = true;
-    };
+    setHisnCounts(counts);
   }, []);
 
   return (
