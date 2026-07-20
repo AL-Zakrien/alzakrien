@@ -73,15 +73,15 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
           {/* Text — title + subtitle */}
           <div className="flex-1 min-w-0 text-right">
             <h3
-              className="font-ui font-semibold text-slate-100 leading-snug truncate"
-              style={{ fontSize: 13 }}
+              className="font-ui font-bold text-slate-100 leading-snug truncate"
+              style={{ fontSize: 15 }}
             >
               {category.title}
             </h3>
             {category.subtitle && (
               <p
-                className="text-slate-400 leading-snug mt-0.5 truncate"
-                style={{ fontSize: 10 }}
+                className="text-slate-400 leading-snug mt-1 truncate"
+                style={{ fontSize: 12 }}
               >
                 {category.subtitle}
               </p>
