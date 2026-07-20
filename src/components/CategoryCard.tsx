@@ -6,12 +6,13 @@ import { spring_smooth, tap_card } from "@/lib/motion";
 import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
 import { AURORA_PALETTES } from "@/components/DynamicBackground";
 
+
 interface CategoryCardProps {
   category: AthkarCategory;
   index: number;
 }
 
-// Spring hover lift — no colour shift handled by accent badge only
+// Spring hover lift — no colour shift, that's handled by the glow layer
 const cardHover = {
   y: -4,
   scale: 1.008,
@@ -27,9 +28,9 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
   // ── Live period → palette lookup ──────────────────────────────────────────
   const { effectivePeriod } = usePrayerPeriod();
   const palette = AURORA_PALETTES[effectivePeriod] ?? AURORA_PALETTES.isha;
-  // c2 = mid-tone blob color used as the solid flat accent
-  const accentColor = palette.c2;
-
+  // Use c2 (the mid-tone blob color) at ~30% for the glow; c1 for the icon tint.
+  // Both update automatically when the period changes (or via DevPeriodPreview).
+  const glowColor = palette.c2;   // radial gradient anchor color
   const slug = categorySlugs[category.id] || category.id;
 
   return (
@@ -38,7 +39,7 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
         className="group relative block overflow-hidden cursor-pointer"
         data-testid={`card-category-${category.id}`}
         style={{
-          // Dark neutral glass surface — no gradient, no tint
+          // Dark neutral surface — identical for ALL cards regardless of category
           background: "#1c1e2b",
           borderRadius: 16,
           border: "1px solid rgba(255,255,255,0.07)",
@@ -49,6 +50,21 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
         whileTap={tap_card}
         transition={spring_smooth}
       >
+        {/* ── Period-reactive radial glow ── anchored bottom-right (RTL: bottom-left visually) */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            borderRadius: 16,
+            // Stronger glow (60% opacity hex: '99') but contained to < 50% of the card area
+            background: `radial-gradient(ellipse 75% 75% at 95% 105%, ${glowColor}99 0%, transparent 45%)`,
+            pointerEvents: "none",
+            // Smooth crossfade when period changes
+            transition: "background 0.8s ease",
+          }}
+        />
+
         {/* ── Card body ──────────────────────────────────────────────────────── */}
         <div
           className="relative flex items-center gap-3 p-4 sm:p-5"
@@ -72,39 +88,25 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
             )}
           </div>
 
-          {/* ── Solid flat accent badge ─────────────────────────────────────────
-              Flat hard-edged background-color from the active period's c2.
-              No gradient, no blur, no glow — just a clean solid fill.
-              Updates live via usePrayerPeriod() when period changes.          */}
+          {/* Count — tinted with the period's c2 glow color */}
           <div
-            className="flex-shrink-0 flex flex-col items-center justify-center"
-            style={{
-              width: 40,
-              height: 40,
-              borderRadius: 10,
-              // ← Flat solid color. No radial-gradient, no blur, no opacity wash.
-              backgroundColor: accentColor,
-              // Smooth transition between periods (color only, no shape change)
-              transition: "background-color 0.8s ease",
-            }}
+            className="flex-shrink-0 flex flex-col items-center"
+            style={{ minWidth: 32 }}
           >
             <span
               className="font-ui font-bold tabular-nums"
               style={{
-                fontSize: 13,
-                color: "rgba(255,255,255,0.95)",
-                lineHeight: 1,
+                fontSize: 14,
+                color: glowColor,
+                opacity: 0.9,
+                transition: "color 0.8s ease",
               }}
             >
               {category.athkar.length}
             </span>
             <span
-              style={{
-                fontSize: 8,
-                color: "rgba(255,255,255,0.7)",
-                marginTop: 2,
-                letterSpacing: "0.01em",
-              }}
+              className="text-slate-500"
+              style={{ fontSize: 9, marginTop: 1 }}
             >
               ذكر
             </span>
