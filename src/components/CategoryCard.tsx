@@ -50,18 +50,22 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
         whileTap={tap_card}
         transition={spring_smooth}
       >
-        {/* ── Period-reactive radial glow ── anchored bottom-right corner */}
+        {/* ── Period-reactive corner glow ── soft spot in bottom-left corner only */}
         <div
           aria-hidden="true"
           style={{
             position: "absolute",
             inset: 0,
             borderRadius: 16,
-            // Fix 1: Center at 92% 92% (inside card corner, not outside the edge).
-            // Fix 2: Fade to `${glowColor}00` not `transparent` — CSS interpolates
-            //         color→transparent through black (sRGB premult), causing muddy look.
-            //         Same hue at 0 alpha stays on-hue all the way to the edge.
-            background: `radial-gradient(ellipse 70% 70% at 92% 92%, ${glowColor}CC 0%, ${glowColor}00 55%)`,
+            // Two-layer approach for a natural "light source in corner" look:
+            // Layer 1 (front): tight bright core spot anchored at bottom-left corner
+            // Layer 2 (back):  soft wider halo just around the same corner
+            // Both use hue→same-hue-at-0-alpha to avoid the CSS black-bleed bug.
+            // The glow dies at 40-50% spread so it never reaches the opposite side.
+            background: [
+              `radial-gradient(ellipse 38% 42% at 10% 88%, ${glowColor}BB 0%, ${glowColor}00 100%)`,
+              `radial-gradient(ellipse 60% 65% at 8%  92%, ${glowColor}55 0%, ${glowColor}00 100%)`,
+            ].join(", "),
             pointerEvents: "none",
             transition: "background 0.8s ease",
           }}
