@@ -5,11 +5,66 @@ import { motion } from "framer-motion";
 import { spring_smooth, tap_card } from "@/lib/motion";
 import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
 import { AURORA_PALETTES } from "@/components/DynamicBackground";
-import { BookOpen } from "lucide-react"; // Default icon placeholder
+import { Sunrise, MoonStar, Moon, Droplets, Volume2, BookOpen } from "lucide-react";
 
 interface CategoryCardProps {
   category: AthkarCategory;
   index: number;
+}
+
+// ── Icon Mapping (Strictly inanimate symbols) ──────────────────────────────
+function getCategoryIcon(id: string, props: React.SVGProps<SVGSVGElement>) {
+  switch (id) {
+    case "morning":
+      return <Sunrise {...props} />;
+    case "evening":
+      return <MoonStar {...props} />;
+    case "sleep":
+      return <Moon {...props} />;
+    case "wudu":
+      return <Droplets {...props} />;
+    case "adhan":
+      return <Volume2 {...props} />;
+    case "masjid":
+      // Minimal dome/arch inline SVG
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 1.5} {...props}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4c-3 0-5 3-5 6v10h10V10c0-3-2-6-5-6z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v2" />
+        </svg>
+      );
+    case "prayer":
+    case "after_prayer":
+      // Prayer mat/geometric abstract
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 1.5} {...props}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h8" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 11l2 2-2 2-2-2z" />
+        </svg>
+      );
+    case "home-remembrances":
+      // Minimal house
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 1.5} {...props}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      );
+    case "wakeup":
+      // Sun rising over horizon
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={props.strokeWidth || 1.5} {...props}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4 16h16" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v2" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M20 12l-1.5-1.5" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4 12l1.5-1.5" />
+        </svg>
+      );
+    default:
+      return <BookOpen {...props} />;
+  }
 }
 
 // ── Framer Motion physics — unchanged ─────────────────────────────────────────
@@ -47,7 +102,7 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
       >
         {/*
           ── Localized corner glow — strictly behind the icon at top-right ──
-          Uses heavy blur (24px) and 30% opacity (4D) to stay contained.
+          Uses heavy blur and 25% opacity (40 hex) to stay contained.
         */}
         <div
           aria-hidden="true"
@@ -57,20 +112,20 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
             right: 0,
             width: 96,
             height: 96,
-            background: `radial-gradient(circle at 100% 0%, ${glowColor}4D 0%, ${glowColor}00 70%)`,
-            filter: "blur(24px)",
+            background: `radial-gradient(circle at 100% 0%, ${glowColor}40 0%, ${glowColor}00 70%)`,
+            filter: "blur(28px)", // Heavy blur, stays within 96x96 bounds
             pointerEvents: "none",
             transition: "background 0.8s ease",
           }}
         />
 
-        {/* ── Top Section: Icon Placeholder ───────────────────────────────── */}
+        {/* ── Top Section: Dynamic Icon ───────────────────────────────────── */}
         <div className="relative z-10">
-          <BookOpen 
-            className="w-6 h-6 opacity-80"
-            style={{ color: iconColor, transition: "color 0.8s ease" }} 
-            strokeWidth={1.5}
-          />
+          {getCategoryIcon(category.id, {
+            className: "w-6 h-6 opacity-80",
+            style: { color: iconColor, transition: "color 0.8s ease" },
+            strokeWidth: 1.5,
+          })}
         </div>
 
         {/* ── Bottom Section: Pill Badge + Text ───────────────────────────── */}
