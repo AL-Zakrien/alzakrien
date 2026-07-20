@@ -1,10 +1,7 @@
-import { Link, useLocation } from "wouter";
-import { Home, BookOpen, Volume2, Target } from "lucide-react";
 import { useState, useEffect } from "react";
 import logo from "../assets/logo.jpg";
 
 export function IslamicHeader() {
-  const [location] = useLocation();
   const [contactOpen, setContactOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const siteTitleMain = "الذاكرين";
@@ -30,13 +27,6 @@ export function IslamicHeader() {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, [contactOpen]);
-
-  const navLinks = [
-    { href: "/", label: "الرئيسية", icon: <Home className="h-4 w-4" /> },
-    { href: "/adhan", label: "الأذان", icon: <Volume2 className="h-4 w-4" /> },
-    { href: "/tasbih", label: "المسبحة", icon: <Target className="h-4 w-4" /> },
-    { href: "/favorites", label: "المحفوظات", icon: <BookOpen className="h-4 w-4" /> },
-  ];
 
   return (
     /* ── Outer positioner: sticky strip at top, full-width, items centered ── */
@@ -131,52 +121,10 @@ export function IslamicHeader() {
           )}
         </div>
 
-        {/* ── Separator ── */}
-        <span aria-hidden="true" className="w-px h-6" style={{ background: "rgba(255,255,255,0.12)" }} />
-
-        {/* ── Nav links ── */}
-        <nav
-          className="flex items-center gap-1"
-          aria-label="روابط التنقل"
-        >
-          {navLinks.map((link) => {
-            const isActive = location === link.href;
-            return (
-              <Link key={link.href} href={link.href}>
-                <span
-                  className="flex items-center gap-2 px-4 py-2 text-sm font-bold transition-all duration-250 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70"
-                  style={{
-                    borderRadius: "9999px",
-                    background: isActive
-                      ? "rgba(245,158,11,1)"
-                      : "transparent",
-                    color: isActive ? "#0a0a14" : "rgba(255,255,255,0.82)",
-                    boxShadow: isActive
-                      ? "0 2px 16px rgba(245,158,11,0.45)"
-                      : "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!isActive) {
-                      (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.08)";
-                      (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.95)";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isActive) {
-                      (e.currentTarget as HTMLElement).style.background = "transparent";
-                      (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.82)";
-                    }
-                  }}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  <span aria-hidden="true">{link.icon}</span>
-                  <span>{link.label}</span>
-                </span>
-              </Link>
-            );
-          })}
-        </nav>
-
+        {/*
+          Nav links have moved into the right-side <Sidebar> (desktop).
+          This top pill now carries only brand identity + contact.
+        */}
       </div>
     </header>
   );
