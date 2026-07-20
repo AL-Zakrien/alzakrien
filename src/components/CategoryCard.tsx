@@ -31,6 +31,7 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
   // Use c2 (the mid-tone blob color) at ~30% for the glow; c1 for the icon tint.
   // Both update automatically when the period changes (or via DevPeriodPreview).
   const glowColor = palette.c2;   // radial gradient anchor color
+  const cardBg    = palette.bg;   // dark period-toned base surface
   const slug = categorySlugs[category.id] || category.id;
 
   return (
@@ -39,11 +40,13 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
         className="group relative block overflow-hidden cursor-pointer"
         data-testid={`card-category-${category.id}`}
         style={{
-          // Dark neutral surface — identical for ALL cards regardless of category
-          background: "#1c1e2b",
+          // Period-toned dark surface — follows the live Aurora theme via palette.bg.
+          // All bg values are very dark (<5% luminance) so white text stays readable.
+          background: cardBg,
           borderRadius: 16,
           border: "1px solid rgba(255,255,255,0.07)",
           animationDelay: `${Math.min(index, 6) * 60}ms`,
+          transition: "background 0.8s ease",
         }}
         initial={cardRest}
         whileHover={cardHover}
