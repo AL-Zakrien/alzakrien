@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import type { ReactNode } from "react";
 import { useMemo, useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { spring_smooth } from "@/lib/motion";
 import { NextPrayerWidget } from "@/components/NextPrayerWidget";
 import { athkarCategories, categorySlugs } from "@/data/athkar";
