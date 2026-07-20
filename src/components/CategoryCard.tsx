@@ -50,17 +50,19 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
         whileTap={tap_card}
         transition={spring_smooth}
       >
-        {/* ── Period-reactive radial glow ── anchored bottom-right (RTL: bottom-left visually) */}
+        {/* ── Period-reactive radial glow ── anchored bottom-right corner */}
         <div
           aria-hidden="true"
           style={{
             position: "absolute",
             inset: 0,
             borderRadius: 16,
-            // Stronger glow (60% opacity hex: '99') but contained to < 50% of the card area
-            background: `radial-gradient(ellipse 75% 75% at 95% 105%, ${glowColor}99 0%, transparent 45%)`,
+            // Fix 1: Center at 92% 92% (inside card corner, not outside the edge).
+            // Fix 2: Fade to `${glowColor}00` not `transparent` — CSS interpolates
+            //         color→transparent through black (sRGB premult), causing muddy look.
+            //         Same hue at 0 alpha stays on-hue all the way to the edge.
+            background: `radial-gradient(ellipse 70% 70% at 92% 92%, ${glowColor}CC 0%, ${glowColor}00 55%)`,
             pointerEvents: "none",
-            // Smooth crossfade when period changes
             transition: "background 0.8s ease",
           }}
         />
