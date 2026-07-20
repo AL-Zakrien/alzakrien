@@ -7,47 +7,45 @@ import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
 import { AURORA_PALETTES } from "@/components/DynamicBackground";
 import { BookOpen } from "lucide-react";
 
-// استيراد أيقونة المسبحة مباشرة كما طلبت
-import TasbihIcon from '../assets/s/icons8-tasbih-50.svg';
-
-// استيراد باقي الأيقونات من المكونات التي قمنا بإنشائها مسبقاً
-import { 
-  SunIcon, 
-  MoonSymbolIcon as MoonIcon, 
-  BedIcon, 
-  SoundIcon, 
-  BlurIcon, 
-  PrayerRugIcon as RugIcon, 
-  MosqueIcon 
-} from "./CategoryIcons";
+// استيراد الأيقونات كمسارات (URL) لمنع الخطأ البرمجي في React
+import SunIcon from '../assets/s/icons8-sun-50.svg?url';
+import MoonIcon from '../assets/s/icons8-moon-symbol-50.svg?url';
+import BedIcon from '../assets/s/icons8-bed-50.svg?url';
+import TasbihIcon from '../assets/s/icons8-tasbih-50.svg?url';
+import SoundIcon from '../assets/s/icons8-sound-50.svg?url';
+import BlurIcon from '../assets/s/icons8-blur-50.svg?url';
+import RugIcon from '../assets/s/icons8-prayer-rug-50.svg?url';
+import MosqueIcon from '../assets/s/icons8-mosque-50.svg?url';
 
 interface CategoryCardProps {
   category: AthkarCategory;
   index: number;
 }
 
-// دالة تحديد الأيقونة مع جملة switch
-function getCategoryIcon(title: string, props: React.SVGProps<SVGSVGElement>) {
+// دالة تحديد الأيقونة بإرجاع صورة <img>
+function getCategoryIcon(title: string, iconColor: string) {
+  const commonClasses = "w-6 h-6 opacity-80 stroke-current";
+  const commonStyles = { color: iconColor, transition: "color 0.8s ease" };
+
   switch (title) {
     case "أذكار الصباح":
-      return <SunIcon {...props} />;
+      return <img src={SunIcon} className={commonClasses} style={commonStyles} alt="أذكار الصباح" />;
     case "أذكار المساء":
-      return <MoonIcon {...props} />;
+      return <img src={MoonIcon} className={commonClasses} style={commonStyles} alt="أذكار المساء" />;
     case "أذكار النوم":
-      return <BedIcon {...props} />;
+      return <img src={BedIcon} className={commonClasses} style={commonStyles} alt="أذكار النوم" />;
     case "أذكار بعد الصلاة": 
-      // @ts-ignore - Ignoring type error in case Vite SVGR default export is used
-      return <TasbihIcon {...props} />;
+      return <img src={TasbihIcon} className={commonClasses} style={commonStyles} alt="Tasbih" />;
     case "أذكار الأذان":
-      return <SoundIcon {...props} />;
+      return <img src={SoundIcon} className={commonClasses} style={commonStyles} alt="الأذان" />;
     case "أذكار الطهارة":
-      return <BlurIcon {...props} />;
+      return <img src={BlurIcon} className={commonClasses} style={commonStyles} alt="الطهارة" />;
     case "أذكار الصلاة":
-      return <RugIcon {...props} />;
+      return <img src={RugIcon} className={commonClasses} style={commonStyles} alt="الصلاة" />;
     case "أذكار المسجد":
-      return <MosqueIcon {...props} />;
+      return <img src={MosqueIcon} className={commonClasses} style={commonStyles} alt="المسجد" />;
     default:
-      return <BookOpen {...props} strokeWidth={1.5} />;
+      return <BookOpen className={commonClasses} style={commonStyles} strokeWidth={1.5} />;
   }
 }
 
@@ -105,11 +103,7 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
 
         {/* ── Top Section: Dynamic Icon ───────────────────────────────────── */}
         <div className="relative z-10">
-          {getCategoryIcon(category.title, {
-            className: "w-6 h-6 opacity-80",
-            style: { color: iconColor, transition: "color 0.8s ease" },
-            strokeWidth: 1.5
-          })}
+          {getCategoryIcon(category.title, iconColor)}
         </div>
 
         {/* ── Bottom Section: Pill Badge + Text ───────────────────────────── */}
