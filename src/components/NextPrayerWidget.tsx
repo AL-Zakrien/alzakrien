@@ -237,198 +237,117 @@ export function NextPrayerWidget() {
   return (
     <section
       aria-label="الصلاة القادمة"
-      className="h-full fade-in-up stagger-2"
+      className="h-full w-full fade-in-up stagger-2"
     >
-      {/* Glass panel */}
-      <div
-        className="relative overflow-hidden rounded-2xl border border-white/10 backdrop-blur-2xl h-full flex flex-col justify-center"
-        style={{
-          background: "rgba(255,255,255,0.06)",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.07)",
-        }}
-      >
-        {/* Top highlight */}
-        <span
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-px pointer-events-none"
+      <Link href="/adhan" className="block h-full w-full">
+        {/* Glass panel */}
+        <div
+          className="group relative overflow-hidden rounded-3xl border border-white/5 border-t-white/10 border-l-white/10 backdrop-blur-3xl h-full flex flex-col justify-between p-6 sm:p-8 cursor-pointer transition-colors hover:bg-white/[0.04]"
           style={{
-            background:
-              "linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent)",
+            background: "rgba(255,255,255,0.02)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.05)",
           }}
-        />
-
-        {/* Aurora accent blobs */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div
-            className="absolute -top-10 -right-8 h-28 w-28 rounded-full blur-3xl"
-            style={{ background: accent, opacity: 0.10 }}
+        >
+          {/* Top highlight line */}
+          <span
+            aria-hidden="true"
+            className="absolute inset-x-0 top-0 h-px pointer-events-none"
+            style={{
+              background: `linear-gradient(90deg, transparent, ${accent.replace('0.90', '0.4')}, transparent)`,
+            }}
           />
-          <div
-            className="absolute -bottom-8 -left-6 h-24 w-24 rounded-full blur-3xl"
-            style={{ background: accent, opacity: 0.06 }}
-          />
-        </div>
 
-        {/* Content row — RTL layout */}
-        <div className="relative flex items-center gap-4 px-4 py-3.5 sm:px-5 sm:py-4" dir="rtl">
-
-          {/* SVG progress ring */}
-          <div
-            className="relative flex-shrink-0"
-            style={{ width: SVG_SIZE, height: SVG_SIZE }}
-            role="img"
-            aria-label={
-              nextPrayer
-                ? `متبقي على ${nextPrayer.meta.arabicName}: ${countdown}`
-                : "جاري التحميل"
-            }
-          >
-            <svg
-              width={SVG_SIZE}
-              height={SVG_SIZE}
-              viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
-              style={{ transform: "rotate(-90deg)" }}
-              aria-hidden="true"
-            >
-              {/* Background track */}
-              <circle
-                cx={CX}
-                cy={CY}
-                r={RING_R}
-                fill="none"
-                stroke={track}
-                strokeWidth={STROKE}
-              />
-              {/* Foreground arc — remaining time */}
-              {!isLoading && (
-                <circle
-                  cx={CX}
-                  cy={CY}
-                  r={RING_R}
-                  fill="none"
-                  stroke={accent}
-                  strokeWidth={STROKE}
-                  strokeLinecap="round"
-                  strokeDasharray={circumference}
-                  strokeDashoffset={dashOffset}
-                  style={{
-                    transition: reducedMotion
-                      ? "none"
-                      : "stroke-dashoffset 1s linear, stroke 0.8s ease",
-                    filter: `drop-shadow(0 0 5px ${accent})`,
-                  }}
-                />
-              )}
-            </svg>
-
-            {/* Icon in ring centre */}
+          {/* Aurora accent blobs (diffused) */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div
-              className="absolute inset-0 flex items-center justify-center"
-              aria-hidden="true"
-            >
-              {isLoading ? (
-                <div
-                  className="h-5 w-5 rounded-full border-2 border-white/20 border-t-white/70"
-                  style={{
-                    animation: reducedMotion ? "none" : "spin 1s linear infinite",
-                  }}
-                />
-              ) : (
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={displayKey ?? "loading"}
-                    src={icon}
-                    alt=""
-                    initial={{ opacity: 0, scale: 0.7 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.7 }}
-                    transition={reducedMotion ? { duration: 0 } : spring_smooth}
-                    className="h-10 w-10"
-                    draggable={false}
-                  />
-                </AnimatePresence>
-              )}
-            </div>
+              className="absolute -top-12 -right-12 h-40 w-40 rounded-full blur-3xl transition-colors duration-1000"
+              style={{ background: accent, opacity: 0.15 }}
+            />
+            <div
+              className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full blur-3xl transition-colors duration-1000"
+              style={{ background: accent, opacity: 0.08 }}
+            />
           </div>
 
-          {/* Prayer name + countdown */}
-          <div className="flex-1 min-w-0 text-right">
-            <p
-              className="text-[10px] font-semibold tracking-widest mb-0.5 uppercase"
-              style={{ color: "rgba(255,255,255,0.42)" }}
-            >
-              الصلاة القادمة
-            </p>
-
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={displayKey ?? "loading-name"}
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                transition={reducedMotion ? { duration: 0 } : spring_smooth}
-                className="text-xl sm:text-2xl font-bold leading-tight text-white"
+          {/* ── Top Row: Icon & Name ── */}
+          <div className="relative z-10 flex items-center justify-between" dir="rtl">
+            <div className="flex items-center gap-3">
+              <div 
+                className="w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md"
+                style={{ background: "rgba(255,255,255,0.05)", boxShadow: `0 0 15px ${accent.replace('0.90', '0.2')}` }}
               >
                 {isLoading ? (
-                  <span
-                    className="inline-block h-6 w-20 rounded bg-white/10 animate-pulse"
-                    aria-hidden="true"
-                  />
+                  <div className="h-5 w-5 rounded-full border-2 border-white/20 border-t-white/70 animate-spin" />
                 ) : (
-                  displayName
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={displayKey ?? "loading"}
+                      src={icon}
+                      alt=""
+                      initial={{ opacity: 0, scale: 0.7 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.7 }}
+                      transition={reducedMotion ? { duration: 0 } : spring_smooth}
+                      className="h-6 w-6 brightness-0 invert"
+                      draggable={false}
+                    />
+                  </AnimatePresence>
                 )}
-              </motion.p>
-            </AnimatePresence>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-semibold tracking-widest text-white/40 uppercase">
+                  الصلاة القادمة
+                </span>
+                <AnimatePresence mode="wait">
+                  <motion.p
+                    key={displayKey ?? "loading-name"}
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -5 }}
+                    transition={reducedMotion ? { duration: 0 } : spring_smooth}
+                    className="text-lg sm:text-xl font-bold leading-tight text-white"
+                  >
+                    {isLoading ? (
+                      <span className="inline-block h-5 w-16 rounded bg-white/10 animate-pulse" />
+                    ) : (
+                      displayName
+                    )}
+                  </motion.p>
+                </AnimatePresence>
+              </div>
+            </div>
 
-            {/* Live countdown */}
-            <p
-              className="mt-1 font-mono text-sm sm:text-base font-bold tracking-widest tabular-nums"
-              style={{ color: accent }}
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              {isLoading ? (
-                <span
-                  className="inline-block h-4 w-16 rounded bg-white/10 animate-pulse"
-                  aria-hidden="true"
-                />
-              ) : (
-                countdown
-              )}
-            </p>
+            {/* Subtle arrow to indicate tap */}
+            <ArrowLeft className="h-5 w-5 text-white/30 group-hover:text-white/70 transition-colors group-hover:-translate-x-1" />
           </div>
 
-          {/* Link to full Adhan page */}
-          <Link href="/adhan">
-            <div
-              className="flex-shrink-0 group flex items-center gap-1.5 rounded-xl px-3 py-2 transition-all duration-200 hover:bg-white/10 cursor-pointer"
-              style={{ border: "1px solid rgba(255,255,255,0.10)" }}
-              title="جداول مواقيت الصلاة الكاملة"
-            >
-              <ArrowLeft
-                className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-1"
-                style={{ color: accent }}
-              />
-              <span
-                className="text-xs font-semibold"
-                style={{ color: "rgba(255,255,255,0.65)" }}
+          {/* ── Bottom Row: Massive Countdown ── */}
+          <div className="relative z-10 mt-6 sm:mt-8 flex justify-end" dir="ltr">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={countdown}
+                initial={false}
+                animate={{ opacity: 1 }}
+                className="font-mono font-bold tracking-tighter tabular-nums"
+                style={{
+                  color: accent,
+                  fontSize: "clamp(3rem, 10vw, 4.5rem)", // Massive scaling typography
+                  lineHeight: "1",
+                  textShadow: `0 4px 30px ${accent.replace('0.90', '0.4')}`, // Gorgeous glow
+                }}
+                aria-live="polite"
+                aria-atomic="true"
               >
-                جداول الصلاة
-              </span>
-            </div>
-          </Link>
+                {isLoading ? (
+                  <span className="inline-block h-12 w-32 rounded-xl bg-white/10 animate-pulse" />
+                ) : (
+                  countdown
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
-
-        {/* Bottom hairline */}
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 left-0 right-0 h-px"
-          style={{
-            background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
-            opacity: 0.25,
-          }}
-        />
-      </div>
+      </Link>
     </section>
   );
 }

@@ -150,6 +150,19 @@ export function Home() {
     return results.slice(0, 15);
   }, [searchQuery, hisnAthkar]);
 
+  // ── Contextual Greeting Logic ─────────────────────────────────────────────
+  const hour = new Date().getHours();
+  let greeting = "";
+  if (hour >= 4 && hour < 12) greeting = "صباح الخير";
+  else if (hour >= 12 && hour < 15) greeting = "طاب نهارك";
+  else if (hour >= 15 && hour < 20) greeting = "مساء الخير";
+  else greeting = "طابت ليلتك";
+
+  // Determine highlighted categories
+  const isMorningHighlight = hour >= 4 && hour < 12;
+  const isEveningHighlight = hour >= 15 && hour < 20;
+  const isSleepHighlight = hour >= 20 || hour < 4;
+
   return (
     <div className="min-h-screen relative">
       <div
@@ -158,19 +171,22 @@ export function Home() {
       >
 
         {/* ──────────────────────────────────────────────────
-            HERO — Bismillah + Ayah
-            No card wrapper — blends directly into the aurora.
-            Amiri (display) for Bismillah, Cairo for ayah.
+            HERO — Contextual Greeting + Basmala + Ayah
         ────────────────────────────────────────────────── */}
         <section
-          className="text-center mb-10 mt-10 sm:mt-14"
-          aria-label="البسملة والآية الكريمة"
+          className="text-center mb-8 mt-10 sm:mt-14"
+          aria-label="الترحيب والبسملة"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 8 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={spring_smooth}
           >
+            {/* Contextual Greeting */}
+            <h2 className="text-amber-400/80 font-bold text-lg sm:text-xl mb-4 tracking-wide">
+              {greeting}
+            </h2>
+
             {/* Bismillah — Amiri display font */}
             <h1
               className="font-athkar arabic-text text-white font-bold mb-5 hero-bismillah"
@@ -195,9 +211,9 @@ export function Home() {
 
             {/* Ayah — Cairo font */}
             <p
-              className="font-ui text-white/90 arabic-text leading-relaxed max-w-2xl mx-auto hero-ayah"
+              className="font-ui text-white/80 arabic-text leading-relaxed max-w-2xl mx-auto hero-ayah"
               style={{
-                fontSize: "clamp(1rem, 2.5vw, 1.375rem)",
+                fontSize: "clamp(1rem, 2.5vw, 1.25rem)",
                 fontWeight: 500,
               }}
             >
@@ -206,16 +222,72 @@ export function Home() {
           </motion.div>
         </section>
 
+        {/* ── SLEEK SEARCH PILL ── */}
+        <motion.div 
+          className="max-w-md mx-auto mb-10" 
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ...spring_smooth, delay: 0.1 }}
+        >
+          <div className="relative group overflow-hidden rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-colors hover:bg-white/[0.05]">
+            <Search className="absolute right-5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-amber-300 transition-colors z-10" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="ابحث عن ذكر، دعاء..."
+              className="relative w-full h-12 bg-transparent pr-12 pl-5 text-right text-sm text-slate-100 placeholder:text-slate-500 outline-none focus:ring-0 border-0"
+              dir="rtl"
+            />
+          </div>
+        </motion.div>
+
+        {/* SEARCH RESULTS (conditionally shows below search pill) */}
+        <AnimatePresence>
+          {searchQuery.trim() && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="max-w-2xl mx-auto mb-10 relative z-50"
+            >
+              <GlassCard className="p-4 shadow-2xl rounded-3xl">
+                {loadingHisn ? (
+                  <div className="flex justify-center py-4">
+                    <div className="animate-spin h-6 w-6 border-2 border-amber-400 border-t-transparent rounded-full" />
+                  </div>
+                ) : searchResults.length > 0 ? (
+                  <div className="grid gap-2">
+                    {searchResults.map((item) => {
+                      const slug = categorySlugs[item.categoryId] || item.categoryId;
+                      return (
+                        <Link
+                          key={`${item.categoryId}-${item.id}`}
+                          href={item.isHisn ? `/more/hisn/${item.chapter}#dhikr-${item.id}` : `/home/${slug}#dhikr-${item.id}`}
+                        >
+                          <div className="group rounded-2xl p-3 text-right hover:bg-white/10 transition-colors cursor-pointer">
+                            <p className="text-sm font-bold text-slate-100 mb-1">{highlightSearchMatch(item.textPreview, searchQuery)}</p>
+                            <p className="text-xs text-amber-300/70 font-medium">{item.categoryTitle}</p>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p className="text-sm text-slate-400 text-center py-4">لم نجد نتائج بحث متطابقة..</p>
+                )}
+              </GlassCard>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <AuthenticityBand />
 
         {/* ══════════════════════════════════════════════════════════════════
             BENTO GRID — Asymmetric dashboard layout
-            Mobile: single column stack
-            md: 2 columns
-            lg+: 4 columns with varied spans
         ══════════════════════════════════════════════════════════════════ */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(120px,auto)]"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 auto-rows-[minmax(120px,auto)]"
           variants={pageVariants}
           initial="hidden"
           animate="show"
@@ -239,7 +311,7 @@ export function Home() {
             className="md:col-span-1 lg:col-span-2"
             variants={sectionVariant}
           >
-            <CategoryCard category={mainCategories[0]} index={0} variant="hero" />
+            <CategoryCard category={mainCategories[0]} index={0} variant="hero" isHighlighted={isMorningHighlight} />
           </motion.div>
 
           {/* ── CELL: أذكار المساء (Evening) — Primary ──
@@ -249,60 +321,8 @@ export function Home() {
             className="md:col-span-1 lg:col-span-2"
             variants={sectionVariant}
           >
-            <CategoryCard category={mainCategories[1]} index={1} variant="hero" />
+            <CategoryCard category={mainCategories[1]} index={1} variant="hero" isHighlighted={isEveningHighlight} />
           </motion.div>
-
-          {/* ── CELL: Search Bar (Utility — spans full width) ── */}
-          <motion.div
-            className="md:col-span-2 lg:col-span-4"
-            variants={sectionVariant}
-          >
-            <GlassCard className="p-1">
-              <div className="relative group">
-                <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-amber-300 transition-colors z-10" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="ابحث عن ذكر، دعاء، أو سورة..."
-                  className="relative w-full h-14 bg-transparent backdrop-blur-xl pr-12 pl-4 text-right text-base text-slate-100 placeholder:text-slate-400 outline-none focus:ring-0 border-0"
-                  dir="rtl"
-                />
-              </div>
-            </GlassCard>
-          </motion.div>
-
-          {/* ── SEARCH RESULTS (conditionally spans full width) ── */}
-          {searchQuery.trim() && (
-            <motion.div className="md:col-span-2 lg:col-span-4" variants={sectionVariant}>
-              <GlassCard className="p-4 shadow-2xl z-50 relative">
-                {loadingHisn ? (
-                  <div className="flex justify-center py-4">
-                    <div className="animate-spin h-6 w-6 border-2 border-amber-400 border-t-transparent rounded-full" />
-                  </div>
-                ) : searchResults.length > 0 ? (
-                  <div className="grid gap-2">
-                    {searchResults.map((item) => {
-                      const slug = categorySlugs[item.categoryId] || item.categoryId;
-                      return (
-                        <Link
-                          key={`${item.categoryId}-${item.id}`}
-                          href={item.isHisn ? `/more/hisn/${item.chapter}#dhikr-${item.id}` : `/home/${slug}#dhikr-${item.id}`}
-                        >
-                          <div className="group rounded-xl p-3 text-right hover:bg-white/10 transition-colors cursor-pointer">
-                            <p className="text-sm font-bold text-slate-100 mb-1">{highlightSearchMatch(item.textPreview, searchQuery)}</p>
-                            <p className="text-xs text-amber-300/70 font-medium">{item.categoryTitle}</p>
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  <p className="text-sm text-slate-400 text-center py-4">لم نجد نتائج بحث متطابقة..</p>
-                )}
-              </GlassCard>
-            </motion.div>
-          )}
 
           {/* ── CELLS: Secondary Categories (6 remaining) ──
               Each takes 1 col on lg (4 per row → 2 rows).
@@ -313,7 +333,11 @@ export function Home() {
               className="md:col-span-1 lg:col-span-1"
               variants={sectionVariant}
             >
-              <CategoryCard category={cat} index={i + 2} />
+              <CategoryCard 
+                category={cat} 
+                index={i + 2} 
+                isHighlighted={isSleepHighlight && cat.title === "أذكار النوم"} 
+              />
             </motion.div>
           ))}
 
@@ -325,7 +349,7 @@ export function Home() {
           >
             <Link href="/more">
               <motion.div
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] backdrop-blur-2xl p-5 hover:bg-white/12 transition-colors cursor-pointer flex items-center justify-between"
+                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-2xl p-5 hover:bg-white/[0.05] transition-colors cursor-pointer flex items-center justify-between"
                 style={{
                   boxShadow: "0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.07)",
                 }}
@@ -351,7 +375,7 @@ export function Home() {
           >
             <Link href="/tasbih">
               <motion.div
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 hover:bg-white/12 transition-colors cursor-pointer h-full"
+                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-xl p-5 hover:bg-white/[0.04] transition-colors cursor-pointer h-full"
                 whileHover={{ y: -2, scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
                 transition={spring_smooth}
@@ -373,7 +397,7 @@ export function Home() {
           >
             <Link href="/adhan">
               <motion.div
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 hover:bg-white/12 transition-colors cursor-pointer h-full"
+                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-xl p-5 hover:bg-white/[0.04] transition-colors cursor-pointer h-full"
                 whileHover={{ y: -2, scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
                 transition={spring_smooth}

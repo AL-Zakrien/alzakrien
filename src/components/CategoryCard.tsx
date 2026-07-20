@@ -22,6 +22,7 @@ interface CategoryCardProps {
   index: number;
   /** "hero" = taller, larger icon, stronger glass. "default" = compact card. */
   variant?: "hero" | "default";
+  isHighlighted?: boolean;
 }
 
 // دالة تحديد الأيقونة بإرجاع صورة <img>
@@ -64,7 +65,7 @@ const cardRest = {
   boxShadow: "0 2px 8px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.06)",
 };
 
-export function CategoryCard({ category, index, variant = "default" }: CategoryCardProps) {
+export function CategoryCard({ category, index, variant = "default", isHighlighted = false }: CategoryCardProps) {
   const isHero = variant === "hero";
 
   // ── Live period → palette lookup ──────────────────────────────────────────
@@ -77,7 +78,8 @@ export function CategoryCard({ category, index, variant = "default" }: CategoryC
 
   // ── Variant-driven styles ─────────────────────────────────────────────────
   const heightClass   = isHero ? "h-full min-h-[11rem]" : "h-full min-h-[9rem]";
-  const glassClass    = isHero ? "bg-white/[0.07] backdrop-blur-2xl" : "bg-white/5 backdrop-blur-xl";
+  const baseGlass     = isHero ? "bg-white/[0.03] backdrop-blur-2xl" : "bg-white/[0.02] backdrop-blur-xl";
+  const glassClass    = isHighlighted ? `${baseGlass} border-amber-400/30 ring-1 ring-amber-400/10` : `${baseGlass} border-white/5 border-t-white/10 border-l-white/10`;
   const glowOpacity   = isHero ? "60"                  : "4D";
   const glowSize      = isHero ? 120                   : 96;
   const titleClass    = isHero
@@ -90,7 +92,7 @@ export function CategoryCard({ category, index, variant = "default" }: CategoryC
   return (
     <Link href={`/home/${slug}`} className="block h-full w-full">
       <motion.div
-        className={`group relative overflow-hidden cursor-pointer rounded-2xl border border-white/5 border-t-white/10 border-l-white/10 ${glassClass} ${heightClass} flex flex-col justify-between items-start text-right p-4 sm:p-5`}
+        className={`group relative overflow-hidden cursor-pointer rounded-3xl border ${glassClass} ${heightClass} flex flex-col justify-between items-start text-right p-5 sm:p-6`}
         data-testid={`card-category-${category.id}`}
         style={{ animationDelay: `${Math.min(index, 6) * 60}ms` }}
         initial={cardRest}
@@ -116,6 +118,14 @@ export function CategoryCard({ category, index, variant = "default" }: CategoryC
             transition: "background 0.8s ease",
           }}
         />
+
+        {/* ── Highlight Glow (if active) ── */}
+        {isHighlighted && (
+          <div 
+            className="absolute inset-0 bg-amber-400/5 blur-2xl pointer-events-none"
+            aria-hidden="true"
+          />
+        )}
 
         {/* ── Top Section: Dynamic Icon ───────────────────────────────────── */}
         <div className="relative z-10">
