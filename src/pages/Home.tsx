@@ -266,57 +266,93 @@ export function Home() {
             </motion.div>
           )}
 
-          {/* BENTO GRID — Category Cards (2-col mobile, 4-col desktop) */}
-          <motion.section className="mb-10" aria-label="الأذكار" variants={sectionVariant}>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-              {mainCategories.map((cat, i) => (
-                <CategoryCard key={cat.id} category={cat} index={i} />
+          {/* ══════════════════════════════════════════════════════════════
+              LAYER 1 — Hero Category Pair (Morning + Evening)
+              Taller cards, larger icons, stronger glass — the primary actions.
+          ══════════════════════════════════════════════════════════════ */}
+          <motion.section className="mb-6" aria-label="الأذكار الرئيسية" variants={sectionVariant}>
+            <div className="grid grid-cols-2 gap-4 max-w-5xl mx-auto">
+              {mainCategories.slice(0, 2).map((cat, i) => (
+                <CategoryCard key={cat.id} category={cat} index={i} variant="hero" />
               ))}
             </div>
           </motion.section>
 
-        {/* ──────────────────────────────────────────────────
-            QUICK LINKS
-        ────────────────────────────────────────────────── */}
-        <GlassCard className="p-4 mb-10">
-          <div className="space-y-3">
-            <Link href="/more">
-              <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/12 transition-colors cursor-pointer flex items-center justify-between">
-                <ArrowLeft className="relative h-5 w-5 text-amber-300/70 group-hover:-translate-x-1 transition-transform" />
-                <div className="relative text-right">
-                  <h3 className="font-bold text-lg text-slate-100">جميع الأذكار</h3>
-                  <p className="text-sm text-slate-300/80">تصفح موسوعة حصن المسلم كاملة</p>
-                </div>
-              </div>
-            </Link>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <Link href="/tasbih">
-                <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/12 transition-colors cursor-pointer">
-                  <div className="relative flex items-center justify-between">
-                    <ArrowLeft className="h-5 w-5 text-amber-300/70 group-hover:-translate-x-1 transition-transform" />
-                    <div className="text-right">
-                      <h3 className="font-bold text-lg text-amber-100">المسبحة</h3>
-                      <p className="text-sm text-amber-200/60">عداد الأذكار الذكي</p>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/adhan">
-                <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/12 transition-colors cursor-pointer">
-                  <div className="relative flex items-center justify-between">
-                    <ArrowLeft className="h-5 w-5 text-sky-300/70 group-hover:-translate-x-1 transition-transform" />
-                    <div className="text-right">
-                      <h3 className="font-bold text-lg text-sky-100">الأذان</h3>
-                      <p className="text-sm text-sky-200/60">مواقيت الصلاة</p>
-                    </div>
-                  </div>
-                </div>
-              </Link>
+          {/* ══════════════════════════════════════════════════════════════
+              LAYER 2 — Secondary Categories
+              Compact cards in a denser 3-column grid — supporting content.
+          ══════════════════════════════════════════════════════════════ */}
+          <motion.section className="mb-10" aria-label="أذكار أخرى" variants={sectionVariant}>
+            <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-3 max-w-5xl mx-auto">
+              {mainCategories.slice(2).map((cat, i) => (
+                <CategoryCard key={cat.id} category={cat} index={i + 2} />
+              ))}
             </div>
-          </div>
-        </GlassCard>
+          </motion.section>
+
+          {/* ══════════════════════════════════════════════════════════════
+              LAYER 3 — Quick Links (All Athkar + Tasbih + Adhan)
+              Asymmetric layout: full-width banner, then 2-col pair.
+          ══════════════════════════════════════════════════════════════ */}
+          <motion.section className="mb-10" aria-label="روابط سريعة" variants={sectionVariant}>
+            <div className="space-y-3 max-w-5xl mx-auto">
+              {/* Full-width "All Athkar" banner */}
+              <Link href="/more">
+                <motion.div
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] backdrop-blur-2xl p-5 hover:bg-white/12 transition-colors cursor-pointer flex items-center justify-between"
+                  style={{
+                    boxShadow: "0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.07)",
+                  }}
+                  whileHover={{ y: -2, scale: 1.01 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={spring_smooth}
+                >
+                  <ArrowLeft className="relative h-5 w-5 text-amber-300/70 group-hover:-translate-x-1 transition-transform" />
+                  <div className="relative text-right">
+                    <h3 className="font-bold text-lg text-slate-100">جميع الأذكار</h3>
+                    <p className="text-sm text-slate-300/80">تصفح موسوعة حصن المسلم كاملة</p>
+                  </div>
+                </motion.div>
+              </Link>
+
+              {/* 2-col: Tasbih + Adhan */}
+              <div className="grid grid-cols-2 gap-3">
+                <Link href="/tasbih">
+                  <motion.div
+                    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 hover:bg-white/12 transition-colors cursor-pointer"
+                    whileHover={{ y: -2, scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={spring_smooth}
+                  >
+                    <div className="relative flex items-center justify-between">
+                      <ArrowLeft className="h-5 w-5 text-amber-300/70 group-hover:-translate-x-1 transition-transform" />
+                      <div className="text-right">
+                        <h3 className="font-bold text-lg text-amber-100">المسبحة</h3>
+                        <p className="text-sm text-amber-200/60">عداد الأذكار الذكي</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
+
+                <Link href="/adhan">
+                  <motion.div
+                    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 hover:bg-white/12 transition-colors cursor-pointer"
+                    whileHover={{ y: -2, scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={spring_smooth}
+                  >
+                    <div className="relative flex items-center justify-between">
+                      <ArrowLeft className="h-5 w-5 text-sky-300/70 group-hover:-translate-x-1 transition-transform" />
+                      <div className="text-right">
+                        <h3 className="font-bold text-lg text-sky-100">الأذان</h3>
+                        <p className="text-sm text-sky-200/60">مواقيت الصلاة</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
+              </div>
+            </div>
+          </motion.section>
 
           {/* FOOTER DU'A */}
           <motion.div className="text-center pt-6 pb-12" variants={sectionVariant}>

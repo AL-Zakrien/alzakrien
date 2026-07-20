@@ -20,31 +20,35 @@ import MosqueIcon from '../assets/s/icons8-mosque-50.svg?url';
 interface CategoryCardProps {
   category: AthkarCategory;
   index: number;
+  /** "hero" = taller, larger icon, stronger glass. "default" = compact card. */
+  variant?: "hero" | "default";
 }
 
 // دالة تحديد الأيقونة بإرجاع صورة <img>
-function getCategoryIcon(title: string) {
-  const commonClasses = "w-6 h-6 brightness-0 invert opacity-80";
+function getCategoryIcon(title: string, size: "sm" | "lg" = "sm") {
+  const cls = size === "lg"
+    ? "w-8 h-8 brightness-0 invert opacity-80"
+    : "w-6 h-6 brightness-0 invert opacity-80";
 
   switch (title) {
     case "أذكار الصباح":
-      return <img src={SunIcon} className={commonClasses} alt="أذكار الصباح" />;
+      return <img src={SunIcon} className={cls} alt="أذكار الصباح" />;
     case "أذكار المساء":
-      return <img src={MoonIcon} className={commonClasses} alt="أذكار المساء" />;
+      return <img src={MoonIcon} className={cls} alt="أذكار المساء" />;
     case "أذكار النوم":
-      return <img src={BedIcon} className={commonClasses} alt="أذكار النوم" />;
+      return <img src={BedIcon} className={cls} alt="أذكار النوم" />;
     case "أذكار بعد الصلاة": 
-      return <img src={TasbihIcon} className={commonClasses} alt="Tasbih" />;
+      return <img src={TasbihIcon} className={cls} alt="Tasbih" />;
     case "أذكار الأذان":
-      return <img src={SoundIcon} className={commonClasses} alt="الأذان" />;
+      return <img src={SoundIcon} className={cls} alt="الأذان" />;
     case "أذكار الطهارة":
-      return <img src={BlurIcon} className={commonClasses} alt="الطهارة" />;
+      return <img src={BlurIcon} className={cls} alt="الطهارة" />;
     case "أذكار الصلاة":
-      return <img src={RugIcon} className={commonClasses} alt="الصلاة" />;
+      return <img src={RugIcon} className={cls} alt="الصلاة" />;
     case "أذكار المسجد":
-      return <img src={MosqueIcon} className={commonClasses} alt="المسجد" />;
+      return <img src={MosqueIcon} className={cls} alt="المسجد" />;
     default:
-      return <BookOpen className="w-6 h-6 text-white opacity-80" strokeWidth={1.5} />;
+      return <BookOpen className={`${size === "lg" ? "w-8 h-8" : "w-6 h-6"} text-white opacity-80`} strokeWidth={1.5} />;
   }
 }
 
@@ -60,19 +64,33 @@ const cardRest = {
   boxShadow: "0 2px 8px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.06)",
 };
 
-export function CategoryCard({ category, index }: CategoryCardProps) {
+export function CategoryCard({ category, index, variant = "default" }: CategoryCardProps) {
+  const isHero = variant === "hero";
+
   // ── Live period → palette lookup ──────────────────────────────────────────
   const { effectivePeriod } = usePrayerPeriod();
   const palette = AURORA_PALETTES[effectivePeriod] ?? AURORA_PALETTES.isha;
   const glowColor  = palette.c1; // corner glow
-  const iconColor  = palette.c2; // icon accent
+  const iconColor  = palette.c2; // icon accent (kept for future use)
 
   const slug = categorySlugs[category.id] || category.id;
+
+  // ── Variant-driven styles ─────────────────────────────────────────────────
+  const heightClass   = isHero ? "h-44"               : "h-36";
+  const glassClass    = isHero ? "bg-white/[0.07] backdrop-blur-2xl" : "bg-white/5 backdrop-blur-xl";
+  const glowOpacity   = isHero ? "60"                  : "4D";
+  const glowSize      = isHero ? 120                   : 96;
+  const titleClass    = isHero
+    ? "font-ui font-bold text-white leading-tight text-lg sm:text-xl w-full"
+    : "font-ui font-bold text-slate-100 leading-tight text-base sm:text-lg w-full truncate";
+  const subtitleClass = isHero
+    ? "text-slate-300/80 leading-tight text-xs sm:text-sm w-full"
+    : "text-slate-400 leading-tight text-[10px] sm:text-[11px] w-full truncate";
 
   return (
     <Link href={`/home/${slug}`}>
       <motion.div
-        className="group relative overflow-hidden cursor-pointer rounded-2xl border border-white/5 border-t-white/10 border-l-white/10 backdrop-blur-xl bg-white/5 h-36 flex flex-col justify-between items-start text-right p-4 sm:p-5"
+        className={`group relative overflow-hidden cursor-pointer rounded-2xl border border-white/5 border-t-white/10 border-l-white/10 ${glassClass} ${heightClass} flex flex-col justify-between items-start text-right p-4 sm:p-5`}
         data-testid={`card-category-${category.id}`}
         style={{ animationDelay: `${Math.min(index, 6) * 60}ms` }}
         initial={cardRest}
@@ -83,7 +101,6 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
       >
         {/*
           ── Localized corner glow — strictly behind the icon at top-right ──
-          Uses heavy blur and 30% opacity (4D hex) linked to active AURORA_PALETTES.
         */}
         <div
           aria-hidden="true"
@@ -91,10 +108,10 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
             position: "absolute",
             top: 0,
             right: 0,
-            width: 96,
-            height: 96,
-            background: `radial-gradient(circle at 100% 0%, ${glowColor}4D 0%, ${glowColor}00 70%)`,
-            filter: "blur(24px)", // Enough blur to blend, but tight enough to stay visible
+            width: glowSize,
+            height: glowSize,
+            background: `radial-gradient(circle at 100% 0%, ${glowColor}${glowOpacity} 0%, ${glowColor}00 70%)`,
+            filter: isHero ? "blur(28px)" : "blur(24px)",
             pointerEvents: "none",
             transition: "background 0.8s ease",
           }}
@@ -102,7 +119,7 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
 
         {/* ── Top Section: Dynamic Icon ───────────────────────────────────── */}
         <div className="relative z-10">
-          {getCategoryIcon(category.title)}
+          {getCategoryIcon(category.title, isHero ? "lg" : "sm")}
         </div>
 
         {/* ── Bottom Section: Pill Badge + Text ───────────────────────────── */}
@@ -115,13 +132,13 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
           </div>
           
           {/* Title */}
-          <h3 className="font-ui font-bold text-slate-100 leading-tight text-base sm:text-lg w-full truncate">
+          <h3 className={titleClass}>
             {category.title}
           </h3>
 
           {/* Subtitle */}
           {category.subtitle && (
-            <p className="text-slate-400 leading-tight text-[10px] sm:text-[11px] w-full truncate">
+            <p className={subtitleClass}>
               {category.subtitle}
             </p>
           )}
@@ -130,3 +147,4 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
     </Link>
   );
 }
+
