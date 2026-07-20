@@ -7,18 +7,20 @@ import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
 import { AURORA_PALETTES } from "@/components/DynamicBackground";
 import { BookOpen } from "lucide-react";
 
-// 1. استدعي الأيقونات بشكل مباشر (Import)
-import SunIcon from '../assets/s/icons8-sun-50.svg';
-import MoonIcon from '../assets/s/icons8-moon-symbol-50.svg';
-import BedIcon from '../assets/s/icons8-bed-50.svg';
-import TasbihIcon from '../assets/s/icons8-tasbih-50.svg';
-import SoundIcon from '../assets/s/icons8-sound-50.svg';
-import BlurIcon from '../assets/s/icons8-blur-50.svg';
-import RugIcon from '../assets/s/icons8-prayer-rug-50.svg';
-import MosqueIcon from '../assets/s/icons8-mosque-50.svg';
+// Import SVGs as React components from our generated icons file
+import { 
+  SunIcon, 
+  MoonSymbolIcon as MoonIcon, 
+  BedIcon, 
+  TasbihIcon, 
+  SoundIcon, 
+  BlurIcon, 
+  PrayerRugIcon as RugIcon, 
+  MosqueIcon 
+} from "./CategoryIcons";
 
-// 2. الخريطة الثابتة للأيقونات
-const iconMap: Record<string, string> = {
+// الخريطة الثابتة للأيقونات باستخدام React Components
+const iconMap: Record<string, React.ElementType> = {
   "أذكار الصباح": SunIcon,
   "أذكار المساء": MoonIcon,
   "أذكار النوم": BedIcon,
@@ -88,29 +90,21 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
 
         {/* ── Top Section: Dynamic Icon ───────────────────────────────────── */}
         <div className="relative z-10">
-          {iconMap[category.title] ? (
-            <div 
-              className="w-6 h-6 opacity-80"
-              style={{
-                backgroundColor: iconColor,
-                maskImage: `url(${iconMap[category.title]})`,
-                maskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                maskPosition: 'center',
-                WebkitMaskImage: `url(${iconMap[category.title]})`,
-                WebkitMaskSize: 'contain',
-                WebkitMaskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'center',
-                transition: "background-color 0.8s ease"
-              }}
-            />
-          ) : (
-            <BookOpen 
-              className="w-6 h-6 opacity-80"
-              style={{ color: iconColor, transition: "color 0.8s ease" }} 
-              strokeWidth={1.5}
-            />
-          )}
+          {(() => {
+            const Icon = iconMap[category.title];
+            return Icon ? (
+              <Icon 
+                className="w-6 h-6 opacity-80"
+                style={{ color: iconColor, transition: "color 0.8s ease" }} 
+              />
+            ) : (
+              <BookOpen 
+                className="w-6 h-6 opacity-80"
+                style={{ color: iconColor, transition: "color 0.8s ease" }} 
+                strokeWidth={1.5}
+              />
+            );
+          })()}
         </div>
 
         {/* ── Bottom Section: Pill Badge + Text ───────────────────────────── */}
