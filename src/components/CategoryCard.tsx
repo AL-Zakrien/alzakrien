@@ -7,33 +7,48 @@ import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
 import { AURORA_PALETTES } from "@/components/DynamicBackground";
 import { BookOpen } from "lucide-react";
 
-// Import SVGs as React components from our generated icons file
+// استيراد أيقونة المسبحة مباشرة كما طلبت
+import TasbihIcon from '../assets/s/icons8-tasbih-50.svg';
+
+// استيراد باقي الأيقونات من المكونات التي قمنا بإنشائها مسبقاً
 import { 
   SunIcon, 
   MoonSymbolIcon as MoonIcon, 
   BedIcon, 
-  TasbihIcon, 
   SoundIcon, 
   BlurIcon, 
   PrayerRugIcon as RugIcon, 
   MosqueIcon 
 } from "./CategoryIcons";
 
-// الخريطة الثابتة للأيقونات باستخدام React Components
-const iconMap: Record<string, React.ElementType> = {
-  "أذكار الصباح": SunIcon,
-  "أذكار المساء": MoonIcon,
-  "أذكار النوم": BedIcon,
-  "أذكار بعد الصلاة": TasbihIcon,
-  "أذكار الأذان": SoundIcon,
-  "أذكار الطهارة": BlurIcon,
-  "أذكار الصلاة": RugIcon,
-  "أذكار المسجد": MosqueIcon
-};
-
 interface CategoryCardProps {
   category: AthkarCategory;
   index: number;
+}
+
+// دالة تحديد الأيقونة مع جملة switch
+function getCategoryIcon(title: string, props: React.SVGProps<SVGSVGElement>) {
+  switch (title) {
+    case "أذكار الصباح":
+      return <SunIcon {...props} />;
+    case "أذكار المساء":
+      return <MoonIcon {...props} />;
+    case "أذكار النوم":
+      return <BedIcon {...props} />;
+    case "أذكار بعد الصلاة": 
+      // @ts-ignore - Ignoring type error in case Vite SVGR default export is used
+      return <TasbihIcon {...props} />;
+    case "أذكار الأذان":
+      return <SoundIcon {...props} />;
+    case "أذكار الطهارة":
+      return <BlurIcon {...props} />;
+    case "أذكار الصلاة":
+      return <RugIcon {...props} />;
+    case "أذكار المسجد":
+      return <MosqueIcon {...props} />;
+    default:
+      return <BookOpen {...props} strokeWidth={1.5} />;
+  }
 }
 
 // ── Framer Motion physics — unchanged ─────────────────────────────────────────
@@ -90,21 +105,11 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
 
         {/* ── Top Section: Dynamic Icon ───────────────────────────────────── */}
         <div className="relative z-10">
-          {(() => {
-            const Icon = iconMap[category.title];
-            return Icon ? (
-              <Icon 
-                className="w-6 h-6 opacity-80"
-                style={{ color: iconColor, transition: "color 0.8s ease" }} 
-              />
-            ) : (
-              <BookOpen 
-                className="w-6 h-6 opacity-80"
-                style={{ color: iconColor, transition: "color 0.8s ease" }} 
-                strokeWidth={1.5}
-              />
-            );
-          })()}
+          {getCategoryIcon(category.title, {
+            className: "w-6 h-6 opacity-80",
+            style: { color: iconColor, transition: "color 0.8s ease" },
+            strokeWidth: 1.5
+          })}
         </div>
 
         {/* ── Bottom Section: Pill Badge + Text ───────────────────────────── */}
