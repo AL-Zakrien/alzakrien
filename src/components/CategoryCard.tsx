@@ -23,29 +23,28 @@ interface CategoryCardProps {
 }
 
 // دالة تحديد الأيقونة بإرجاع صورة <img>
-function getCategoryIcon(title: string, iconColor: string) {
-  const commonClasses = "w-6 h-6 opacity-80 stroke-current";
-  const commonStyles = { color: iconColor, transition: "color 0.8s ease" };
+function getCategoryIcon(title: string) {
+  const commonClasses = "w-6 h-6 brightness-0 invert opacity-80";
 
   switch (title) {
     case "أذكار الصباح":
-      return <img src={SunIcon} className={commonClasses} style={commonStyles} alt="أذكار الصباح" />;
+      return <img src={SunIcon} className={commonClasses} alt="أذكار الصباح" />;
     case "أذكار المساء":
-      return <img src={MoonIcon} className={commonClasses} style={commonStyles} alt="أذكار المساء" />;
+      return <img src={MoonIcon} className={commonClasses} alt="أذكار المساء" />;
     case "أذكار النوم":
-      return <img src={BedIcon} className={commonClasses} style={commonStyles} alt="أذكار النوم" />;
+      return <img src={BedIcon} className={commonClasses} alt="أذكار النوم" />;
     case "أذكار بعد الصلاة": 
-      return <img src={TasbihIcon} className={commonClasses} style={commonStyles} alt="Tasbih" />;
+      return <img src={TasbihIcon} className={commonClasses} alt="Tasbih" />;
     case "أذكار الأذان":
-      return <img src={SoundIcon} className={commonClasses} style={commonStyles} alt="الأذان" />;
+      return <img src={SoundIcon} className={commonClasses} alt="الأذان" />;
     case "أذكار الطهارة":
-      return <img src={BlurIcon} className={commonClasses} style={commonStyles} alt="الطهارة" />;
+      return <img src={BlurIcon} className={commonClasses} alt="الطهارة" />;
     case "أذكار الصلاة":
-      return <img src={RugIcon} className={commonClasses} style={commonStyles} alt="الصلاة" />;
+      return <img src={RugIcon} className={commonClasses} alt="الصلاة" />;
     case "أذكار المسجد":
-      return <img src={MosqueIcon} className={commonClasses} style={commonStyles} alt="المسجد" />;
+      return <img src={MosqueIcon} className={commonClasses} alt="المسجد" />;
     default:
-      return <BookOpen className={commonClasses} style={commonStyles} strokeWidth={1.5} />;
+      return <BookOpen className="w-6 h-6 text-white opacity-80" strokeWidth={1.5} />;
   }
 }
 
@@ -103,7 +102,7 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
 
         {/* ── Top Section: Dynamic Icon ───────────────────────────────────── */}
         <div className="relative z-10">
-          {getCategoryIcon(category.title, iconColor)}
+          {getCategoryIcon(category.title)}
         </div>
 
         {/* ── Bottom Section: Pill Badge + Text ───────────────────────────── */}
