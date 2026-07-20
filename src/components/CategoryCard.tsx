@@ -76,7 +76,7 @@ export function CategoryCard({ category, index, variant = "default" }: CategoryC
   const slug = categorySlugs[category.id] || category.id;
 
   // ── Variant-driven styles ─────────────────────────────────────────────────
-  const heightClass   = isHero ? "h-44"               : "h-36";
+  const heightClass   = isHero ? "h-full min-h-[11rem]" : "h-full min-h-[9rem]";
   const glassClass    = isHero ? "bg-white/[0.07] backdrop-blur-2xl" : "bg-white/5 backdrop-blur-xl";
   const glowOpacity   = isHero ? "60"                  : "4D";
   const glowSize      = isHero ? 120                   : 96;
@@ -88,7 +88,7 @@ export function CategoryCard({ category, index, variant = "default" }: CategoryC
     : "text-slate-400 leading-tight text-[10px] sm:text-[11px] w-full truncate";
 
   return (
-    <Link href={`/home/${slug}`}>
+    <Link href={`/home/${slug}`} className="block h-full w-full">
       <motion.div
         className={`group relative overflow-hidden cursor-pointer rounded-2xl border border-white/5 border-t-white/10 border-l-white/10 ${glassClass} ${heightClass} flex flex-col justify-between items-start text-right p-4 sm:p-5`}
         data-testid={`card-category-${category.id}`}
@@ -123,7 +123,7 @@ export function CategoryCard({ category, index, variant = "default" }: CategoryC
         </div>
 
         {/* ── Bottom Section: Pill Badge + Text ───────────────────────────── */}
-        <div className="relative z-10 flex flex-col items-start gap-1 w-full">
+        <div className="relative z-10 flex flex-col items-start gap-1 w-full mt-4">
           {/* Premium Pill Badge for Count */}
           <div className="bg-white/10 rounded-full px-2.5 py-0.5 mb-1 backdrop-blur-md border border-white/5">
             <span className="text-[10px] font-medium text-slate-200">

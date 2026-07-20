@@ -237,11 +237,11 @@ export function NextPrayerWidget() {
   return (
     <section
       aria-label="الصلاة القادمة"
-      className="mb-8 fade-in-up stagger-2"
+      className="h-full fade-in-up stagger-2"
     >
       {/* Glass panel */}
       <div
-        className="relative overflow-hidden rounded-2xl border border-white/10 backdrop-blur-2xl"
+        className="relative overflow-hidden rounded-2xl border border-white/10 backdrop-blur-2xl h-full flex flex-col justify-center"
         style={{
           background: "rgba(255,255,255,0.06)",
           boxShadow: "0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.07)",

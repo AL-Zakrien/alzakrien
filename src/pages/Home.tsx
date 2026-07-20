@@ -153,7 +153,7 @@ export function Home() {
   return (
     <div className="min-h-screen relative">
       <div
-        className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10"
+        className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 relative z-10"
         style={{ transform: 'translateZ(0)' }}
       >
 
@@ -163,7 +163,7 @@ export function Home() {
             Amiri (display) for Bismillah, Cairo for ayah.
         ────────────────────────────────────────────────── */}
         <section
-          className="text-center mb-14 mt-10 sm:mt-14"
+          className="text-center mb-10 mt-10 sm:mt-14"
           aria-label="البسملة والآية الكريمة"
         >
           <motion.div
@@ -208,163 +208,205 @@ export function Home() {
 
         <AuthenticityBand />
 
-        {/* ── STAGGERED SECTIONS: NextPrayer → Search → Tabs → Quick Links → Footer ── */}
+        {/* ══════════════════════════════════════════════════════════════════
+            BENTO GRID — Asymmetric dashboard layout
+            Mobile: single column stack
+            md: 2 columns
+            lg+: 4 columns with varied spans
+        ══════════════════════════════════════════════════════════════════ */}
         <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(120px,auto)]"
           variants={pageVariants}
           initial="hidden"
           animate="show"
+          dir="rtl"
         >
-          {/* NEXT PRAYER WIDGET */}
-          <NextPrayerWidget />
 
-          {/* SEARCH BAR */}
-          <motion.div className="mb-8" variants={sectionVariant}>
+          {/* ── CELL: Next Prayer Widget (Hero focal element) ──
+              Desktop: spans 2 cols × 2 rows — the biggest element.
+              Mobile: full width, natural height. */}
+          <motion.div
+            className="md:col-span-1 lg:col-span-2 lg:row-span-2"
+            variants={sectionVariant}
+          >
+            <NextPrayerWidget />
+          </motion.div>
+
+          {/* ── CELL: أذكار الصباح (Morning) — Primary ──
+              Desktop: spans 2 cols on lg for prominence.
+              Mobile: full width. */}
+          <motion.div
+            className="md:col-span-1 lg:col-span-2"
+            variants={sectionVariant}
+          >
+            <CategoryCard category={mainCategories[0]} index={0} variant="hero" />
+          </motion.div>
+
+          {/* ── CELL: أذكار المساء (Evening) — Primary ──
+              Desktop: spans 2 cols on lg. 
+              Mobile: full width. */}
+          <motion.div
+            className="md:col-span-1 lg:col-span-2"
+            variants={sectionVariant}
+          >
+            <CategoryCard category={mainCategories[1]} index={1} variant="hero" />
+          </motion.div>
+
+          {/* ── CELL: Search Bar (Utility — spans full width) ── */}
+          <motion.div
+            className="md:col-span-2 lg:col-span-4"
+            variants={sectionVariant}
+          >
             <GlassCard className="p-1">
-            <div className="relative group">
-              <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-amber-300 transition-colors z-10" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="ابحث عن ذكر، دعاء، أو سورة..."
-                className="relative w-full h-14 bg-transparent backdrop-blur-xl pr-12 pl-4 text-right text-base text-slate-100 placeholder:text-slate-400 outline-none focus:ring-0 border-0"
-                dir="rtl"
-              />
-            </div>
+              <div className="relative group">
+                <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-amber-300 transition-colors z-10" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="ابحث عن ذكر، دعاء، أو سورة..."
+                  className="relative w-full h-14 bg-transparent backdrop-blur-xl pr-12 pl-4 text-right text-base text-slate-100 placeholder:text-slate-400 outline-none focus:ring-0 border-0"
+                  dir="rtl"
+                />
+              </div>
             </GlassCard>
           </motion.div>
 
-          {/* SEARCH RESULTS */}
+          {/* ── SEARCH RESULTS (conditionally spans full width) ── */}
           {searchQuery.trim() && (
-            <motion.div variants={sectionVariant}>
-              <GlassCard className="mb-8 p-4 shadow-2xl z-50 relative">
-            {loadingHisn ? (
-              <div className="flex justify-center py-4">
-                <div className="animate-spin h-6 w-6 border-2 border-amber-400 border-t-transparent rounded-full" />
-              </div>
-            ) : searchResults.length > 0 ? (
-              <div className="grid gap-2">
-                {searchResults.map((item) => {
-                  const slug = categorySlugs[item.categoryId] || item.categoryId;
-                  return (
-                    <Link
-                      key={`${item.categoryId}-${item.id}`}
-                      href={item.isHisn ? `/more/hisn/${item.chapter}#dhikr-${item.id}` : `/home/${slug}#dhikr-${item.id}`}
-                    >
-                      <div className="group rounded-xl p-3 text-right hover:bg-white/10 transition-colors cursor-pointer">
-                        <p className="text-sm font-bold text-slate-100 mb-1">{highlightSearchMatch(item.textPreview, searchQuery)}</p>
-                        <p className="text-xs text-amber-300/70 font-medium">{item.categoryTitle}</p>
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            ) : (
-              <p className="text-sm text-slate-400 text-center py-4">لم نجد نتائج بحث متطابقة..</p>
-            )}
+            <motion.div className="md:col-span-2 lg:col-span-4" variants={sectionVariant}>
+              <GlassCard className="p-4 shadow-2xl z-50 relative">
+                {loadingHisn ? (
+                  <div className="flex justify-center py-4">
+                    <div className="animate-spin h-6 w-6 border-2 border-amber-400 border-t-transparent rounded-full" />
+                  </div>
+                ) : searchResults.length > 0 ? (
+                  <div className="grid gap-2">
+                    {searchResults.map((item) => {
+                      const slug = categorySlugs[item.categoryId] || item.categoryId;
+                      return (
+                        <Link
+                          key={`${item.categoryId}-${item.id}`}
+                          href={item.isHisn ? `/more/hisn/${item.chapter}#dhikr-${item.id}` : `/home/${slug}#dhikr-${item.id}`}
+                        >
+                          <div className="group rounded-xl p-3 text-right hover:bg-white/10 transition-colors cursor-pointer">
+                            <p className="text-sm font-bold text-slate-100 mb-1">{highlightSearchMatch(item.textPreview, searchQuery)}</p>
+                            <p className="text-xs text-amber-300/70 font-medium">{item.categoryTitle}</p>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p className="text-sm text-slate-400 text-center py-4">لم نجد نتائج بحث متطابقة..</p>
+                )}
               </GlassCard>
             </motion.div>
           )}
 
-          {/* ══════════════════════════════════════════════════════════════
-              LAYER 1 — Hero Category Pair (Morning + Evening)
-              Taller cards, larger icons, stronger glass — the primary actions.
-          ══════════════════════════════════════════════════════════════ */}
-          <motion.section className="mb-6" aria-label="الأذكار الرئيسية" variants={sectionVariant}>
-            <div className="grid grid-cols-2 gap-4 max-w-5xl mx-auto">
-              {mainCategories.slice(0, 2).map((cat, i) => (
-                <CategoryCard key={cat.id} category={cat} index={i} variant="hero" />
-              ))}
-            </div>
-          </motion.section>
+          {/* ── CELLS: Secondary Categories (6 remaining) ──
+              Each takes 1 col on lg (4 per row → 2 rows).
+              On md: 1 col each (2 per row → 3 rows). */}
+          {mainCategories.slice(2).map((cat, i) => (
+            <motion.div
+              key={cat.id}
+              className="md:col-span-1 lg:col-span-1"
+              variants={sectionVariant}
+            >
+              <CategoryCard category={cat} index={i + 2} />
+            </motion.div>
+          ))}
 
-          {/* ══════════════════════════════════════════════════════════════
-              LAYER 2 — Secondary Categories
-              Compact cards in a denser 3-column grid — supporting content.
-          ══════════════════════════════════════════════════════════════ */}
-          <motion.section className="mb-10" aria-label="أذكار أخرى" variants={sectionVariant}>
-            <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-3 max-w-5xl mx-auto">
-              {mainCategories.slice(2).map((cat, i) => (
-                <CategoryCard key={cat.id} category={cat} index={i + 2} />
-              ))}
-            </div>
-          </motion.section>
+          {/* ── CELL: جميع الأذكار Banner (wide bottom) ──
+              Spans full width on all breakpoints. */}
+          <motion.div
+            className="md:col-span-2 lg:col-span-4"
+            variants={sectionVariant}
+          >
+            <Link href="/more">
+              <motion.div
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] backdrop-blur-2xl p-5 hover:bg-white/12 transition-colors cursor-pointer flex items-center justify-between"
+                style={{
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.07)",
+                }}
+                whileHover={{ y: -2, scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+                transition={spring_smooth}
+              >
+                <ArrowLeft className="relative h-5 w-5 text-amber-300/70 group-hover:-translate-x-1 transition-transform" />
+                <div className="relative text-right">
+                  <h3 className="font-bold text-lg text-slate-100">جميع الأذكار</h3>
+                  <p className="text-sm text-slate-300/80">تصفح موسوعة حصن المسلم كاملة</p>
+                </div>
+              </motion.div>
+            </Link>
+          </motion.div>
 
-          {/* ══════════════════════════════════════════════════════════════
-              LAYER 3 — Quick Links (All Athkar + Tasbih + Adhan)
-              Asymmetric layout: full-width banner, then 2-col pair.
-          ══════════════════════════════════════════════════════════════ */}
-          <motion.section className="mb-10" aria-label="روابط سريعة" variants={sectionVariant}>
-            <div className="space-y-3 max-w-5xl mx-auto">
-              {/* Full-width "All Athkar" banner */}
-              <Link href="/more">
-                <motion.div
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] backdrop-blur-2xl p-5 hover:bg-white/12 transition-colors cursor-pointer flex items-center justify-between"
-                  style={{
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.07)",
-                  }}
-                  whileHover={{ y: -2, scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={spring_smooth}
-                >
-                  <ArrowLeft className="relative h-5 w-5 text-amber-300/70 group-hover:-translate-x-1 transition-transform" />
-                  <div className="relative text-right">
-                    <h3 className="font-bold text-lg text-slate-100">جميع الأذكار</h3>
-                    <p className="text-sm text-slate-300/80">تصفح موسوعة حصن المسلم كاملة</p>
+          {/* ── CELLS: Tasbih + Adhan (bottom pair) ──
+              Each spans 2 cols on lg (side by side).
+              On md: 1 col each. */}
+          <motion.div
+            className="md:col-span-1 lg:col-span-2"
+            variants={sectionVariant}
+          >
+            <Link href="/tasbih">
+              <motion.div
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 hover:bg-white/12 transition-colors cursor-pointer h-full"
+                whileHover={{ y: -2, scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+                transition={spring_smooth}
+              >
+                <div className="relative flex items-center justify-between">
+                  <ArrowLeft className="h-5 w-5 text-amber-300/70 group-hover:-translate-x-1 transition-transform" />
+                  <div className="text-right">
+                    <h3 className="font-bold text-lg text-amber-100">المسبحة</h3>
+                    <p className="text-sm text-amber-200/60">عداد الأذكار الذكي</p>
                   </div>
-                </motion.div>
-              </Link>
+                </div>
+              </motion.div>
+            </Link>
+          </motion.div>
 
-              {/* 2-col: Tasbih + Adhan */}
-              <div className="grid grid-cols-2 gap-3">
-                <Link href="/tasbih">
-                  <motion.div
-                    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 hover:bg-white/12 transition-colors cursor-pointer"
-                    whileHover={{ y: -2, scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={spring_smooth}
-                  >
-                    <div className="relative flex items-center justify-between">
-                      <ArrowLeft className="h-5 w-5 text-amber-300/70 group-hover:-translate-x-1 transition-transform" />
-                      <div className="text-right">
-                        <h3 className="font-bold text-lg text-amber-100">المسبحة</h3>
-                        <p className="text-sm text-amber-200/60">عداد الأذكار الذكي</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </Link>
+          <motion.div
+            className="md:col-span-1 lg:col-span-2"
+            variants={sectionVariant}
+          >
+            <Link href="/adhan">
+              <motion.div
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 hover:bg-white/12 transition-colors cursor-pointer h-full"
+                whileHover={{ y: -2, scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+                transition={spring_smooth}
+              >
+                <div className="relative flex items-center justify-between">
+                  <ArrowLeft className="h-5 w-5 text-sky-300/70 group-hover:-translate-x-1 transition-transform" />
+                  <div className="text-right">
+                    <h3 className="font-bold text-lg text-sky-100">الأذان</h3>
+                    <p className="text-sm text-sky-200/60">مواقيت الصلاة</p>
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
+          </motion.div>
 
-                <Link href="/adhan">
-                  <motion.div
-                    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 hover:bg-white/12 transition-colors cursor-pointer"
-                    whileHover={{ y: -2, scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={spring_smooth}
-                  >
-                    <div className="relative flex items-center justify-between">
-                      <ArrowLeft className="h-5 w-5 text-sky-300/70 group-hover:-translate-x-1 transition-transform" />
-                      <div className="text-right">
-                        <h3 className="font-bold text-lg text-sky-100">الأذان</h3>
-                        <p className="text-sm text-sky-200/60">مواقيت الصلاة</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </Link>
-              </div>
-            </div>
-          </motion.section>
+        </motion.div>
 
-          {/* FOOTER DU'A */}
-          <motion.div className="text-center pt-6 pb-12" variants={sectionVariant}>
+        {/* FOOTER DU'A — outside the grid, full width */}
+        <motion.div
+          className="text-center pt-8 pb-12"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ...spring_smooth, delay: 0.5 }}
+        >
           <div className="ornamental-divider w-32 mx-auto mb-4" />
           <p className="arabic-text text-base text-amber-300/65 leading-relaxed">
             اللَّهُمَّ اجْعَلْنَا مِنَ الذَّاكِرِينَ لك كَثِيرًا
           </p>
           <div className="ornamental-divider w-32 mx-auto mt-4" />
-          </motion.div>
-
         </motion.div>
+
       </div>
     </div>
   );
 }
+
