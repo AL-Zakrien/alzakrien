@@ -242,10 +242,10 @@ export function NextPrayerWidget() {
       <Link href="/adhan" className="block h-full w-full">
         {/* Glass panel */}
         <div
-          className="group relative overflow-hidden rounded-3xl border border-white/5 border-t-white/10 border-l-white/10 backdrop-blur-3xl h-full flex flex-col justify-between p-6 sm:p-8 cursor-pointer transition-colors hover:bg-white/[0.04]"
+          className="group relative overflow-hidden rounded-[2rem] border border-white/5 border-t-white/10 border-l-white/10 backdrop-blur-2xl h-full flex flex-col justify-center p-6 cursor-pointer transition-colors hover:bg-white/[0.04]"
           style={{
             background: "rgba(255,255,255,0.02)",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.05)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.05)",
           }}
         >
           {/* Top highlight line */}
@@ -260,20 +260,19 @@ export function NextPrayerWidget() {
           {/* Aurora accent blobs (diffused) */}
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div
-              className="absolute -top-12 -right-12 h-40 w-40 rounded-full blur-3xl transition-colors duration-1000"
+              className="absolute -top-12 -right-12 h-32 w-32 rounded-full blur-3xl transition-colors duration-1000"
               style={{ background: accent, opacity: 0.15 }}
             />
             <div
-              className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full blur-3xl transition-colors duration-1000"
+              className="absolute -bottom-10 -left-10 h-24 w-24 rounded-full blur-3xl transition-colors duration-1000"
               style={{ background: accent, opacity: 0.08 }}
             />
           </div>
 
-          {/* ── Top Row: Icon & Name ── */}
-          <div className="relative z-10 flex items-center justify-between" dir="rtl">
+          <div className="relative z-10 flex items-center justify-between gap-4" dir="rtl">
             <div className="flex items-center gap-3">
               <div 
-                className="w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md"
+                className="w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md shrink-0"
                 style={{ background: "rgba(255,255,255,0.05)", boxShadow: `0 0 15px ${accent.replace('0.90', '0.2')}` }}
               >
                 {isLoading ? (
@@ -305,7 +304,7 @@ export function NextPrayerWidget() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
                     transition={reducedMotion ? { duration: 0 } : spring_smooth}
-                    className="text-lg sm:text-xl font-bold leading-tight text-white"
+                    className="text-lg font-bold leading-tight text-white"
                   >
                     {isLoading ? (
                       <span className="inline-block h-5 w-16 rounded bg-white/10 animate-pulse" />
@@ -317,34 +316,29 @@ export function NextPrayerWidget() {
               </div>
             </div>
 
-            {/* Subtle arrow to indicate tap */}
-            <ArrowLeft className="h-5 w-5 text-white/30 group-hover:text-white/70 transition-colors group-hover:-translate-x-1" />
-          </div>
-
-          {/* ── Bottom Row: Massive Countdown ── */}
-          <div className="relative z-10 mt-6 sm:mt-8 flex justify-end" dir="ltr">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={countdown}
-                initial={false}
-                animate={{ opacity: 1 }}
-                className="font-mono font-bold tracking-tighter tabular-nums"
-                style={{
-                  color: accent,
-                  fontSize: "clamp(3rem, 10vw, 4.5rem)", // Massive scaling typography
-                  lineHeight: "1",
-                  textShadow: `0 4px 30px ${accent.replace('0.90', '0.4')}`, // Gorgeous glow
-                }}
-                aria-live="polite"
-                aria-atomic="true"
-              >
-                {isLoading ? (
-                  <span className="inline-block h-12 w-32 rounded-xl bg-white/10 animate-pulse" />
-                ) : (
-                  countdown
-                )}
-              </motion.div>
-            </AnimatePresence>
+            <div className="flex items-center gap-2" dir="ltr">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={countdown}
+                  initial={false}
+                  animate={{ opacity: 1 }}
+                  className="font-mono font-bold tracking-tighter tabular-nums text-3xl sm:text-4xl"
+                  style={{
+                    color: accent,
+                    lineHeight: "1",
+                    textShadow: `0 4px 20px ${accent.replace('0.90', '0.4')}`,
+                  }}
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  {isLoading ? (
+                    <span className="inline-block h-8 w-24 rounded-xl bg-white/10 animate-pulse" />
+                  ) : (
+                    countdown
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </Link>
