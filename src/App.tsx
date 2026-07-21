@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { IslamicHeader } from "@/components/IslamicHeader";
-import { MobileBottomNav } from "@/components/MobileBottomNav";
+import { AppLayout } from "@/components/layout/AppLayout";
 import { Home } from "@/pages/Home";
 import { CategoryPage } from "@/pages/CategoryPage";
 import { Tasbih } from "@/pages/Tasbih";
@@ -83,18 +83,23 @@ function App() {
             <TashkeelProvider>
               <TooltipProvider>
                 {showSplash && <SplashScreen />}
-                <div className="relative z-10 p-4 pb-32 md:pb-8">
-                  <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+                <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+                  {/*
+                    AppLayout conditionally renders DesktopLayout (right sidebar,
+                    no bottom nav) or MobileLayout (bottom nav, no sidebar) via a
+                    single useIsMobile() call. Clean render — never both in the
+                    DOM — so the Bento grid stays aligned across breakpoints.
+                  */}
+                  <AppLayout>
                     <IslamicHeader />
                     <ScrollToTopOnRouteChange />
                     <Router />
-                    <MobileBottomNav />
                     <ActiveAdhan />
                     <DevPeriodPreview />
-                    <Toaster />
-                    <SonnerToaster />
-                  </WouterRouter>
-                </div>
+                  </AppLayout>
+                  <Toaster />
+                  <SonnerToaster />
+                </WouterRouter>
               </TooltipProvider>
             </TashkeelProvider>
           </FavoritesProvider>

@@ -1,9 +1,9 @@
-﻿import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "wouter";
 import { Home, BookOpen, Volume2, Target } from "lucide-react";
 import { spring_snappy, tap_button } from "@/lib/motion";
 
-export function MobileBottomNav() {
+export default function MobileBottomNav() {
   const [location] = useLocation();
 
   const navLinks = [
@@ -19,9 +19,15 @@ export function MobileBottomNav() {
       Content (the pill) is width = fit-content so it never stretches.
       pointer-events-none on the outer div so the aurora background
       remains clickable in the margins around the pill.
+
+      Breakpoint visibility is owned by <AppLayout>, which only mounts
+      <MobileLayout> (and therefore this component) below `md` — so no
+      `md:hidden`/`lg:hidden` is needed here. Adding one would duplicate
+      the decision and re-introduce the desktop/mobile drift this refactor
+      fixes.
     */
     <div
-      className="md:hidden fixed bottom-0 left-0 right-0 z-50 flex justify-center pointer-events-none"
+      className="fixed bottom-0 left-0 right-0 z-50 flex justify-center pointer-events-none"
       style={{ paddingBottom: "max(20px, env(safe-area-inset-bottom, 16px))" }}
       aria-label="التنقل السفلي"
     >

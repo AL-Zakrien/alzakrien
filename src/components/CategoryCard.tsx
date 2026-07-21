@@ -5,18 +5,59 @@ import { motion } from "framer-motion";
 import { spring_smooth, tap_card } from "@/lib/motion";
 import { usePrayerPeriod } from "@/context/PrayerPeriodContext";
 import { AURORA_PALETTES } from "@/components/DynamicBackground";
+import { BookOpen } from "lucide-react";
 
+// استيراد الأيقونات كمسارات (URL) لمنع الخطأ البرمجي في React
+import SunIcon from '../assets/s/icons8-sun-50.svg?url';
+import MoonIcon from '../assets/s/icons8-moon-symbol-50.svg?url';
+import BedIcon from '../assets/s/icons8-bed-50.svg?url';
+import TasbihIcon from '../assets/s/icons8-tasbih-50.svg?url';
+import SoundIcon from '../assets/s/icons8-sound-50.svg?url';
+import BlurIcon from '../assets/s/icons8-blur-50.svg?url';
+import RugIcon from '../assets/s/icons8-prayer-rug-50.svg?url';
+import MosqueIcon from '../assets/s/icons8-mosque-50.svg?url';
 
 interface CategoryCardProps {
   category: AthkarCategory;
   index: number;
+  /** "hero" = taller, larger icon, stronger glass. "default" = compact card. */
+  variant?: "hero" | "default";
+  isHighlighted?: boolean;
 }
 
-// Spring hover lift — no colour shift, that's handled by the glow layer
+// دالة تحديد الأيقونة بإرجاع صورة <img>
+function getCategoryIcon(title: string, size: "sm" | "lg" = "sm") {
+  const cls = size === "lg"
+    ? "w-8 h-8 brightness-0 invert opacity-80"
+    : "w-6 h-6 brightness-0 invert opacity-80";
+
+  switch (title) {
+    case "أذكار الصباح":
+      return <img src={SunIcon} className={cls} alt="أذكار الصباح" />;
+    case "أذكار المساء":
+      return <img src={MoonIcon} className={cls} alt="أذكار المساء" />;
+    case "أذكار النوم":
+      return <img src={BedIcon} className={cls} alt="أذكار النوم" />;
+    case "أذكار بعد الصلاة": 
+      return <img src={TasbihIcon} className={cls} alt="Tasbih" />;
+    case "أذكار الأذان":
+      return <img src={SoundIcon} className={cls} alt="الأذان" />;
+    case "أذكار الطهارة":
+      return <img src={BlurIcon} className={cls} alt="الطهارة" />;
+    case "أذكار الصلاة":
+      return <img src={RugIcon} className={cls} alt="الصلاة" />;
+    case "أذكار المسجد":
+      return <img src={MosqueIcon} className={cls} alt="المسجد" />;
+    default:
+      return <BookOpen className={`${size === "lg" ? "w-8 h-8" : "w-6 h-6"} text-white opacity-80`} strokeWidth={1.5} />;
+  }
+}
+
+// ── Framer Motion physics — unchanged ─────────────────────────────────────────
 const cardHover = {
   y: -4,
-  scale: 1.008,
-  boxShadow: "0 12px 32px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.10)",
+  scale: 1.03,
+  boxShadow: "0 16px 40px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.12)",
 };
 const cardRest = {
   y: 0,
@@ -24,111 +65,96 @@ const cardRest = {
   boxShadow: "0 2px 8px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.06)",
 };
 
-export function CategoryCard({ category, index }: CategoryCardProps) {
+export function CategoryCard({ category, index, variant = "default", isHighlighted = false }: CategoryCardProps) {
+  const isHero = variant === "hero";
+
   // ── Live period → palette lookup ──────────────────────────────────────────
   const { effectivePeriod } = usePrayerPeriod();
   const palette = AURORA_PALETTES[effectivePeriod] ?? AURORA_PALETTES.isha;
-  // Use c2 (the mid-tone blob color) at ~30% for the glow; c1 for the icon tint.
-  // Both update automatically when the period changes (or via DevPeriodPreview).
-  const glowColor = palette.c2;   // radial gradient anchor color
-  const cardBg    = palette.bg;   // dark period-toned base surface
+  const glowColor  = palette.c1; // corner glow
+  const iconColor  = palette.c2; // icon accent (kept for future use)
+
   const slug = categorySlugs[category.id] || category.id;
 
+  // ── Variant-driven styles ─────────────────────────────────────────────────
+  const heightClass   = isHero ? "h-full min-h-[11rem]" : "h-full min-h-[9rem]";
+  const baseGlass     = isHero ? "bg-white/[0.03] backdrop-blur-2xl" : "bg-white/[0.02] backdrop-blur-xl";
+  const glassClass    = isHighlighted ? `${baseGlass} border-amber-400/30 ring-1 ring-amber-400/10` : `${baseGlass} border-white/5 border-t-white/10 border-l-white/10`;
+  const glowOpacity   = isHero ? "60"                  : "4D";
+  const glowSize      = isHero ? 120                   : 96;
+  const titleClass    = isHero
+    ? "font-ui font-bold text-white leading-tight text-lg sm:text-xl w-full"
+    : "font-ui font-bold text-slate-100 leading-tight text-base sm:text-lg w-full truncate";
+  const subtitleClass = isHero
+    ? "text-slate-300/80 leading-tight text-xs sm:text-sm w-full"
+    : "text-slate-400 leading-tight text-[10px] sm:text-[11px] w-full truncate";
+
   return (
-    <Link href={`/home/${slug}`}>
+    <Link href={`/home/${slug}`} className="block h-full w-full">
       <motion.div
-        className="group relative block overflow-hidden cursor-pointer"
+        className={`group relative overflow-hidden cursor-pointer rounded-3xl border ${glassClass} ${heightClass} flex flex-col justify-between items-start text-right p-5 sm:p-6`}
         data-testid={`card-category-${category.id}`}
-        style={{
-          // Period-toned dark surface — follows the live Aurora theme via palette.bg.
-          // All bg values are very dark (<5% luminance) so white text stays readable.
-          background: cardBg,
-          borderRadius: 16,
-          border: "1px solid rgba(255,255,255,0.07)",
-          animationDelay: `${Math.min(index, 6) * 60}ms`,
-          transition: "background 0.8s ease",
-        }}
+        style={{ animationDelay: `${Math.min(index, 6) * 60}ms` }}
         initial={cardRest}
         whileHover={cardHover}
         whileTap={tap_card}
         transition={spring_smooth}
+        dir="rtl"
       >
-        {/* ── Period-reactive radial glow ── anchored bottom-right (RTL: bottom-left visually) */}
+        {/*
+          ── Localized corner glow — strictly behind the icon at top-right ──
+        */}
         <div
           aria-hidden="true"
           style={{
             position: "absolute",
-            inset: 0,
-            borderRadius: 16,
-            // Stronger glow (60% opacity hex: '99') but contained to < 50% of the card area
-            background: `radial-gradient(ellipse 75% 75% at 95% 105%, ${glowColor}99 0%, transparent 45%)`,
+            top: 0,
+            right: 0,
+            width: glowSize,
+            height: glowSize,
+            background: `radial-gradient(circle at 100% 0%, ${glowColor}${glowOpacity} 0%, ${glowColor}00 70%)`,
+            filter: isHero ? "blur(28px)" : "blur(24px)",
             pointerEvents: "none",
-            // Smooth crossfade when period changes
             transition: "background 0.8s ease",
           }}
         />
 
-        {/* ── Card body ──────────────────────────────────────────────────────── */}
-        <div
-          className="relative flex items-center gap-3 p-4 sm:p-5"
-          dir="rtl"
-        >
-          {/* Text — title + subtitle */}
-          <div className="flex-1 min-w-0 text-right">
-            <h3
-              className="font-ui font-bold text-slate-100 leading-snug truncate"
-              style={{ fontSize: 15 }}
-            >
-              {category.title}
-            </h3>
-            {category.subtitle && (
-              <p
-                className="text-slate-400 leading-snug mt-1 truncate"
-                style={{ fontSize: 12 }}
-              >
-                {category.subtitle}
-              </p>
-            )}
-          </div>
+        {/* ── Highlight Glow (if active) ── */}
+        {isHighlighted && (
+          <div 
+            className="absolute inset-0 bg-amber-400/5 blur-2xl pointer-events-none"
+            aria-hidden="true"
+          />
+        )}
 
-          {/* Count — tinted with the period's c2 glow color */}
-          <div
-            className="flex-shrink-0 flex flex-col items-center"
-            style={{ minWidth: 32 }}
-          >
-            <span
-              className="font-ui font-bold tabular-nums"
-              style={{
-                fontSize: 14,
-                color: glowColor,
-                opacity: 0.9,
-                transition: "color 0.8s ease",
-              }}
-            >
-              {category.athkar.length}
-            </span>
-            <span
-              className="text-slate-500"
-              style={{ fontSize: 9, marginTop: 1 }}
-            >
-              ذكر
-            </span>
-          </div>
+        {/* ── Top Section: Dynamic Icon ───────────────────────────────────── */}
+        <div className="relative z-10">
+          {getCategoryIcon(category.title, isHero ? "lg" : "sm")}
         </div>
 
-        {/* ── Top-edge highlight for glass depth ────────────────────────────── */}
-        <span
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            inset: "0 0 auto 0",
-            height: 1,
-            background:
-              "linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)",
-            pointerEvents: "none",
-          }}
-        />
+        {/* ── Bottom Section: Pill Badge + Text ───────────────────────────── */}
+        <div className="relative z-10 flex flex-col items-start gap-1 w-full mt-4">
+          {/* Premium Pill Badge for Count */}
+          <div className="bg-white/10 rounded-full px-2.5 py-0.5 mb-1 backdrop-blur-md border border-white/5">
+            <span className="text-[10px] font-medium text-slate-200">
+              {category.athkar.length} أذكار
+            </span>
+          </div>
+          
+          {/* Title */}
+          <h3 className={titleClass}>
+            {category.title}
+          </h3>
+
+          {/* Subtitle */}
+          {category.subtitle && (
+            <p className={subtitleClass}>
+              {category.subtitle}
+            </p>
+          )}
+        </div>
       </motion.div>
     </Link>
   );
 }
+
