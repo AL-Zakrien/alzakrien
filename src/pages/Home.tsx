@@ -58,7 +58,7 @@ function MobileFavoritesSection() {
 }
 
 export function Home() {
-  const mainCategories = athkarCategories.slice(0, 8);
+  const mainCategories = athkarCategories;
   const [searchQuery, setSearchQuery] = useState("");
   const [location] = useLocation();
   const [hisnAthkar, setHisnAthkar] = useState<any[]>([]);
